@@ -1,0 +1,175 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-base: #050704;
+  --color-surface: #0B1009;
+  --color-surface-2: #121A10;
+  --color-border: #26351F;
+  --color-violet: #C4F017;
+  --color-violet-glow: #E0FF5A;
+  --color-cyan: #54D6A5;
+  --color-magenta: #8CA0FF;
+  --color-amber: #FFD15C;
+  --color-text-primary: #FFFFFF;
+  --color-text-muted: #C8D4C1;
+  --color-text-faint: #7C8B75;
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
+  --text-2xl: 1.5rem;
+  --text-3xl: 1.875rem;
+  --text-4xl: 2.25rem;
+  --text-5xl: 3rem;
+  --text-6xl: 3.75rem;
+  --text-7xl: 4.5rem;
+  --text-8xl: 6rem;
+  --text-9xl: 8rem;
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-xl: 32px;
+  --radius-full: 9999px;
+  --shadow-glow-violet: 0 0 60px #C4F0173D, 0 0 120px #C4F01717;
+  --shadow-glow-cyan: 0 0 60px #54D6A533, 0 0 120px #54D6A511;
+  --shadow-card: 0 4px 24px #00000066, 0 1px 3px #0000004D;
+  --shadow-elevated: 0 20px 60px #00000099, 0 4px 12px #0000004D;
+}
+
+@font-face {
+  font-family: "Clash Display";
+  src: local("Clash Display"), local("ClashDisplay-Variable");
+  font-weight: 500 700;
+  font-display: swap;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
+  scrollbar-color: #C4F01766 #050704;
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  background: var(--color-base);
+  color: var(--color-text-primary);
+  font-family: var(--font-jakarta), sans-serif;
+}
+
+body::-webkit-scrollbar {
+  width: 10px;
+}
+
+body::-webkit-scrollbar-track {
+  background: #050704;
+}
+
+body::-webkit-scrollbar-thumb {
+  background: #C4F01766;
+  border-radius: 9999px;
+}
+
+button,
+a,
+input {
+  outline: none;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible {
+  box-shadow: 0 0 0 2px #C4F017, 0 0 0 5px #050704;
+}
+
+::selection {
+  background: #C4F017CC;
+  color: #050704;
+}
+
+.grid-overlay {
+  background-image: linear-gradient(#ffffff05 1px, transparent 1px), linear-gradient(90deg, #ffffff05 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+.mask-fade-x {
+  mask-image: linear-gradient(90deg, transparent, black 8%, black 92%, transparent);
+}
+
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(-10px); }
+  50% { transform: translateY(10px); }
+}
+
+@keyframes float1 {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(40px, -60px); }
+}
+
+@keyframes float2 {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(-55px, 45px); }
+}
+
+@keyframes float3 {
+  0%, 100% { transform: translate(-50%, 0); }
+  50% { transform: translate(calc(-50% + 50px), -45px); }
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@keyframes marqueeReverse {
+  from { transform: translateX(-50%); }
+  to { transform: translateX(0); }
+}
+
+@keyframes gradientShift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+@keyframes pulseSoft {
+  0%, 100% { opacity: 0.65; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.25); }
+}
+
+@keyframes scrollDot {
+  0% { opacity: 0; transform: translateY(0); }
+  35% { opacity: 1; }
+  100% { opacity: 0; transform: translateY(18px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
