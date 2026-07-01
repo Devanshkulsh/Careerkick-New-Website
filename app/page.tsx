@@ -1,8 +1,9 @@
 import { AppDownloadSection } from "@/components/sections/AppDownloadSection";
+import { AboutSection } from "@/components/sections/AboutSection";
+import { AdmissionGuidanceSection } from "@/components/sections/AdmissionGuidanceSection";
 import AppShowcaseSection from "@/components/sections/AppShowcaseSection";
 import { BlogSection } from "@/components/sections/BlogSection";
 import { CollegeSection } from "@/components/sections/CollegeSection";
-import { FeaturesSection } from "@/components/sections/FeaturesSection";
 import GoodbyeSection from "@/components/sections/GoodByeSection";
 import { HeroSection } from "@/components/sections/HeroSection";
 import { HowItWorksSection } from "@/components/sections/HowItWorksSection";
@@ -11,20 +12,31 @@ import { PricingSection } from "@/components/sections/PricingSection";
 import { StatsSection } from "@/components/sections/StatsSection";
 import { TestimonialsSection } from "@/components/sections/TestimonialsSection";
 import { WebinarsSection } from "@/components/sections/WebinarsSection";
+import { CounsellingProcessSection } from "@/components/CounsellingProcessSection";
+import { ServicesSection } from "@/components/sections/ServicesSection";
+import { FaqSection } from "@/components/sections/FaqSection";
+import { EventsSection } from "@/components/sections/EventsSection";
+import { ImportantEventsSection } from "@/components/sections/ImportantEventsSection";
 
 export default function Home() {
   return (
     <>
       <HeroSection />
       <StatsSection />
+      <AboutSection />
+      <ServicesSection />
+      <CounsellingProcessSection />
+      <AdmissionGuidanceSection />
+      <TestimonialsSection />
+      <ImportantEventsSection />
+      <EventsSection />
       <GoodbyeSection />
+      <FaqSection />
       <AppShowcaseSection />
-      {/* <FeaturesSection /> */}
       {/* <HowItWorksSection /> */}
       {/* <PlatformSection /> */}
       {/* <CollegeSection /> */}
       {/* <WebinarsSection /> */}
-      {/* <TestimonialsSection /> */}
       {/* <PricingSection /> */}
       {/* <BlogSection /> */}
       {/* <AppDownloadSection /> */}

@@ -1,6 +1,8 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
+import { AuroraBackground } from "@/components/ui/AuroraBackground";
 
 const phones = [
   {
@@ -8,18 +10,21 @@ const phones = [
     title: "Institutes",
     subtitle: "Search institutes",
     align: "left",
+    imageSrc: "/services/college-preprediction.webp",
   },
   {
     id: "home",
     title: "All India Counselling",
     subtitle: "UG Medical",
     align: "center",
+    imageSrc: "/services/counselling-roadmap.webp",
   },
   {
     id: "fees",
-    title: "Fee, Stipend & Bond",
+    title: "CareerKick",
     subtitle: "All India Counselling",
     align: "right",
+    imageSrc: "/services/allotment-guidance.webp",
   },
 ] as const;
 
@@ -50,9 +55,10 @@ const phoneVariants = {
 export default function AppShowcaseSection() {
   return (
     <section className="relative overflow-hidden bg-base px-3 py-16 sm:px-4 sm:py-24 md:px-8 lg:py-28 xl:py-section">
+      <AuroraBackground />
       <div className="absolute -left-36 top-24 h-80 w-80 rounded-full bg-violet/10 blur-[110px]" />
-      <div className="absolute -right-28 bottom-24 h-96 w-96 rounded-full bg-cyan/10 blur-[120px]" />
-      <div className="grid-overlay absolute inset-0 opacity-40" />
+      <div className="absolute -right-28 bottom-24 h-96 w-96 rounded-full bg-violet/10 blur-[120px]" />
+      <div className="grid-overlay absolute inset-0 opacity-80" />
 
       <div className="relative mx-auto max-w-7xl">
         <motion.div
@@ -73,7 +79,7 @@ export default function AppShowcaseSection() {
                 className={`${phone.align === "center" ? "z-30" : "z-20"} -mx-12 shrink-0 sm:-mx-5 md:mx-0`}
               >
                 <IphoneMockup emphasis={phone.align === "center"}>
-                  <AppScreen id={phone.id} title={phone.title} subtitle={phone.subtitle} />
+                  <AppScreen id={phone.id} title={phone.title} subtitle={phone.subtitle} imageSrc={phone.imageSrc} />
                 </IphoneMockup>
               </motion.div>
             ))}
@@ -91,9 +97,9 @@ export default function AppShowcaseSection() {
             Careerkick web app
           </span>
           <h2 className="font-display text-3xl font-bold leading-tight tracking-normal text-white sm:text-5xl md:text-6xl">
-            Your Counselling Companion, <br className="hidden sm:block" /> Wherever You Are
+            Your Counselling <span className="bg-gradient-brand bg-clip-text text-transparent">Companion,</span> <br className="hidden sm:block" /> Wherever You Are
           </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-sm leading-relaxed text-text-muted sm:mt-6 sm:text-base md:text-lg">
+          <p className="mx-auto mt-4 max-w-2xl text-sm leading-relaxed text-text-muted sm:mt-6 sm:text-base md:text-lg md:text-white">
             Receive critical counselling updates, compare colleges, track fees, and keep your NEET admission plan moving from your phone.
           </p>
         </motion.div>
@@ -146,31 +152,44 @@ function AppScreen({
   id,
   title,
   subtitle,
+  imageSrc,
 }: {
   id: (typeof phones)[number]["id"];
   title: string;
   subtitle: string;
+  imageSrc: string;
 }) {
+  const heroImage = (
+    <div className="relative overflow-hidden rounded-[16px] border border-zinc-200 bg-white shadow-sm">
+      <div className="relative aspect-[9/13] w-full">
+        <Image src={imageSrc} alt={title} fill className="object-cover object-top" sizes="260px" />
+      </div>
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-white via-white/85 to-transparent" />
+    </div>
+  );
+
   if (id === "institutes") {
     return (
       <div className="h-full">
         <Header title={title} action="Filters" />
         <SearchBar />
+        <div className="mt-2 sm:mt-3">
+          {heroImage}
+        </div>
         <div className="mt-2 space-y-2 sm:mt-3 sm:space-y-3">
-          {[0, 1, 2].map((item) => (
-            <div key={item} className="overflow-hidden rounded-2xl border border-zinc-200 bg-white shadow-sm">
-              <div className={`h-16 sm:h-24 ${item === 0 ? "bg-gradient-to-br from-violet/30 to-cyan/25" : "bg-zinc-100"}`} />
-              <div className="p-2 sm:p-3">
-                <div className="h-2.5 w-4/5 rounded bg-zinc-800 sm:h-3" />
-                <div className="mt-2 h-2 w-2/3 rounded bg-zinc-200" />
-                <div className="mt-2 flex gap-1.5 sm:mt-3 sm:gap-2">
-                  <TinyStat label="90" />
-                  <TinyStat label="State" />
-                  <TinyStat label="2026" />
-                </div>
-              </div>
+          <div className="rounded-2xl border border-zinc-100 bg-white p-2 shadow-sm sm:p-3">
+            <div className="h-2.5 w-4/5 rounded bg-zinc-800 sm:h-3" />
+            <div className="mt-2 h-2 w-2/3 rounded bg-zinc-200" />
+            <div className="mt-2 flex gap-1.5 sm:mt-3 sm:gap-2">
+              <TinyStat label="90" />
+              <TinyStat label="State" />
+              <TinyStat label="2026" />
             </div>
-          ))}
+          </div>
+          <div className="rounded-2xl border border-zinc-100 bg-zinc-50 p-2 shadow-sm sm:p-3">
+            <div className="h-2.5 w-3/5 rounded bg-zinc-300 sm:h-3" />
+            <div className="mt-2 h-2 w-1/2 rounded bg-zinc-200" />
+          </div>
         </div>
       </div>
     );
@@ -180,12 +199,13 @@ function AppScreen({
     return (
       <div className="h-full">
         <Header title={title} action="Info" />
-        <p className="mt-1 text-[8px] font-semibold text-orange-500 sm:text-[10px]">{subtitle}</p>
+        <p className="mt-1 text-[8px] font-semibold text-[#7C990E] sm:text-[10px]">{subtitle}</p>
+        <div className="mt-3 sm:mt-5">{heroImage}</div>
         <div className="mt-3 rounded-full bg-zinc-100 p-1 sm:mt-5">
           <div className="grid grid-cols-3 text-center text-[8px] font-semibold text-zinc-400 sm:text-[10px]">
             <span>2023</span>
             <span>2024</span>
-            <span className="rounded-full bg-white py-1 text-orange-500 shadow-sm">2025</span>
+            <span className="rounded-full bg-white py-1 text-[#7C990E] shadow-sm">2025</span>
           </div>
         </div>
         <div className="mt-3 text-center text-[8px] leading-relaxed text-zinc-500 sm:mt-5 sm:text-[10px]">
@@ -215,14 +235,15 @@ function AppScreen({
           <div className="flex h-6 w-6 items-center justify-center rounded-full bg-black text-[10px] font-bold text-white sm:h-8 sm:w-8 sm:text-xs">S</div>
           <div>
             <p className="text-[9px] text-zinc-400">Hello</p>
-            <p className="text-[10px] font-bold text-zinc-900 sm:text-xs">Sheldon Cooper</p>
+            <p className="text-[10px] font-bold text-zinc-900 sm:text-xs">CareerKick</p>
           </div>
         </div>
         <div className="rounded-full bg-zinc-100 px-2 py-1 text-[8px] font-bold text-zinc-700 sm:px-3 sm:text-[9px]">My Choice</div>
       </div>
       <SearchBar />
-      <div className="mt-3 rounded-2xl bg-gradient-to-br from-orange-50 via-white to-violet/20 p-3 text-center sm:mt-4 sm:p-4">
-        <p className="text-xs font-bold text-orange-500 sm:text-sm">{title}</p>
+      <div className="mt-3 sm:mt-4">{heroImage}</div>
+      <div className="mt-3 rounded-2xl bg-gradient-to-br from-[#F8FFD6] via-white to-violet/20 p-3 text-center sm:mt-4 sm:p-4">
+        <p className="text-xs font-bold text-[#7C990E] sm:text-sm">{title}</p>
         <p className="mt-1 text-[10px] text-zinc-500">{subtitle}</p>
         <div className="mt-3 grid grid-cols-5 gap-1.5 sm:mt-4 sm:gap-2">
           {["Web", "Quota", "Reg", "Docs", "Whats"].map((item) => (
@@ -239,7 +260,7 @@ function AppScreen({
           <div className="mt-4 h-2 w-full rounded bg-zinc-200" />
         </div>
         <div className="rounded-xl border border-zinc-100 bg-white p-2 shadow-sm sm:p-3">
-          <div className="h-3 w-12 rounded bg-cyan/30 sm:h-4 sm:w-16" />
+          <div className="h-3 w-12 rounded bg-[#7FEA61]/30 sm:h-4 sm:w-16" />
           <div className="mt-4 h-2 w-full rounded bg-zinc-200" />
         </div>
       </div>
@@ -282,7 +303,7 @@ function TinyStat({ label }: { label: string }) {
 
 function Badge({ icon, platform, rating }: { icon: React.ReactNode; platform: string; rating: string }) {
   return (
-    <div className="flex items-center gap-3 rounded-full border border-white/10 bg-surface px-4 py-3">
+    <div className="flex items-center gap-3 rounded-full border border-white/10 bg-surface-2/80 px-4 py-3">
       <div className="flex h-10 w-10 items-center justify-center rounded-full bg-white text-base">
         {icon}
       </div>
