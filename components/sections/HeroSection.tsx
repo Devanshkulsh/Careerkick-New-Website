@@ -97,7 +97,7 @@ export function HeroSection() {
             variants={fadeInVariant}
             transition={{ delay: 2 }}
           >
-            Trusted by 1,20,000+ aspirants{" "}
+            Trusted by 1,00,0000+ aspirants{" "}
             <span className="px-1.5 text-violet sm:px-2">/</span> 4.9/5 student
             rating <span className="px-1.5 text-violet sm:px-2">/</span>{" "}
             PAN-India admission support
