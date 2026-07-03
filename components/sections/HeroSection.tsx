@@ -2,7 +2,6 @@
 
 import { motion } from "framer-motion";
 import { AuroraBackground } from "@/components/ui/AuroraBackground";
-import { GradientText } from "@/components/ui/GradientText";
 import { MagneticButton } from "@/components/ui/MagneticButton";
 import { charVariant, containerVariant, fadeInVariant } from "@/lib/animations";
 
@@ -20,8 +19,8 @@ export function HeroSection() {
       <AuroraBackground />
       <div className="grid-overlay absolute inset-0 opacity-80" />
 
-      <div className="relative z-10 mx-auto grid max-w-7xl items-center gap-10 lg:grid-cols-[1fr_0.9fr] lg:gap-12 xl:gap-16">
-        <div className="relative z-20 mx-auto max-w-3xl min-w-0 text-center lg:mx-0 lg:max-w-none lg:text-left">
+      <div className="relative z-10 mx-auto flex w-full max-w-7xl flex-col items-center gap-10">
+        <div className="relative z-20 mx-auto max-w-5xl min-w-0 text-center">
           <motion.h1
             className="mt-4 font-display text-4xl font-bold leading-[1.15] tracking-normal text-white sm:text-5xl md:mt-7 md:text-6xl lg:text-7xl xl:text-8xl"
             variants={containerVariant}
@@ -57,7 +56,7 @@ export function HeroSection() {
           </motion.h1>
 
           <p
-            className="relative z-30 mx-auto mt-5 max-w-2xl text-sm font-semibold leading-relaxed sm:text-base md:mt-7 md:text-lg lg:mx-0 lg:max-w-xl lg:text-xl xl:max-w-2xl"
+            className="relative z-30 mx-auto mt-5 max-w-3xl text-sm font-semibold leading-relaxed sm:text-base md:mt-7 md:text-lg lg:text-xl"
             style={{
               color: "#FFFFFF",
               opacity: 1,
@@ -71,7 +70,7 @@ export function HeroSection() {
           </p>
 
           <motion.div
-            className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row lg:justify-start"
+            className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row"
             initial="hidden"
             animate="visible"
             variants={fadeInVariant}
@@ -106,13 +105,13 @@ export function HeroSection() {
         </div>
 
         <motion.div
-          className="relative z-10 mx-auto w-full min-w-0 max-w-md animate-float lg:max-w-[540px]"
+          className="relative z-10 mx-auto w-full min-w-0 max-w-5xl animate-float px-0 sm:px-4"
           initial={{ opacity: 0, y: 40, scale: 0.95 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
           transition={{ delay: 1.1, duration: 0.8 }}
         >
-          <div className="absolute inset-x-4 -bottom-8 h-24 rounded-full bg-gradient-glow opacity-70 blur-3xl sm:inset-x-8 sm:-bottom-10 sm:h-32" />
-          <div className="relative overflow-hidden rounded-xl border border-white/10 bg-surface-2/80 p-4 shadow-elevated backdrop-blur-xl sm:p-5 md:p-6">
+          <div className="absolute inset-x-8 -bottom-8 h-24 rounded-full bg-gradient-glow opacity-70 blur-3xl sm:inset-x-16 sm:-bottom-12 sm:h-36" />
+          <div className="relative overflow-hidden rounded-t-2xl border border-white/10 bg-surface-2/80 p-4 shadow-elevated backdrop-blur-xl sm:p-5 md:p-6 lg:p-8">
             <div className="mb-4 flex items-center justify-between gap-2 sm:mb-5 sm:gap-4">
               <div>
                 <p className="font-mono text-[10px] uppercase tracking-widest text-cyan sm:text-xs">
@@ -140,7 +139,7 @@ export function HeroSection() {
               {rows.map((row, index) => (
                 <div
                   key={row.join("-")}
-                  className="grid grid-cols-5 items-center gap-1 rounded-md border border-white/5 bg-white/[0.03] px-2 py-2.5 text-[9px] text-white/80 sm:gap-3 sm:px-3 sm:py-3 sm:text-xs [animation:heroDataFloat_10s_ease-in-out_infinite]"
+                  className="grid grid-cols-5 items-center gap-1 rounded-md border border-white/5 bg-white/[0.03] px-2 py-2.5 text-[9px] text-white/80 sm:gap-3 sm:px-3 sm:py-3 sm:text-xs md:text-sm [animation:heroDataFloat_10s_ease-in-out_infinite]"
                   style={{ animationDelay: `${index * 2}s` }}
                 >
                   {row.map((cell) => (
@@ -152,8 +151,11 @@ export function HeroSection() {
               ))}
             </div>
           </div>
+          <div className="relative mx-auto h-4 w-[92%] rounded-b-2xl border border-t-0 border-white/10 bg-gradient-to-b from-white/10 to-white/[0.03] shadow-card sm:h-5" />
+          <div className="relative mx-auto h-2 w-[36%] rounded-b-full bg-white/10" />
         </motion.div>
       </div>
     </section>
   );
 }
+

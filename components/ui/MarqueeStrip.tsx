@@ -22,3 +22,4 @@ export function MarqueeStrip({ items, speed = 40, direction = "left", className 
     </div>
   );
 }
+

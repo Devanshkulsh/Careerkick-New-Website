@@ -13,7 +13,7 @@ import {
 import { AuroraBackground } from "@/components/ui/AuroraBackground";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
 
-const guidanceData = [
+const admissionData = [
   { year: "2022", students: 5000, label: "5,000+", shortLabel: "5k+" },
   { year: "2023", students: 7000, label: "7,000+", shortLabel: "7k+" },
   { year: "2024", students: 9000, label: "9,000+", shortLabel: "9k+" },
@@ -31,16 +31,16 @@ export function AdmissionGuidanceSection() {
       <div className="relative mx-auto grid max-w-7xl items-center gap-10 lg:grid-cols-[0.82fr_1.18fr] lg:gap-14">
         <ScrollReveal className="max-w-2xl">
           <span className="mb-5 inline-flex rounded-full border border-violet/30 bg-violet/10 px-4 py-2 font-mono text-[10px] font-medium uppercase tracking-widest text-violet-glow sm:text-xs">
-            Year-wise guidance impact
+            Year-wise admission impact
           </span>
           <h2 className="font-display text-4xl font-bold leading-tight tracking-normal text-white sm:text-5xl md:text-6xl">
-            More aspirants <span className="bg-gradient-brand bg-clip-text text-transparent">guided every year.</span>
+            More aspirants <span className="bg-gradient-brand bg-clip-text text-transparent">admitted every year.</span>
           </h2>
           <p className="mt-5 max-w-xl text-sm leading-relaxed text-white sm:text-base md:text-lg md:text-white">
-            CareerKick has provided admission guidance and counselling support to thousands of NEET and JEE aspirants over the years.
+            CareerKick has helped thousands of NEET and JEE aspirants secure college allotments and move confidently into admission over the years.
           </p>
           <p className="mt-4 max-w-xl rounded-lg border border-white/10 bg-white/[0.03] px-4 py-3 text-xs font-medium leading-relaxed text-white/65 sm:text-sm">
-            These numbers represent students who received guidance support, not confirmed admissions.
+            These numbers represent students admitted through counselling support, allotment planning, and admission assistance.
           </p>
         </ScrollReveal>
 
@@ -50,8 +50,8 @@ export function AdmissionGuidanceSection() {
             <div className="relative">
               <div className="mb-6 flex items-start justify-between gap-4">
                 <div>
-                  <p className="font-mono text-[10px] uppercase tracking-widest text-violet-glow sm:text-xs">Guidance support</p>
-                  <h3 className="mt-2 font-display text-2xl font-bold text-white sm:text-3xl">2022 to 2025 growth</h3>
+                  <p className="font-mono text-[10px] uppercase tracking-widest text-violet-glow sm:text-xs">Students admitted</p>
+                  <h3 className="mt-2 font-display text-2xl font-bold text-white sm:text-3xl">2022 to 2025 admissions growth</h3>
                 </div>
                 <div className="rounded-full border border-violet/30 bg-violet/10 px-3 py-1.5 font-mono text-[10px] text-violet-glow sm:text-xs">
                   +140%
@@ -60,16 +60,16 @@ export function AdmissionGuidanceSection() {
 
               <div className="relative h-[280px] rounded-lg border border-white/10 bg-base/60 px-1 pb-3 pt-5 sm:h-[380px] sm:px-3 sm:pb-5 sm:pt-7">
                 <ResponsiveContainer width="100%" height="100%">
-                  <ComposedChart data={guidanceData} margin={{ top: 20, right: 20, bottom: 10, left: 0 }}>
+                  <ComposedChart data={admissionData} margin={{ top: 20, right: 20, bottom: 10, left: 0 }}>
                     <defs>
                       <linearGradient id="guidanceBar" x1="0" y1="0" x2="0" y2="1">
-                        <stop offset="0%" stopColor="#E0FF5A" stopOpacity={0.98} />
-                        <stop offset="52%" stopColor="#C4F017" stopOpacity={0.92} />
-                        <stop offset="100%" stopColor="#7FEA61" stopOpacity={0.78} />
+                        <stop offset="0%" stopColor="#51A70A" stopOpacity={0.98} />
+                        <stop offset="52%" stopColor="#51A70A" stopOpacity={0.92} />
+                        <stop offset="100%" stopColor="#51A70A" stopOpacity={0.78} />
                       </linearGradient>
                       <linearGradient id="guidanceArea" x1="0" y1="0" x2="0" y2="1">
-                        <stop offset="0%" stopColor="#C4F017" stopOpacity={0.34} />
-                        <stop offset="100%" stopColor="#C4F017" stopOpacity={0.02} />
+                        <stop offset="0%" stopColor="#51A70A" stopOpacity={0.34} />
+                        <stop offset="100%" stopColor="#51A70A" stopOpacity={0.02} />
                       </linearGradient>
                     </defs>
                     <CartesianGrid stroke="rgba(255,255,255,0.08)" vertical={false} />
@@ -77,7 +77,7 @@ export function AdmissionGuidanceSection() {
                       dataKey="year"
                       axisLine={false}
                       tickLine={false}
-                      tick={{ fill: "#C4F017", fontSize: 12, fontFamily: "var(--font-jetbrains)" }}
+                      tick={{ fill: "#51A70A", fontSize: 12, fontFamily: "var(--font-jetbrains)" }}
                       dy={8}
                     />
                     <YAxis
@@ -88,15 +88,15 @@ export function AdmissionGuidanceSection() {
                       domain={[0, 13000]}
                       width={48}
                     />
-                    <Tooltip content={<GuidanceTooltip />} cursor={{ fill: "rgba(196,240,23,0.08)" }} />
+                    <Tooltip content={<GuidanceTooltip />} cursor={{ fill: "rgba(81,167,10,0.08)" }} />
                     <Area
                       type="monotone"
                       dataKey="students"
                       fill="url(#guidanceArea)"
-                      stroke="#C4F017"
+                      stroke="#51A70A"
                       strokeWidth={3}
-                      dot={{ r: 5, fill: "#C4F017", stroke: "#050704", strokeWidth: 3 }}
-                      activeDot={{ r: 7, fill: "#E0FF5A", stroke: "#050704", strokeWidth: 3 }}
+                      dot={{ r: 5, fill: "#51A70A", stroke: "#050704", strokeWidth: 3 }}
+                      activeDot={{ r: 7, fill: "#51A70A", stroke: "#050704", strokeWidth: 3 }}
                       isAnimationActive
                       animationDuration={900}
                     />
@@ -113,7 +113,7 @@ export function AdmissionGuidanceSection() {
               </div>
 
               <div className="mt-4 grid grid-cols-4 gap-2 sm:gap-3">
-                {guidanceData.map((item) => (
+                {admissionData.map((item) => (
                   <div key={item.year} className="rounded-lg border border-white/10 bg-white/[0.03] px-2 py-3 text-center">
                     <p className="font-display text-lg font-bold text-white sm:text-2xl">{item.shortLabel}</p>
                     <p className="mt-1 font-mono text-[10px] font-semibold text-violet-glow sm:text-xs">{item.year}</p>
@@ -134,7 +134,7 @@ function GuidanceTooltip({
   label,
 }: {
   active?: boolean;
-  payload?: Array<{ payload: (typeof guidanceData)[number] }>;
+  payload?: Array<{ payload: (typeof admissionData)[number] }>;
   label?: string;
 }) {
   if (!active || !payload?.length) {
@@ -145,7 +145,8 @@ function GuidanceTooltip({
     <div className="rounded-lg border border-white/10 bg-surface-2/95 px-4 py-3 shadow-elevated backdrop-blur-xl">
       <p className="font-mono text-[10px] uppercase tracking-widest text-violet-glow">{label}</p>
       <p className="mt-1 font-display text-xl font-bold text-white">{payload[0].payload.label}</p>
-      <p className="mt-1 text-xs text-text-muted">received admission guidance</p>
+      <p className="mt-1 text-xs text-text-muted">students admitted</p>
     </div>
   );
 }
+

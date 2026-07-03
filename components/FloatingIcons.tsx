@@ -5,13 +5,13 @@ import { cn } from "@/lib/utils";
 
 const accentClass: Record<string, string> = {
   blue: "text-[#8CA0FF]",
-  green: "text-[#7FEA61]",
-  orange: "text-[#C4F017]",
+  green: "text-[#51A70A]",
+  orange: "text-[#51A70A]",
   purple: "text-magenta",
   cyan: "text-cyan",
-  yellow: "text-[#E0FF5A]",
-  red: "text-[#E0FF5A]",
-  emerald: "text-[#7FEA61]",
+  yellow: "text-[#51A70A]",
+  red: "text-[#51A70A]",
+  emerald: "text-[#51A70A]",
 };
 
 const iconPositions = [
@@ -39,7 +39,7 @@ export function FloatingIcons({
             className={cn(
               `absolute ${iconPositions[index]} flex items-center justify-center`,
               isArrow 
-                ? "h-20 w-20 text-[#C4F017] drop-shadow-lg" // Proper unboxed arrow styling
+                ? "h-20 w-20 text-[#51A70A] drop-shadow-lg" // Proper unboxed arrow styling
                 : cn(
                     "h-11 w-11 rounded-[18px] border border-white/10 bg-surface-2/75 backdrop-blur-xl",
                     accentClass[accent] ?? "text-violet-glow"
@@ -161,3 +161,4 @@ case "arrow":
       return null;
   }
 }
+

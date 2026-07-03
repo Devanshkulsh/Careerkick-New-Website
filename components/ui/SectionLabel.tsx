@@ -12,3 +12,4 @@ export function SectionLabel({ children, className }: SectionLabelProps) {
     </div>
   );
 }
+

@@ -11,8 +11,8 @@ import type { ServiceCard } from "@/types";
 import { cn } from "@/lib/utils";
 
 const accentStyles: Record<ServiceCard["accent"], { glow: string; ring: string; fill: string }> = {
-  violet: { glow: "shadow-[0_20px_60px_rgba(196,240,23,0.12)]", ring: "border-violet/25", fill: "bg-violet/10" },
-  cyan: { glow: "shadow-[0_20px_60px_rgba(84,214,165,0.12)]", ring: "border-cyan/25", fill: "bg-cyan/10" },
+  violet: { glow: "shadow-[0_20px_60px_rgba(81,167,10,0.12)]", ring: "border-violet/25", fill: "bg-violet/10" },
+  cyan: { glow: "shadow-[0_20px_60px_rgba(81,167,10,0.12)]", ring: "border-cyan/25", fill: "bg-cyan/10" },
   emerald: { glow: "shadow-[0_20px_60px_rgba(52,211,153,0.12)]", ring: "border-emerald/25", fill: "bg-emerald/10" },
   amber: { glow: "shadow-[0_20px_60px_rgba(251,191,36,0.12)]", ring: "border-[#fbbf24]/25", fill: "bg-[#fbbf24]/10" },
   blue: { glow: "shadow-[0_20px_60px_rgba(96,165,250,0.12)]", ring: "border-blue/25", fill: "bg-blue/10" },
@@ -80,3 +80,5 @@ export function ServicesSection() {
     </section>
   );
 }
+
+

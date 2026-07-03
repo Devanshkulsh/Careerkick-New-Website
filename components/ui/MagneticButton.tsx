@@ -41,3 +41,4 @@ export function MagneticButton({ children, className, onMouseMove, onMouseLeave,
     </motion.button>
   );
 }
+

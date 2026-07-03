@@ -11,7 +11,7 @@ import { importantEvents } from "@/data/importantEvents";
 import type { ImportantEvent } from "@/types";
 
 const accentStyles: Record<ImportantEvent["accent"], { border: string; badge: string }> = {
-  violet: { border: "border-violet/30", badge: "bg-violet/10 text-[#7ab800]" },
+  violet: { border: "border-violet/30", badge: "bg-violet/10 text-[#51A70A]" },
   cyan: { border: "border-cyan/30", badge: "bg-cyan/10 text-cyan" },
   emerald: { border: "border-emerald/30", badge: "bg-emerald/10 text-emerald-700" },
   amber: { border: "border-[#fbbf24]/30", badge: "bg-[#fbbf24]/10 text-[#b7791f]" },
@@ -29,13 +29,13 @@ export function ImportantEventsSection() {
 
   return (
     <section id="important-events" className="relative overflow-hidden bg-[#f7faf4] px-4 py-section-mobile text-slate-900 md:px-8 md:py-section">
-      <div className="absolute -left-32 top-16 h-80 w-80 rounded-full bg-[#C4F017]/10 blur-[120px]" />
+      <div className="absolute -left-32 top-16 h-80 w-80 rounded-full bg-[#51A70A]/10 blur-[120px]" />
       <div className="absolute -right-28 top-20 h-96 w-96 rounded-full bg-emerald/10 blur-[130px]" />
       <div className="grid-overlay absolute inset-0 opacity-[0.18]" />
 
       <div className="relative mx-auto max-w-7xl">
         <ScrollReveal className="mx-auto max-w-4xl text-center">
-          <SectionLabel className="mx-auto border-[#C4F017]/30 bg-white text-[#7ab800]">
+          <SectionLabel className="mx-auto border-[#51A70A]/30 bg-white text-[#51A70A]">
             Important Events by CareerKick
           </SectionLabel>
           <h2 className="font-display text-4xl font-bold leading-tight text-slate-900 sm:text-5xl md:text-6xl">
@@ -48,7 +48,7 @@ export function ImportantEventsSection() {
 
         <div className="mt-12 grid gap-6 lg:grid-cols-[1.3fr_0.7fr] lg:items-start xl:gap-8">
           <ScrollReveal>
-            <div className="overflow-hidden rounded-[28px] border border-[#C4F017]/20 bg-white shadow-[0_20px_70px_rgba(15,23,42,0.08)]">
+            <div className="overflow-hidden rounded-[28px] border border-[#51A70A]/20 bg-white shadow-[0_20px_70px_rgba(15,23,42,0.08)]">
               <AnimatePresence mode="wait" initial={false}>
                 <motion.div
                   key={activeEvent.id}
@@ -101,9 +101,9 @@ export function ImportantEventsSection() {
                       type="button"
                       onClick={() => setActiveId(event.id)}
                       className={cn(
-                        "flex w-full items-center gap-3 rounded-[22px] border p-2 text-left transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C4F017]",
+                        "flex w-full items-center gap-3 rounded-[22px] border p-2 text-left transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#51A70A]",
                         isActive
-                          ? "border-[#C4F017]/40 bg-[#C4F017]/10 shadow-[0_12px_30px_rgba(196,240,23,0.12)]"
+                          ? "border-[#51A70A]/40 bg-[#51A70A]/10 shadow-[0_12px_30px_rgba(81,167,10,0.12)]"
                           : "border-slate-200 bg-slate-50 hover:border-slate-300 hover:bg-slate-100"
                       )}
                       aria-pressed={isActive}
@@ -145,3 +145,4 @@ function EventPoster({ event, compact = false, featured = false }: { event: Impo
     </div>
   );
 }
+

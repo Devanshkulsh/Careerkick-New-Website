@@ -11,24 +11,24 @@ import { cn } from "@/lib/utils";
 
 const accentRing: Record<(typeof counsellingProcess)[number]["accent"], string> = {
   blue: "ring-[#8CA0FF]/30",
-  green: "ring-[#7FEA61]/30",
-  orange: "ring-[#C4F017]/30",
+  green: "ring-[#51A70A]/30",
+  orange: "ring-[#51A70A]/30",
   purple: "ring-magenta/30",
   cyan: "ring-cyan/30",
-  yellow: "ring-[#E0FF5A]/30",
-  red: "ring-[#E0FF5A]/30",
-  emerald: "ring-[#7FEA61]/30",
+  yellow: "ring-[#51A70A]/30",
+  red: "ring-[#51A70A]/30",
+  emerald: "ring-[#51A70A]/30",
 };
 
 const accentBorder: Record<(typeof counsellingProcess)[number]["accent"], string> = {
   blue: "border-[#8CA0FF]/30 bg-[#8CA0FF]/10 text-[#8CA0FF]",
-  green: "border-[#7FEA61]/30 bg-[#7FEA61]/10 text-[#7FEA61]",
-  orange: "border-[#C4F017]/30 bg-[#C4F017]/10 text-[#C4F017]",
+  green: "border-[#51A70A]/30 bg-[#51A70A]/10 text-[#51A70A]",
+  orange: "border-[#51A70A]/30 bg-[#51A70A]/10 text-[#51A70A]",
   purple: "border-magenta/30 bg-magenta/10 text-magenta",
   cyan: "border-cyan/30 bg-cyan/10 text-cyan",
-  yellow: "border-[#E0FF5A]/30 bg-[#E0FF5A]/10 text-[#E0FF5A]",
-  red: "border-[#E0FF5A]/30 bg-[#E0FF5A]/10 text-[#E0FF5A]",
-  emerald: "border-[#7FEA61]/30 bg-[#7FEA61]/10 text-[#7FEA61]",
+  yellow: "border-[#51A70A]/30 bg-[#51A70A]/10 text-[#51A70A]",
+  red: "border-[#51A70A]/30 bg-[#51A70A]/10 text-[#51A70A]",
+  emerald: "border-[#51A70A]/30 bg-[#51A70A]/10 text-[#51A70A]",
 };
 
 export function CounsellingWorkflow() {
@@ -61,7 +61,7 @@ export function CounsellingWorkflow() {
                   type="button"
                   onClick={() => setActiveIndex(index)}
                   className={cn(
-                    "group flex w-full items-start gap-3 rounded-[18px] border px-3 py-3 text-left outline-none transition-colors focus-visible:shadow-[0_0_0_2px_#C4F017,0_0_0_5px_#050704] sm:rounded-[20px] sm:px-4",
+                    "group flex w-full items-start gap-3 rounded-[18px] border px-3 py-3 text-left outline-none transition-colors focus-visible:shadow-[0_0_0_2px_#51A70A,0_0_0_5px_#050704] sm:rounded-[20px] sm:px-4",
                     active
                       ? cn("border-white/15 bg-white/[0.06] shadow-card", accentRing[step.accent])
                       : "border-white/8 bg-black/20 hover:border-white/15 hover:bg-white/[0.04]"
@@ -233,3 +233,4 @@ function StepIcon({ name }: { name: (typeof counsellingProcess)[number]["icon"] 
       );
   }
 }
+

@@ -4,6 +4,7 @@ import "./globals.css";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { CursorGlow } from "@/components/ui/CursorGlow";
+import { WhatsAppFloatingButton } from "@/components/WhatsAppFloatingButton";
 import { cn } from "@/lib/utils";
 
 const jakarta = Plus_Jakarta_Sans({
@@ -44,8 +45,10 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <CursorGlow />
         <Navbar />
         <main className="overflow-x-hidden">{children}</main>
+        <WhatsAppFloatingButton />
         <Footer />
       </body>
     </html>
   );
 }
+

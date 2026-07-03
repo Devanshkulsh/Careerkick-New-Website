@@ -6,13 +6,13 @@ import { cn } from "@/lib/utils";
 
 const accentStyles: Record<CounsellingProcessStep["accent"], string> = {
   blue: "from-violet/20 to-[#8CA0FF]/10 text-violet-glow",
-  green: "from-violet/20 to-[#7FEA61]/10 text-violet-glow",
-  orange: "from-violet/20 to-[#C4F017]/10 text-violet-glow",
+  green: "from-violet/20 to-[#51A70A]/10 text-violet-glow",
+  orange: "from-violet/20 to-[#51A70A]/10 text-violet-glow",
   purple: "from-violet/20 to-magenta/10 text-violet-glow",
   cyan: "from-violet/20 to-cyan/10 text-violet-glow",
   yellow: "from-violet/25 to-violet/10 text-violet-glow",
-  red: "from-violet/20 to-[#E0FF5A]/10 text-violet-glow",
-  emerald: "from-violet/25 to-[#7FEA61]/15 text-violet-glow",
+  red: "from-violet/20 to-[#51A70A]/10 text-violet-glow",
+  emerald: "from-violet/25 to-[#51A70A]/15 text-violet-glow",
 };
 
 type CounsellingCardProps = {
@@ -157,3 +157,4 @@ function ProcessIcon({ name }: { name: CounsellingIcon }) {
       );
   }
 }
+

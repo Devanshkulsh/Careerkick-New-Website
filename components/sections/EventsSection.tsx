@@ -9,9 +9,11 @@ import { cn } from "@/lib/utils";
 import { upcomingEvents } from "@/data/upcomingEvents";
 import type { UpcomingEventCard } from "@/types";
 
+const registrationUrl = "https://event.careerkick.in/";
+
 const accentStyles: Record<UpcomingEventCard["accent"], { border: string; badge: string; glow: string; ring: string }> = {
-  violet: { border: "border-violet/30", badge: "bg-violet/10 text-violet-glow", glow: "shadow-[0_28px_80px_rgba(196,240,23,0.12)]", ring: "border-violet/30" },
-  cyan: { border: "border-cyan/30", badge: "bg-cyan/10 text-cyan", glow: "shadow-[0_28px_80px_rgba(84,214,165,0.12)]", ring: "border-cyan/30" },
+  violet: { border: "border-violet/30", badge: "bg-violet/10 text-violet-glow", glow: "shadow-[0_28px_80px_rgba(81,167,10,0.12)]", ring: "border-violet/30" },
+  cyan: { border: "border-cyan/30", badge: "bg-cyan/10 text-cyan", glow: "shadow-[0_28px_80px_rgba(81,167,10,0.12)]", ring: "border-cyan/30" },
   emerald: { border: "border-emerald/30", badge: "bg-emerald/10 text-emerald-300", glow: "shadow-[0_28px_80px_rgba(52,211,153,0.12)]", ring: "border-emerald/30" },
   amber: { border: "border-[#fbbf24]/30", badge: "bg-[#fbbf24]/10 text-[#fbbf24]", glow: "shadow-[0_28px_80px_rgba(251,191,36,0.12)]", ring: "border-[#fbbf24]/30" },
   blue: { border: "border-blue/30", badge: "bg-blue/10 text-blue-300", glow: "shadow-[0_28px_80px_rgba(96,165,250,0.12)]", ring: "border-blue/30" },
@@ -46,27 +48,30 @@ export function EventsSection() {
         <div className="mt-8 grid gap-4 sm:mt-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
           {upcomingEvents.map((event, index) => {
             const accent = accentStyles[event.accent];
+            const eventDate = parseEventDate(event.date);
+            const isPast = eventDate < today;
             const isUpcoming = index === nextUpcomingIndex;
+            const badgeText = isPast ? "Closed" : isUpcoming ? "Next" : "Upcoming";
 
             return (
               <ScrollReveal key={event.id} delay={0.05 + index * 0.05} className="mx-auto h-full w-full max-w-[340px] sm:max-w-none">
                 <GlassCard
                   className={cn(
                     "group h-full overflow-hidden border-white/10 bg-surface-2/80 shadow-card backdrop-blur-xl transition-transform duration-300 hover:-translate-y-1",
-                    isUpcoming && "border-[#C4F017]/50 shadow-[0_20px_70px_rgba(196,240,23,0.18)]"
+                    isUpcoming && "border-[#51A70A]/50 shadow-[0_20px_70px_rgba(81,167,10,0.18)]"
                   )}
                 >
                   <div className="p-4 sm:p-5">
                     <div className="flex items-center justify-between gap-3">
                       <span className={cn("rounded-full px-2.5 py-1 font-mono text-[9px] uppercase tracking-[0.28em] sm:px-3 sm:text-[10px]", accent.badge)}>
-                        {isUpcoming ? "Upcoming" : "Event"}
+                        {badgeText}
                       </span>
                       <span className="rounded-full border border-white/10 bg-white/[0.04] px-2.5 py-1 font-mono text-[9px] uppercase tracking-[0.28em] text-white/60 sm:px-3 sm:text-[10px]">
                         2026
                       </span>
                     </div>
 
-                    <div className={cn("mx-auto mt-5 w-4/5 max-w-[220px] overflow-hidden rounded-full border-2 bg-white p-1.5 sm:mt-4 sm:w-full sm:max-w-none sm:p-2", accent.ring, isUpcoming && "ring-4 ring-[#C4F017]/10")}>
+                    <div className={cn("mx-auto mt-5 w-4/5 max-w-[220px] overflow-hidden rounded-full border-2 bg-white p-1.5 sm:mt-4 sm:w-full sm:max-w-none sm:p-2", accent.ring, isUpcoming && "ring-4 ring-[#51A70A]/10")}>
                       <div className="relative aspect-square w-full overflow-hidden rounded-full bg-white">
                         <Image
                           src={event.imageSrc}
@@ -80,12 +85,26 @@ export function EventsSection() {
                     </div>
 
                     <h3 className="mt-4 text-center font-display text-xl font-semibold text-white sm:mt-5 sm:text-2xl">{event.title}</h3>
-                    {isUpcoming ? (
+                    {!isPast ? (
                       <p className="mt-2 text-center text-xs leading-relaxed text-white/75 sm:mt-3 sm:text-sm lg:text-white">
-                        {event.location}
+                        {isUpcoming ? event.location : event.title}
                       </p>
                     ) : null}
                     <p className="mt-2 text-center font-display text-base font-semibold text-white/90 sm:mt-3 sm:text-lg">{event.date}</p>
+                    {isPast ? (
+                      <div className="mt-4 rounded-full border border-white/10 bg-white/[0.04] px-4 py-3 text-center text-xs font-semibold uppercase tracking-[0.18em] text-white/50">
+                        Registration closed
+                      </div>
+                    ) : (
+                      <a
+                        href={registrationUrl}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="mt-4 inline-flex w-full items-center justify-center rounded-full bg-gradient-brand px-4 py-3 text-sm font-bold text-base shadow-card transition-transform duration-300 hover:-translate-y-0.5 hover:shadow-glow-violet focus-visible:shadow-[0_0_0_2px_#51A70A,0_0_0_5px_#050704]"
+                      >
+                        Registration open
+                      </a>
+                    )}
                   </div>
                 </GlassCard>
               </ScrollReveal>
@@ -107,3 +126,5 @@ function startOfToday() {
   today.setHours(0, 0, 0, 0);
   return today;
 }
+
+

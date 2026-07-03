@@ -47,10 +47,10 @@ export function AboutSection() {
           >
             <div className="absolute -left-6 -top-6 h-24 w-24 rounded-full bg-violet/10 blur-2xl" />
             <div className="absolute -right-8 top-16 h-32 w-32 rounded-full bg-cyan/10 blur-3xl" />
-            <div className="absolute -bottom-8 left-12 h-24 w-24 rounded-full bg-[#C4F017]/10 blur-2xl" />
+            <div className="absolute -bottom-8 left-12 h-24 w-24 rounded-full bg-[#51A70A]/10 blur-2xl" />
 
             <div className="relative rounded-[32px] border border-white/10 bg-surface-2/80 p-2.5 shadow-elevated backdrop-blur-xl sm:rounded-[40px] sm:p-4 text-left">
-              <div className="rounded-[24px] bg-[radial-gradient(circle_at_top_left,rgba(196,240,23,0.16),transparent_28%),radial-gradient(circle_at_70%_20%,rgba(84,214,165,0.14),transparent_26%),linear-gradient(180deg,#0b1009_0%,#121a10_100%)] p-4 sm:rounded-[32px] sm:p-6 md:p-7">
+              <div className="rounded-[24px] bg-[radial-gradient(circle_at_top_left,rgba(81,167,10,0.16),transparent_28%),radial-gradient(circle_at_70%_20%,rgba(81,167,10,0.14),transparent_26%),linear-gradient(180deg,#0b1009_0%,#121a10_100%)] p-4 sm:rounded-[32px] sm:p-6 md:p-7">
                 <div className="flex flex-wrap items-start justify-between gap-3 sm:gap-4">
                   <div className="rounded-full border border-white/10 bg-white/[0.04] px-3 py-1.5 text-[9px] font-semibold uppercase tracking-[0.26em] text-white/70 sm:px-4 sm:py-2 sm:text-[11px]">
                     Guidance . clarity . care
@@ -100,3 +100,5 @@ export function AboutSection() {
     </section>
   );
 }
+
+

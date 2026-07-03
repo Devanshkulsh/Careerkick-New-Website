@@ -31,3 +31,4 @@ export function ScrollReveal({ children, variant = fadeUpVariant, delay = 0, cla
     </motion.div>
   );
 }
+

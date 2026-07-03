@@ -9,8 +9,8 @@ import { videoTestimonials } from "@/data/videoTestimonials";
 import type { VideoTestimonial } from "@/types";
 
 const accentStyles: Record<VideoTestimonial["accent"], { border: string; badge: string; glow: string; ring: string }> = {
-  violet: { border: "border-violet/30", badge: "bg-violet/10 text-violet-glow", glow: "shadow-[0_24px_70px_rgba(196,240,23,0.12)]", ring: "border-violet/30" },
-  cyan: { border: "border-cyan/30", badge: "bg-cyan/10 text-cyan", glow: "shadow-[0_24px_70px_rgba(84,214,165,0.12)]", ring: "border-cyan/30" },
+  violet: { border: "border-violet/30", badge: "bg-violet/10 text-violet-glow", glow: "shadow-[0_24px_70px_rgba(81,167,10,0.12)]", ring: "border-violet/30" },
+  cyan: { border: "border-cyan/30", badge: "bg-cyan/10 text-cyan", glow: "shadow-[0_24px_70px_rgba(81,167,10,0.12)]", ring: "border-cyan/30" },
   emerald: { border: "border-emerald/30", badge: "bg-emerald/10 text-emerald-300", glow: "shadow-[0_24px_70px_rgba(52,211,153,0.12)]", ring: "border-emerald/30" },
   amber: { border: "border-[#fbbf24]/30", badge: "bg-[#fbbf24]/10 text-[#fbbf24]", glow: "shadow-[0_24px_70px_rgba(251,191,36,0.12)]", ring: "border-[#fbbf24]/30" },
 };
@@ -86,10 +86,10 @@ function VideoPhoneCard({ item, index }: { item: VideoTestimonial; index: number
 
               <div className="flex flex-1 items-center justify-center">
                 <div className="relative">
-                  <div className="absolute inset-0 rounded-full bg-[#C4F017]/10 blur-2xl" />
+                  <div className="absolute inset-0 rounded-full bg-[#51A70A]/10 blur-2xl" />
                   <button
                     type="button"
-                    className="relative flex h-20 w-20 items-center justify-center rounded-full border border-[#C4F017]/20 bg-[#ff174f] shadow-[0_16px_40px_rgba(255,23,79,0.35)]"
+                    className="relative flex h-20 w-20 items-center justify-center rounded-full border border-[#51A70A]/20 bg-[#ff174f] shadow-[0_16px_40px_rgba(255,23,79,0.35)]"
                     aria-label={`Play ${item.title}`}
                   >
                     <span className="ml-1 border-y-[14px] border-l-[20px] border-y-transparent border-l-white" />
@@ -103,7 +103,7 @@ function VideoPhoneCard({ item, index }: { item: VideoTestimonial; index: number
                   <div className="h-full w-2/3 rounded-full bg-gradient-brand" />
                 </div>
                 <p className="text-xs leading-relaxed text-white/60">
-                  Paste your YouTube URL in <span className="text-[#E0FF5A]">data/videoTestimonials.ts</span> to turn this frame into a live reel.
+                  Paste your YouTube URL in <span className="text-[#51A70A]">data/videoTestimonials.ts</span> to turn this frame into a live reel.
                 </p>
               </div>
             </div>
@@ -150,3 +150,5 @@ function PlayIcon() {
     </svg>
   );
 }
+
+

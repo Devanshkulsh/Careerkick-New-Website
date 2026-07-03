@@ -29,12 +29,12 @@ export default function Home() {
       <ServicesSection />
       <CounsellingProcessSection />
       <AdmissionGuidanceSection />
+      <GoodbyeSection />
       <TestimonialsSection />
       <ImportantEventsSection />
       <EventsSection />
-      <GoodbyeSection />
-      <FaqSection />
       <AppShowcaseSection />
+      <FaqSection />
       {/* <HowItWorksSection /> */}
       {/* <PlatformSection /> */}
       {/* <CollegeSection /> */}
@@ -45,3 +45,4 @@ export default function Home() {
     </>
   );
 }
+

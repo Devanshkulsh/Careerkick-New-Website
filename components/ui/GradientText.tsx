@@ -19,3 +19,4 @@ export function GradientText({ children, className, animated = false }: Gradient
     </span>
   );
 }
+

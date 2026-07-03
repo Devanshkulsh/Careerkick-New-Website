@@ -57,3 +57,4 @@ export const charVariant: Variants = {
     transition: { duration: 0.04, ease: primaryEase }
   }
 };
+

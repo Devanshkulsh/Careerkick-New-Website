@@ -9,7 +9,7 @@ export const importantEvents: ImportantEvent[] = [
     description:
       "CareerKick started Shiksha Samagam 1.0 with the aim of guiding students and parents about the right career path after NEET and JEE. The event focused on course selection, college options, counselling routes and practical admission guidance.",
     accent: "violet",
-    imageSrc: "/events/shiksha-samagam-1.webp",
+    imageSrc: "https://res.cloudinary.com/dhlqc0ymy/image/upload/v1783075956/shiksha-samagam-1_k32huw.webp",
   },
   {
     id: "shiksha-samagam-2",
@@ -19,7 +19,7 @@ export const importantEvents: ImportantEvent[] = [
     description:
       "Shiksha Samagam 2.0 was conducted as a webinar to reach students from different locations. CareerKick experts guided aspirants about counselling updates, cutoff understanding, document preparation, college selection and admission planning.",
     accent: "cyan",
-    imageSrc: "/events/shiksha-samagam-2.webp",
+    imageSrc: "https://res.cloudinary.com/dhlqc0ymy/image/upload/v1783075956/shiksha-samagam-2_p66zs6.webp",
   },
   {
     id: "shiksha-samagam-3",
@@ -29,7 +29,7 @@ export const importantEvents: ImportantEvent[] = [
     description:
       "Shiksha Samagam 3.0 was a major student guidance event by CareerKick. It helped NEET and JEE aspirants get clarity about government and private college options, counselling mistakes, choice filling strategy and the complete admission process.",
     accent: "emerald",
-    imageSrc: "/events/shiksha-samagam-3.webp",
+    imageSrc: "https://res.cloudinary.com/dhlqc0ymy/image/upload/v1783075957/shiksha-samagam-3_sqtsrg.webp",
   },
   {
     id: "free-medical-counselling-expo",
@@ -39,7 +39,7 @@ export const importantEvents: ImportantEvent[] = [
     description:
       "CareerKick also organized a Free Medical Counselling Expo across different cities to provide direct counselling support to NEET aspirants and parents. Through this expo, students received one-on-one guidance regarding course selection, college prediction, budget planning, document checking, counselling process and admission opportunities in medical and allied healthcare courses.",
     accent: "amber",
-    imageSrc: "/events/expo.webp",
+    imageSrc: "https://res.cloudinary.com/dhlqc0ymy/image/upload/v1783075949/expo_xcpduv.webp",
   },
   {
     id: "pratibha-samman-samaroh",
@@ -49,6 +49,6 @@ export const importantEvents: ImportantEvent[] = [
     description:
       "Pratibha Samman Samaroh 2026 was organized to recognize and appreciate the hard work, dedication and achievements of students. The event reflected CareerKick's commitment towards motivating students and celebrating their success.",
     accent: "blue",
-    imageSrc: "",
+    imageSrc: "https://res.cloudinary.com/dhlqc0ymy/image/upload/v1783075950/pratibha-samman_ybp3fz.webp",
   },
 ];

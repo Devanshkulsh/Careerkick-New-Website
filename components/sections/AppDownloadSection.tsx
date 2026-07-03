@@ -37,3 +37,4 @@ function PhoneMockup({ className, title, lines }: { className: string; title: st
     </div>
   );
 }
+

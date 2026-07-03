@@ -76,3 +76,4 @@ function FooterColumn({ title, links }: { title: string; links: string[] }) {
     </div>
   );
 }
+

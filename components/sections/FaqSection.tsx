@@ -50,7 +50,7 @@ export function FaqSection() {
 
             <a
               href="#contact"
-              className="mt-6 inline-flex w-full items-center justify-center rounded-full border border-[#C4F017]/20 bg-gradient-brand px-5 py-3.5 font-semibold text-base text-base shadow-glow-violet transition-transform duration-300 hover:-translate-y-0.5"
+              className="mt-6 inline-flex w-full items-center justify-center rounded-full border border-[#51A70A]/20 bg-gradient-brand px-5 py-3.5 font-semibold text-base text-base shadow-glow-violet transition-transform duration-300 hover:-translate-y-0.5"
             >
               Contact us
             </a>
@@ -127,3 +127,4 @@ function ChevronIcon() {
     </svg>
   );
 }
+

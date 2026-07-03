@@ -15,9 +15,9 @@ const config: Config = {
         surface: "#0B1009",
         "surface-2": "#121A10",
         border: "#26351F",
-        violet: "#C4F017",
-        "violet-glow": "#E0FF5A",
-        cyan: "#54D6A5",
+        violet: "#51A70A",
+        "violet-glow": "#6DCC12",
+        cyan: "#51A70A",
         magenta: "#8CA0FF",
         amber: "#FFD15C",
         "text-primary": "#FFFFFF",
@@ -51,15 +51,15 @@ const config: Config = {
         xl: "32px"
       },
       boxShadow: {
-        "glow-violet": "0 0 60px #C4F0173D, 0 0 120px #C4F01717",
-        "glow-cyan": "0 0 60px #54D6A533, 0 0 120px #54D6A511",
+        "glow-violet": "0 0 60px #51A70A3D, 0 0 120px #6DCC1217",
+        "glow-cyan": "0 0 60px #51A70A33, 0 0 120px #6DCC1211",
         card: "0 4px 24px #00000066, 0 1px 3px #0000004D",
         elevated: "0 20px 60px #00000099, 0 4px 12px #0000004D"
       },
       backgroundImage: {
-        "gradient-brand": "linear-gradient(135deg, #C4F017 0%, #7FEA61 48%, #54D6A5 100%)",
-        "gradient-hero": "radial-gradient(ellipse at 20% 50%, #C4F0172E 0%, transparent 60%), radial-gradient(ellipse at 80% 20%, #54D6A524 0%, transparent 60%)",
-        "gradient-glow": "radial-gradient(circle, #C4F01744 0%, transparent 70%)",
+        "gradient-brand": "linear-gradient(135deg, #2F7804 0%, #51A70A 48%, #6DCC12 100%)",
+        "gradient-hero": "radial-gradient(ellipse at 20% 50%, #51A70A2E 0%, transparent 60%), radial-gradient(ellipse at 80% 20%, #6DCC1224 0%, transparent 60%)",
+        "gradient-glow": "radial-gradient(circle, #51A70A44 0%, transparent 70%)",
         "gradient-card": "linear-gradient(135deg, #0B1009 0%, #121A10 100%)"
       },
       animation: {
@@ -79,9 +79,9 @@ const config: Config = {
   plugins: [
     plugin(({ addUtilities }) => {
       addUtilities({
-        ".bg-gradient-brand": { backgroundImage: "linear-gradient(135deg, #C4F017 0%, #7FEA61 48%, #54D6A5 100%)" },
-        ".bg-gradient-hero": { backgroundImage: "radial-gradient(ellipse at 20% 50%, #C4F0172E 0%, transparent 60%), radial-gradient(ellipse at 80% 20%, #54D6A524 0%, transparent 60%)" },
-        ".bg-gradient-glow": { backgroundImage: "radial-gradient(circle, #C4F01744 0%, transparent 70%)" },
+        ".bg-gradient-brand": { backgroundImage: "linear-gradient(135deg, #2F7804 0%, #51A70A 48%, #6DCC12 100%)" },
+        ".bg-gradient-hero": { backgroundImage: "radial-gradient(ellipse at 20% 50%, #51A70A2E 0%, transparent 60%), radial-gradient(ellipse at 80% 20%, #6DCC1224 0%, transparent 60%)" },
+        ".bg-gradient-glow": { backgroundImage: "radial-gradient(circle, #51A70A44 0%, transparent 70%)" },
         ".bg-gradient-card": { backgroundImage: "linear-gradient(135deg, #0B1009 0%, #121A10 100%)" }
       });
     })
@@ -89,3 +89,4 @@ const config: Config = {
 };
 
 export default config;
+

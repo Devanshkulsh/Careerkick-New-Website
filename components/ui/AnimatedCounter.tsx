@@ -46,3 +46,4 @@ export function AnimatedCounter({ end, duration = 2.5, suffix = "", prefix = "" 
     </span>
   );
 }
+
