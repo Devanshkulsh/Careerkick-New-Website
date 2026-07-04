@@ -19,6 +19,8 @@ import { EventsSection } from "@/components/sections/EventsSection";
 import { ImportantEventsSection } from "@/components/sections/ImportantEventsSection";
 import { EBookButton } from "@/components/EBookButton";
 import { BlogsSection } from "@/components/home/BlogsSection";
+import { AdmittedStudentsSection } from "@/components/sections/AdmittedStudentsSection";
+import { OfficesSection } from "@/components/sections/OfficesSection";
 
 export default function Home() {
   return (
@@ -36,7 +38,9 @@ export default function Home() {
       <EventsSection />
       <AppShowcaseSection />
       <BlogsSection />
+      <OfficesSection />
       <FaqSection />
+      <AdmittedStudentsSection />
       {/* <HowItWorksSection /> */}
       {/* <PlatformSection /> */}
       {/* <CollegeSection /> */}

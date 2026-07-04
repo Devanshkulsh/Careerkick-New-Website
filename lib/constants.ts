@@ -52,10 +52,12 @@ export const NAV_LINKS: NavLink[] = [
 ];
 
 export const STATS: Stat[] = [
-  { value: 1000000, suffix: "+", label: "Aspirants Guided" },
-  { value: 100000, suffix: "+", label: "Colleges Alloted" },
-  { value: 25000, suffix: "+", label: "One-on-One Counsellings/Year" },
-  { value: 9, suffix: "+", label: "Years of Expertise" },
+  { value: 10, suffix: "L+", label: "Students Guided" },
+  { value: 100, suffix: "K+", label: "Admissions" },
+  { value: 200, suffix: "+", label: "Partner Colleges" },
+  { value: 200, suffix: "+", label: "Expert Counsellors" },
+  { value: 100, suffix: "%", label: "Success Rate" },
+  { value: 9, suffix: "+", label: "Years of Experience" },
 ];
 
 export const STATE_AUTHORITIES = [

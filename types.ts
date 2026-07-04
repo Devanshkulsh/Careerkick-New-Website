@@ -67,6 +67,21 @@ export type VideoTestimonial = {
   accent: "violet" | "cyan" | "emerald" | "amber";
 };
 
+export type AdmittedStudent = {
+  id: number;
+  image: string;
+};
+
+export type OfficeBranch = {
+  id: string;
+  branch: string;
+  image: string;
+  address: string;
+  contacts: string[];
+  mapUrl: string;
+  status?: "open" | "coming-soon";
+};
+
 export type ImportantEvent = {
   id: string;
   title: string;
