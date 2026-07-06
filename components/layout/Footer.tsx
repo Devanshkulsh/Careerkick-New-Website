@@ -4,7 +4,26 @@ import { MagneticButton } from "@/components/ui/MagneticButton";
 
 const platformLinks = ["NEET 2026", "MBBS Counselling", "College Predictor", "College Search", "Choice Filling", "Admission Support"];
 const companyLinks = ["About", "Services", "Blog", "Events", "Webinars", "Contact"];
-const socials = ["YT", "IG", "WA", "in"];
+const socials = [
+  {
+    label: "YouTube",
+    href: "#",
+    imageUrl: "https://res.cloudinary.com/dhlqc0ymy/image/upload/v1783319541/youtube_1_zggtor.png",
+    fallback: "YT",
+  },
+  {
+    label: "Instagram",
+    href: "#",
+    imageUrl: "https://res.cloudinary.com/dhlqc0ymy/image/upload/v1783319239/instagram_c0kdq3.png",
+    fallback: "IG",
+  },
+  {
+    label: "Facebook",
+    href: "#",
+    imageUrl: "https://res.cloudinary.com/dhlqc0ymy/image/upload/v1783319278/facebook_uwlmq4.png",
+    fallback: "FB",
+  },
+];
 
 export function Footer() {
   return (
@@ -25,8 +44,21 @@ export function Footer() {
             <p className="mt-4 max-w-xs text-sm text-text-muted">India&apos;s trusted NEET counselling platform for MBBS admission guidance, college prediction, and complete support.</p>
             <div className="mt-6 flex gap-3">
               {socials.map((social) => (
-                <a key={social} href="#" className="flex h-9 w-9 items-center justify-center rounded-full bg-surface text-xs font-semibold text-text-muted transition-colors hover:bg-violet/20 hover:text-white">
-                  {social}
+                <a
+                  key={social.label}
+                  href={social.href}
+                  aria-label={social.label}
+                  className="flex h-9 w-9 items-center justify-center overflow-hidden rounded-full bg-surface text-xs font-semibold text-text-muted transition-colors hover:bg-violet/20 hover:text-white"
+                >
+                  {social.imageUrl ? (
+                    <img
+                      src={social.imageUrl}
+                      alt=""
+                      className="h-full w-full object-cover"
+                    />
+                  ) : (
+                    social.fallback
+                  )}
                 </a>
               ))}
             </div>

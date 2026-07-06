@@ -2,7 +2,6 @@ import { AppDownloadSection } from "@/components/sections/AppDownloadSection";
 import { AboutSection } from "@/components/sections/AboutSection";
 import { AdmissionGuidanceSection } from "@/components/sections/AdmissionGuidanceSection";
 import AppShowcaseSection from "@/components/sections/AppShowcaseSection";
-import { BlogSection } from "@/components/sections/BlogSection";
 import { CollegeSection } from "@/components/sections/CollegeSection";
 import GoodbyeSection from "@/components/sections/GoodByeSection";
 import { HeroSection } from "@/components/sections/HeroSection";
@@ -18,26 +17,27 @@ import { FaqSection } from "@/components/sections/FaqSection";
 import { EventsSection } from "@/components/sections/EventsSection";
 import { ImportantEventsSection } from "@/components/sections/ImportantEventsSection";
 import { EBookButton } from "@/components/EBookButton";
-import { BlogsSection } from "@/components/home/BlogsSection";
 import { AdmittedStudentsSection } from "@/components/sections/AdmittedStudentsSection";
 import { OfficesSection } from "@/components/sections/OfficesSection";
+import { getLatestPosts } from "@/lib/wordpress";
 
-export default function Home() {
+export default async function Home() {
+  const latestPosts = await getLatestPosts(6);
+
   return (
     <>
       <EBookButton />
       <HeroSection />
       <StatsSection />
       <AboutSection />
-      <ServicesSection />
-      <CounsellingProcessSection />
-      <AdmissionGuidanceSection />
       <GoodbyeSection />
+      <ServicesSection />
+      <CounsellingProcessSection blogPosts={latestPosts} />
+      <AdmissionGuidanceSection />
       <TestimonialsSection />
       <ImportantEventsSection />
       <EventsSection />
       <AppShowcaseSection />
-      <BlogsSection />
       <OfficesSection />
       <FaqSection />
       <AdmittedStudentsSection />
@@ -46,7 +46,6 @@ export default function Home() {
       {/* <CollegeSection /> */}
       {/* <WebinarsSection /> */}
       {/* <PricingSection /> */}
-      {/* <BlogSection /> */}
       {/* <AppDownloadSection /> */}
     </>
   );

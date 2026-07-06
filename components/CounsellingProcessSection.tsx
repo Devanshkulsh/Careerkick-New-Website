@@ -4,7 +4,9 @@ import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import { CTAButtons } from "@/components/CTAButtons";
+import { BlogCard } from "@/components/blog/BlogCard";
 import { cn } from "@/lib/utils";
+import type { WPPost } from "@/types/wordpress";
 
 type CounsellingTab = {
   title: string;
@@ -13,7 +15,7 @@ type CounsellingTab = {
   icon: string;
   points: string[];
   metric: string;
-  kind?: "video";
+  kind?: "video" | "blogs";
 };
 
 const counsellingTabs: CounsellingTab[] = [
@@ -29,6 +31,20 @@ const counsellingTabs: CounsellingTab[] = [
       "Important authority announcements",
     ],
     metric: "Never miss a critical date",
+  },
+  {
+    title: "Blogs",
+    description:
+      "Read practical NEET counselling updates, college comparison guides, and deadline-focused admission insights.",
+    kicker: "Latest updates",
+    icon: "blogs",
+    points: [
+      "Counselling strategy articles",
+      "College comparison guides",
+      "Deadline and admission explainers",
+    ],
+    metric: "Stay ahead with useful reads",
+    kind: "blogs",
   },
   {
     title: "Cut-off Analysis",
@@ -100,10 +116,11 @@ const counsellingTabs: CounsellingTab[] = [
 const youtubeEmbedUrl =
   "https://www.youtube.com/embed/Mgg3PdGm9wk?si=xpXnOExAEok_YgoP";
 
-export function CounsellingProcessSection() {
+export function CounsellingProcessSection({ blogPosts = [] }: { blogPosts?: WPPost[] }) {
   const [activeIndex, setActiveIndex] = useState(0);
   const activeTab = counsellingTabs[activeIndex];
   const isVideo = activeTab.kind === "video";
+  const isBlogs = activeTab.kind === "blogs";
 
   return (
     <section className="relative overflow-hidden bg-[#f7faf4] px-4 py-section-mobile text-slate-950 md:px-8 md:py-section">
@@ -221,12 +238,14 @@ export function CounsellingProcessSection() {
                     exit={{ opacity: 0, y: -12 }}
                     transition={{ duration: 0.3, ease: "easeOut" }}
                   >
-                    {!isVideo && (
+                    {isBlogs ? (
+                      <BlogsVisual activeIndex={activeIndex} posts={blogPosts} />
+                    ) : !isVideo ? (
                       <FeatureVisual
                         activeTab={activeTab}
                         activeIndex={activeIndex}
                       />
-                    )}
+                    ) : null}
                   </motion.div>
                 </AnimatePresence>
               </div>
@@ -235,6 +254,54 @@ export function CounsellingProcessSection() {
         </ScrollReveal>
       </div>
     </section>
+  );
+}
+
+function BlogsVisual({
+  activeIndex,
+  posts,
+}: {
+  activeIndex: number;
+  posts: WPPost[];
+}) {
+  return (
+    <div className="flex h-full min-h-[400px] w-full flex-col justify-between py-4 lg:min-h-[520px] lg:py-0">
+      <div>
+        <div className="flex flex-wrap items-center gap-3">
+          <span className="rounded-full border border-[#51A70A]/55 bg-[#51A70A]/15 px-3 py-1.5 font-mono text-[10px] font-semibold uppercase tracking-[0.28em] text-[#51A70A]">
+            Latest updates
+          </span>
+          <span className="rounded-full border border-white/15 bg-black/50 px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.24em] text-white/75">
+            Tab {String(activeIndex + 1).padStart(2, "0")}
+          </span>
+        </div>
+
+        <h4 className="mt-5 max-w-3xl font-display text-3xl font-bold leading-tight text-white sm:mt-6 sm:text-4xl lg:text-5xl xl:text-6xl">
+          Blogs
+        </h4>
+        <p className="mt-4 max-w-3xl text-sm font-medium leading-relaxed text-white/82 sm:mt-5 sm:text-base lg:text-lg">
+          Read practical NEET counselling updates, college comparison guides, and deadline-focused admission insights.
+        </p>
+      </div>
+
+      {posts.length > 0 ? (
+        <div className="mt-8 grid gap-4 lg:grid-cols-3">
+          {posts.slice(0, 3).map((post, index) => (
+            <BlogCard
+              key={post.id}
+              post={post}
+              compact
+              priority={index < 3}
+              className="bg-black/55"
+            />
+          ))}
+        </div>
+      ) : (
+        <div className="mt-8 rounded-2xl border border-[#51A70A]/18 bg-black/55 p-6 text-sm font-medium text-white/68 backdrop-blur-xl">
+          Blog updates are loading. Please check the full blog section below.
+        </div>
+      )}
+    </div>
   );
 }
 
@@ -399,6 +466,23 @@ function FeatureIcon({ name }: { name: string }) {
           <path d="m3 6 1 1 2-2" />
           <path d="m3 12 1 1 2-2" />
           <path d="m3 18 1 1 2-2" />
+        </svg>
+      );
+    case "blogs":
+      return (
+        <svg
+          className={common}
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2.3"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          aria-hidden="true"
+        >
+          <path d="M4 5h16" />
+          <path d="M4 12h16" />
+          <path d="M4 19h10" />
         </svg>
       );
     case "fork":

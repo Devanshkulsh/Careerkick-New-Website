@@ -3,9 +3,10 @@ import { BlogCard } from "@/components/blog/BlogCard";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import { getLatestPosts } from "@/lib/wordpress";
+import type { WPPost } from "@/types/wordpress";
 
-export async function BlogsSection() {
-  const posts = await getLatestPosts(6);
+export async function BlogsSection({ posts: providedPosts }: { posts?: WPPost[] }) {
+  const posts = providedPosts ?? (await getLatestPosts(6));
 
   if (posts.length === 0) {
     return null;

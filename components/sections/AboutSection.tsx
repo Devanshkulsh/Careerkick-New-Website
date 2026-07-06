@@ -31,10 +31,6 @@ export function AboutSection() {
           <p className="mt-5 max-w-2xl text-lg leading-relaxed text-white/70 sm:text-xl">
             Every student has a different score, rank, budget, category, state preference and career goal. CareerKick studies these details properly and prepares a counselling plan that is practical for the student and easy for parents to understand.
           </p>
-
-          <p className="mt-5 max-w-2xl text-lg leading-relaxed text-white/70 sm:text-xl">
-            CareerKick is not only about filling forms. It is about guiding students with the right information, the right documents, the right college options and the right counselling route at the right time.
-          </p>
         </ScrollReveal>
 
         <ScrollReveal delay={0.12} className="w-full">
