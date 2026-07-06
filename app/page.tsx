@@ -18,7 +18,7 @@ import { EventsSection } from "@/components/sections/EventsSection";
 import { ImportantEventsSection } from "@/components/sections/ImportantEventsSection";
 import { EBookButton } from "@/components/EBookButton";
 import { AdmittedStudentsSection } from "@/components/sections/AdmittedStudentsSection";
-import { OfficesSection } from "@/components/sections/OfficesSection";
+import OfficeMapSection from "@/components/OfficeMapSection";
 import { getLatestPosts } from "@/lib/wordpress";
 
 export default async function Home() {
@@ -38,7 +38,7 @@ export default async function Home() {
       <ImportantEventsSection />
       <EventsSection />
       <AppShowcaseSection />
-      <OfficesSection />
+      <OfficeMapSection />
       <FaqSection />
       <AdmittedStudentsSection />
       {/* <HowItWorksSection /> */}
