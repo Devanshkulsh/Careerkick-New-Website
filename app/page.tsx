@@ -19,6 +19,9 @@ import { ImportantEventsSection } from "@/components/sections/ImportantEventsSec
 import { EBookButton } from "@/components/EBookButton";
 import { AdmittedStudentsSection } from "@/components/sections/AdmittedStudentsSection";
 import { OfficesSection } from "@/components/sections/OfficesSection";
+import { CounsellingMistakesSection } from "@/components/sections/CounsellingMistakesSection";
+import { WhatAfterNeetSection } from "@/components/sections/WhatAfterNeetSection";
+import { MidHomepageCtaSection } from "@/components/sections/MidHomepageCtaSection";
 import { getLatestPosts } from "@/lib/wordpress";
 
 export default async function Home() {
@@ -30,9 +33,12 @@ export default async function Home() {
       <HeroSection />
       <StatsSection />
       <AboutSection />
+      <WhatAfterNeetSection />
+      <CounsellingMistakesSection />
       <GoodbyeSection />
       <ServicesSection />
       <CounsellingProcessSection blogPosts={latestPosts} />
+      <MidHomepageCtaSection />
       <AdmissionGuidanceSection />
       <TestimonialsSection />
       <ImportantEventsSection />

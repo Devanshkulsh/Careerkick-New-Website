@@ -70,6 +70,25 @@ export function HeroSection() {
           </p>
 
           <motion.div
+            className="relative z-30 mx-auto mt-6 flex w-full max-w-3xl justify-center"
+            initial="hidden"
+            animate="visible"
+            variants={fadeInVariant}
+            transition={{ delay: 1.35 }}
+          >
+            <div className="relative overflow-hidden rounded-full border border-[#51A70A]/35 bg-[#51A70A]/10 px-4 py-3 shadow-[0_0_42px_rgba(81,167,10,0.18)] backdrop-blur-xl sm:px-6">
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+              <p className="relative text-center font-display text-sm font-semibold leading-relaxed text-white sm:text-base md:text-lg lg:text-white">
+                On a mission to counsel{" "}
+                <span className="font-bold text-[#8cef32] lg:text-[#8cef32]">
+                  1 crore+ students
+                </span>{" "}
+                towards their dream medical college
+              </p>
+            </div>
+          </motion.div>
+
+          <motion.div
             className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row"
             initial="hidden"
             animate="visible"

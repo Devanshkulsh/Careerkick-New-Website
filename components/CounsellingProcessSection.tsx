@@ -187,10 +187,15 @@ export function CounsellingProcessSection({ blogPosts = [] }: { blogPosts?: WPPo
             <div className="absolute -bottom-28 left-10 h-80 w-80 rounded-full bg-cyan/10 blur-[100px]" />
 
             <div className="relative z-10 flex flex-col lg:grid lg:min-h-[680px] lg:grid-cols-[410px_1fr] xl:grid-cols-[430px_1fr]">
-              <aside className="flex flex-col justify-center px-4 py-8 text-white sm:px-6 lg:px-8">
-                <h3 className="mb-6 font-display text-4xl font-bold leading-none text-white sm:mb-8 sm:text-5xl lg:mb-16 lg:text-6xl">
-                  Services
-                </h3>
+              <aside className="flex flex-col justify-center px-4 py-8 text-white sm:px-6 lg:px-8 lg:py-10">
+                <div className="mb-6 max-w-[450px] sm:mb-8 lg:mb-10">
+                  <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.28em] text-[#8cef32] sm:text-xs">
+                    Services
+                  </p>
+                  <h3 className="mt-3 font-display text-3xl font-bold leading-[1.05] text-white sm:text-4xl lg:text-5xl">
+                    What We Offer
+                  </h3>
+                </div>
 
                 <div className="grid w-full gap-3 sm:grid-cols-2 lg:max-w-[450px] lg:grid-cols-1">
                   {counsellingTabs.map((tab, index) => {
