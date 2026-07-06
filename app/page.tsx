@@ -24,9 +24,11 @@ import { WhatAfterNeetSection } from "@/components/sections/WhatAfterNeetSection
 import { MidHomepageCtaSection } from "@/components/sections/MidHomepageCtaSection";
 import OfficeMapSection from "@/components/OfficeMapSection";
 import { getLatestPosts } from "@/lib/wordpress";
+import { getCounsellingNotifications } from "@/lib/sanityNotifications";
 
 export default async function Home() {
   const latestPosts = await getLatestPosts(6);
+  const counsellingNotifications = await getCounsellingNotifications();
 
   return (
     <>
@@ -38,7 +40,10 @@ export default async function Home() {
       <CounsellingMistakesSection />
       <GoodbyeSection />
       <ServicesSection />
-      <CounsellingProcessSection blogPosts={latestPosts} />
+      <CounsellingProcessSection
+        blogPosts={latestPosts}
+        notifications={counsellingNotifications}
+      />
       <MidHomepageCtaSection />
       <AdmissionGuidanceSection />
       <TestimonialsSection />

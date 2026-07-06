@@ -7,6 +7,7 @@ import { CTAButtons } from "@/components/CTAButtons";
 import { BlogCard } from "@/components/blog/BlogCard";
 import { cn } from "@/lib/utils";
 import type { WPPost } from "@/types/wordpress";
+import type { CounsellingNotification } from "@/lib/sanityNotifications";
 
 type CounsellingTab = {
   title: string;
@@ -15,7 +16,7 @@ type CounsellingTab = {
   icon: string;
   points: string[];
   metric: string;
-  kind?: "video" | "blogs";
+  kind?: "video" | "blogs" | "notifications";
 };
 
 const counsellingTabs: CounsellingTab[] = [
@@ -31,6 +32,7 @@ const counsellingTabs: CounsellingTab[] = [
       "Important authority announcements",
     ],
     metric: "Never miss a critical date",
+    kind: "notifications",
   },
   {
     title: "Blogs",
@@ -116,11 +118,50 @@ const counsellingTabs: CounsellingTab[] = [
 const youtubeEmbedUrl =
   "https://www.youtube.com/embed/Mgg3PdGm9wk?si=xpXnOExAEok_YgoP";
 
-export function CounsellingProcessSection({ blogPosts = [] }: { blogPosts?: WPPost[] }) {
+const fallbackNotifications: CounsellingNotification[] = [
+  {
+    id: "fallback-mcc-registration",
+    title: "NEET UG Counselling 2026 - Round 1 Registration",
+    subtitle: "Registration and payment window opens for All India Quota, deemed, central, and ESIC seats.",
+    category: "MCC Notice",
+    dateLabel: "JUL 21",
+    linkLabel: "Registration Portal",
+    linkUrl: "#",
+    variant: "notice",
+  },
+  {
+    id: "fallback-state-schedule",
+    title: "Maharashtra NEET UG Counselling",
+    subtitle: "State quota registration, document upload, and fee payment schedule is live.",
+    category: "State Counselling",
+    startLabel: "Jul 25, 10:00 am",
+    endLabel: "Aug 2, 05:00 pm",
+    linkLabel: "View Schedule",
+    linkUrl: "#",
+    variant: "schedule",
+  },
+  {
+    id: "fallback-choice-filling",
+    title: "Choice Filling For Round 2 Ends at 4pm Today!",
+    subtitle: "Lock your MBBS/BDS choices before the deadline to avoid missing preferred colleges.",
+    category: "Urgent Alert",
+    dateLabel: "Today",
+    variant: "urgent",
+  },
+];
+
+export function CounsellingProcessSection({
+  blogPosts = [],
+  notifications = [],
+}: {
+  blogPosts?: WPPost[];
+  notifications?: CounsellingNotification[];
+}) {
   const [activeIndex, setActiveIndex] = useState(0);
   const activeTab = counsellingTabs[activeIndex];
   const isVideo = activeTab.kind === "video";
   const isBlogs = activeTab.kind === "blogs";
+  const isNotifications = activeTab.kind === "notifications";
 
   return (
     <section className="relative overflow-hidden bg-[#f7faf4] px-4 py-section-mobile text-slate-950 md:px-8 md:py-section">
@@ -243,7 +284,12 @@ export function CounsellingProcessSection({ blogPosts = [] }: { blogPosts?: WPPo
                     exit={{ opacity: 0, y: -12 }}
                     transition={{ duration: 0.3, ease: "easeOut" }}
                   >
-                    {isBlogs ? (
+                    {isNotifications ? (
+                      <NotificationsVisual
+                        activeIndex={activeIndex}
+                        notifications={notifications.length > 0 ? notifications : fallbackNotifications}
+                      />
+                    ) : isBlogs ? (
                       <BlogsVisual activeIndex={activeIndex} posts={blogPosts} />
                     ) : !isVideo ? (
                       <FeatureVisual
@@ -259,6 +305,137 @@ export function CounsellingProcessSection({ blogPosts = [] }: { blogPosts?: WPPo
         </ScrollReveal>
       </div>
     </section>
+  );
+}
+
+function NotificationsVisual({
+  activeIndex,
+  notifications,
+}: {
+  activeIndex: number;
+  notifications: CounsellingNotification[];
+}) {
+  return (
+    <div className="flex h-full min-h-[400px] w-full flex-col justify-between py-4 lg:min-h-[520px] lg:py-0">
+      <div>
+        <div className="flex flex-wrap items-center gap-3">
+          <span className="rounded-full border border-[#51A70A]/55 bg-[#51A70A]/15 px-3 py-1.5 font-mono text-[10px] font-semibold uppercase tracking-[0.28em] text-[#51A70A]">
+            Live alerts
+          </span>
+          <span className="rounded-full border border-white/15 bg-black/50 px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.24em] text-white/75">
+            Tab {String(activeIndex + 1).padStart(2, "0")}
+          </span>
+        </div>
+
+        <h4 className="mt-5 max-w-3xl font-display text-3xl font-bold leading-tight text-white sm:mt-6 sm:text-4xl lg:text-5xl xl:text-6xl">
+          Notifications
+        </h4>
+        <p className="mt-4 max-w-3xl text-sm font-medium leading-relaxed text-white/82 sm:mt-5 sm:text-base lg:text-lg">
+          Stay ahead with timely updates on counselling rounds, deadlines, and critical announcements.
+        </p>
+      </div>
+
+      <div className="relative mt-7 min-h-0 overflow-hidden rounded-2xl border border-white/10 bg-black/30 p-3 sm:mt-10 sm:rounded-3xl sm:p-6 lg:min-h-[500px]">
+        <div className="absolute -left-16 bottom-4 h-40 w-40 rounded-full bg-red-600/12 blur-[70px]" />
+        <div className="absolute right-5 top-5 hidden h-14 w-14 items-center justify-center rounded-full bg-[#fff6dd] text-slate-950 shadow-card sm:flex lg:right-7 lg:top-7 lg:h-16 lg:w-16">
+          <NotificationBellIcon />
+        </div>
+        <div className="absolute bottom-5 left-5 hidden h-14 w-14 items-center justify-center rounded-full bg-red-600 text-white shadow-[0_18px_46px_rgba(220,38,38,0.34)] sm:flex lg:bottom-7 lg:left-6 lg:h-16 lg:w-16">
+          <AlertIcon />
+        </div>
+
+        <div className="relative z-10 grid gap-3 sm:gap-4 lg:mx-auto lg:block lg:min-h-[435px] lg:max-w-[920px]">
+          {notifications.slice(0, 3).map((notification, index) => (
+            <NotificationCard
+              key={notification.id || notification.title}
+              notification={notification}
+              index={index}
+            />
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function NotificationCard({
+  notification,
+  index,
+}: {
+  notification: CounsellingNotification;
+  index: number;
+}) {
+  const variant = notification.variant || "notice";
+  const isUrgent = variant === "urgent";
+  const isSchedule = variant === "schedule";
+  const positionClass =
+    index === 0
+      ? "lg:absolute lg:left-0 lg:top-0 lg:z-10 lg:w-[55%]"
+      : index === 1
+        ? "lg:absolute lg:left-[18%] lg:top-[128px] lg:z-20 lg:w-[58%]"
+        : "lg:absolute lg:right-0 lg:top-[238px] lg:z-30 lg:w-[54%]";
+
+  return (
+    <article
+      className={cn(
+        "rounded-xl border bg-white p-3 text-slate-950 shadow-[0_18px_46px_rgba(0,0,0,0.30)] sm:rounded-2xl sm:p-5",
+        positionClass,
+        isUrgent && "border-red-200 bg-red-50",
+        isSchedule && "border-orange-200",
+      )}
+    >
+      <div className="flex flex-col gap-3 sm:flex-row sm:gap-4">
+        {notification.dateLabel ? (
+          <div
+            className={cn(
+              "flex h-12 w-12 shrink-0 flex-col items-center justify-center rounded-xl bg-orange-50 font-display font-bold text-orange-600 sm:h-16 sm:w-16",
+              isUrgent && "h-auto w-max rounded-full bg-red-100 px-3 py-1.5 text-xs text-red-600 sm:px-4 sm:py-2 sm:text-sm",
+            )}
+          >
+            {isUrgent ? (
+              notification.dateLabel
+            ) : (
+              <>
+                <span className="text-xs uppercase leading-none sm:text-sm">{notification.dateLabel.split(" ")[0]}</span>
+                <span className="mt-0.5 text-xl leading-none sm:mt-1 sm:text-3xl">{notification.dateLabel.split(" ")[1] || ""}</span>
+              </>
+            )}
+          </div>
+        ) : null}
+
+        <div className={cn("min-w-0 flex-1", isSchedule && "border-l-4 border-orange-500 pl-3 sm:pl-4")}>
+          {notification.startLabel || notification.endLabel ? (
+            <div className="mb-3 inline-flex max-w-full flex-wrap rounded-full bg-orange-50 px-3 py-1.5 text-[11px] font-bold leading-snug text-orange-600 sm:text-xs">
+              {notification.startLabel}
+              {notification.startLabel && notification.endLabel ? " -> " : ""}
+              {notification.endLabel}
+            </div>
+          ) : null}
+          {notification.category ? (
+            <p className={cn("text-xs font-bold text-orange-600", isUrgent && "text-red-600")}>
+              {notification.category}
+            </p>
+          ) : null}
+          <h5 className={cn("mt-1 break-words font-display text-base font-bold leading-tight text-slate-950 sm:text-xl", isUrgent && "text-red-700")}>
+            {notification.title}
+          </h5>
+          {notification.subtitle ? (
+            <p className="mt-2 text-xs font-medium leading-relaxed text-slate-600 sm:text-base">
+              {notification.subtitle}
+            </p>
+          ) : null}
+          {notification.linkLabel ? (
+            <a
+              href={notification.linkUrl || "#"}
+              className="mt-3 inline-flex items-center gap-2 text-sm font-bold text-sky-600"
+            >
+              <span aria-hidden="true">-&gt;</span>
+              {notification.linkLabel}
+            </a>
+          ) : null}
+        </div>
+      </div>
+    </article>
   );
 }
 
@@ -557,4 +734,42 @@ function FeatureIcon({ name }: { name: string }) {
         </svg>
       );
   }
+}
+
+function NotificationBellIcon() {
+  return (
+    <svg
+      className="h-8 w-8"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2.3"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      <path d="M6 8a6 6 0 0 1 12 0c0 7 3 7 3 9H3c0-2 3-2 3-9" />
+      <path d="M10.3 21a2 2 0 0 0 3.4 0" />
+      <path d="M18 4h.01" />
+    </svg>
+  );
+}
+
+function AlertIcon() {
+  return (
+    <svg
+      className="h-8 w-8"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2.4"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      <path d="m12 3 10 18H2L12 3Z" />
+      <path d="M12 9v5" />
+      <path d="M12 17h.01" />
+    </svg>
+  );
 }
