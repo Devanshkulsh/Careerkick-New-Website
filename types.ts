@@ -57,6 +57,7 @@ export type UpcomingEventCard = {
   accent: "violet" | "cyan" | "emerald" | "amber" | "blue";
   imageSrc: string;
   imagePrompt: string;
+  videoUrl?: string;
 };
 
 export type VideoTestimonial = {

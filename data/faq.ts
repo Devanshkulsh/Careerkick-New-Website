@@ -20,19 +20,9 @@ export const faqItems: FaqItem[] = [
       "The team analyses score, rank, category, state preference, budget and previous admission trends to suggest practical college options.",
   },
   {
-    question: "Does CareerKick help with documents?",
-    answer:
-      "Yes, CareerKick provides document pre-screening so that students can avoid mistakes before registration, choice filling and admission reporting.",
-  },
-  {
     question: "Does CareerKick help with portal work?",
     answer:
       "Yes, CareerKick experts guide students with portal registration, choice filling, choice locking, counselling updates, allotment results and reporting steps.",
-  },
-  {
-    question: "Can parents also take counselling support?",
-    answer:
-      "Yes, CareerKick counselling is useful for both students and parents because admission decisions involve course, college, budget, location and long-term planning.",
   },
   {
     question: "Does CareerKick support students after allotment?",

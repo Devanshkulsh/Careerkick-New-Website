@@ -1,7 +1,6 @@
 import { AppDownloadSection } from "@/components/sections/AppDownloadSection";
 import { AboutSection } from "@/components/sections/AboutSection";
 import { AdmissionGuidanceSection } from "@/components/sections/AdmissionGuidanceSection";
-import AppShowcaseSection from "@/components/sections/AppShowcaseSection";
 import { CollegeSection } from "@/components/sections/CollegeSection";
 import GoodbyeSection from "@/components/sections/GoodByeSection";
 import { HeroSection } from "@/components/sections/HeroSection";
@@ -20,7 +19,6 @@ import { EBookButton } from "@/components/EBookButton";
 import { AdmittedStudentsSection } from "@/components/sections/AdmittedStudentsSection";
 import { OfficesSection } from "@/components/sections/OfficesSection";
 import { CounsellingMistakesSection } from "@/components/sections/CounsellingMistakesSection";
-import { WhatAfterNeetSection } from "@/components/sections/WhatAfterNeetSection";
 import { MidHomepageCtaSection } from "@/components/sections/MidHomepageCtaSection";
 import OfficeMapSection from "@/components/OfficeMapSection";
 import { getLatestPosts } from "@/lib/wordpress";
@@ -36,7 +34,7 @@ export default async function Home() {
       <HeroSection />
       <StatsSection />
       <AboutSection />
-      <WhatAfterNeetSection />
+      <MidHomepageCtaSection />
       <CounsellingMistakesSection />
       <GoodbyeSection />
       <ServicesSection />
@@ -44,12 +42,10 @@ export default async function Home() {
         blogPosts={latestPosts}
         notifications={counsellingNotifications}
       />
-      <MidHomepageCtaSection />
       <AdmissionGuidanceSection />
       <TestimonialsSection />
       <ImportantEventsSection />
       <EventsSection />
-      <AppShowcaseSection />
       <OfficeMapSection />
       <AdmittedStudentsSection />
       <FaqSection />

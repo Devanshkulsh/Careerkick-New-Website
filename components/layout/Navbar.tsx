@@ -10,6 +10,8 @@ import { cn } from "@/lib/utils";
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const [showPhone, setShowPhone] = useState(false);
+  const phoneNumber = "7393062116";
 
   useEffect(() => {
     const update = () => setScrolled(window.scrollY > 60);
@@ -65,10 +67,47 @@ export function Navbar() {
           ))}
         </div>
 
-        <div className="hidden items-center gap-4 md:flex">
+        <div className="hidden items-center gap-3 md:flex">
           <MagneticButton className="px-5 py-2 text-sm">
             Book Free Call
           </MagneticButton>
+
+          <div
+            className="relative"
+            onMouseEnter={() => setShowPhone(true)}
+            onMouseLeave={() => setShowPhone(false)}
+            onFocus={() => setShowPhone(true)}
+            onBlur={() => setShowPhone(false)}
+          >
+            <motion.a
+              href={`tel:${phoneNumber}`}
+              className="inline-flex items-center justify-center rounded-full border border-[#51A70A]/25 bg-white px-5 py-2 text-sm font-semibold text-slate-900 transition-colors hover:border-[#51A70A]/45 hover:bg-[#51A70A]/5 hover:text-white"
+              whileHover={{ y: -2 }}
+              whileTap={{ scale: 0.98 }}
+            >
+              Toll Free Number
+            </motion.a>
+
+            <motion.div
+              initial={false}
+              animate={
+                showPhone
+                  ? { opacity: 1, y: 0, scale: 1 }
+                  : { opacity: 0, y: 8, scale: 0.96 }
+              }
+              transition={{ duration: 0.2, ease: "easeOut" }}
+              className="pointer-events-none absolute left-1/2 top-full z-20 mt-3 w-max -translate-x-1/2"
+            >
+              <div className="rounded-2xl border border-white/10 bg-[#0d1d09]/95 px-4 py-3 shadow-[0_18px_50px_rgba(0,0,0,0.35)] backdrop-blur-xl">
+                <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-[#8cef32]">
+                  Call now
+                </p>
+                <p className="mt-1 font-display text-base font-bold tracking-[0.12em] text-white">
+                  {phoneNumber}
+                </p>
+              </div>
+            </motion.div>
+          </div>
         </div>
 
         <button
@@ -104,33 +143,48 @@ export function Navbar() {
       <AnimatePresence>
         {open && (
           <motion.div
-            className="fixed inset-0 -z-10 flex flex-col justify-center bg-base/95 px-8 backdrop-blur-2xl md:hidden"
+            className="fixed inset-x-0 top-0 -z-10 h-[100dvh] w-full bg-base/95 backdrop-blur-2xl md:hidden"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
           >
-            <div className="space-y-6">
-              {NAV_LINKS.map((link, index) => (
+            <div className="flex h-full flex-col overflow-y-auto px-6 pb-8 pt-20 sm:px-8">
+              <div className="flex flex-1 flex-col justify-center space-y-5 py-6 sm:space-y-6">
+                {NAV_LINKS.map((link, index) => (
+                  <motion.a
+                    key={link.href}
+                    href={link.href}
+                    className="block font-display text-3xl font-semibold text-white sm:text-4xl"
+                    initial={{ opacity: 0, x: 60 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: index * 0.05 }}
+                    onClick={() => setOpen(false)}
+                  >
+                    {link.label}
+                  </motion.a>
+                ))}
+              </div>
+              
+              <div className="mt-auto w-full shrink-0 space-y-3 pt-6">
+                <MagneticButton className="w-full py-4 text-base">
+                  Book Free Call
+                </MagneticButton>
                 <motion.a
-                  key={link.href}
-                  href={link.href}
-                  className="block font-display text-4xl font-semibold text-white"
-                  initial={{ opacity: 0, x: 60 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: index * 0.05 }}
-                  onClick={() => setOpen(false)}
+                  href={`tel:${phoneNumber}`}
+                  className="inline-flex w-full items-center justify-center rounded-full border border-[#51A70A]/25 bg-white px-6 py-4 text-base font-semibold text-slate-900"
+                  whileHover={{ y: -2 }}
+                  whileTap={{ scale: 0.98 }}
                 >
-                  {link.label}
+                  Toll Free Number
                 </motion.a>
-              ))}
+                <p className="text-center font-mono text-xs tracking-[0.22em] text-[#8cef32]">
+                  {phoneNumber}
+                </p>
+              </div>
             </div>
-            <MagneticButton className="absolute bottom-10 left-8 right-8 py-4 text-base">
-              Book Free Call
-            </MagneticButton>
           </motion.div>
         )}
       </AnimatePresence>
     </header>
   );
 }
-

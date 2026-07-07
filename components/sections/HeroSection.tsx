@@ -7,10 +7,11 @@ import { charVariant, containerVariant, fadeInVariant } from "@/lib/animations";
 
 const heading = ["Careerkick", "Shape Your Medical Future"];
 const rows = [
-  ["2022", "5,000+", "students", "received", "guidance"],
-  ["2023", "7,000+", "students", "received", "guidance"],
-  ["2024", "9,000+", "students", "received", "guidance"],
-  ["2025", "12,000+", "students", "received", "guidance"],
+  ["Indian", "2402774", "2330090", "1313740", "2273528", "2206968", "1234991"],
+  ["Foreign", "1196", "1122", "696", "939", "870", "529"],
+  ["NRI", "1304", "1214", "801", "741", "694", "405"],
+  ["OCI", "805", "736", "616", "861", "786", "606"],
+  ["Total", "2406079", "2333162", "1315853", "2276069", "2209318", "1236531"],
 ];
 
 export function HeroSection() {
@@ -109,18 +110,34 @@ export function HeroSection() {
             </a>
           </motion.div>
 
-          <motion.p
-            className="mt-8 font-body text-xs leading-relaxed text-white/60 sm:text-sm"
+          <motion.div
+            className="mt-8 flex flex-col items-center justify-center gap-3 font-body text-xs leading-relaxed text-white/70 sm:flex-row sm:flex-wrap sm:gap-4 sm:text-sm"
             initial="hidden"
             animate="visible"
             variants={fadeInVariant}
             transition={{ delay: 2 }}
           >
-            Trusted by 1,00,0000+ aspirants{" "}
-            <span className="px-1.5 text-violet sm:px-2">/</span> 4.9/5 student
-            rating <span className="px-1.5 text-violet sm:px-2">/</span>{" "}
-            PAN-India admission support
-          </motion.p>
+            <span className="inline-flex items-center gap-2">
+              <span className="flex h-8 w-8 items-center justify-center rounded-full border border-[#51A70A]/30 bg-[#51A70A]/12 text-[#8cef32]">
+                <TrustIcon name="users" />
+              </span>
+              Trusted by 1,00,0000+ aspirants
+            </span>
+            <span className="hidden h-4 w-px bg-white/18 sm:block" />
+            <span className="inline-flex items-center gap-2">
+              <span className="flex h-8 w-8 items-center justify-center rounded-full border border-[#51A70A]/30 bg-[#51A70A]/12 text-[#8cef32]">
+                <TrustIcon name="star" />
+              </span>
+              4.9/5 student rating
+            </span>
+            <span className="hidden h-4 w-px bg-white/18 sm:block" />
+            <span className="inline-flex items-center gap-2">
+              <span className="flex h-8 w-8 items-center justify-center rounded-full border border-[#51A70A]/30 bg-[#51A70A]/12 text-[#8cef32]">
+                <TrustIcon name="map" />
+              </span>
+              PAN-India admission support
+            </span>
+          </motion.div>
         </div>
 
         <motion.div
@@ -129,52 +146,102 @@ export function HeroSection() {
           animate={{ opacity: 1, y: 0, scale: 1 }}
           transition={{ delay: 1.1, duration: 0.8 }}
         >
-          <div className="absolute inset-x-8 -bottom-8 h-24 rounded-full bg-gradient-glow opacity-70 blur-3xl sm:inset-x-16 sm:-bottom-12 sm:h-36" />
-          <div className="relative overflow-hidden rounded-t-2xl border border-white/10 bg-surface-2/80 p-4 shadow-elevated backdrop-blur-xl sm:p-5 md:p-6 lg:p-8">
-            <div className="mb-4 flex items-center justify-between gap-2 sm:mb-5 sm:gap-4">
-              <div>
-                <p className="font-mono text-[10px] uppercase tracking-widest text-cyan sm:text-xs">
-                  Careerkick
-                </p>
-                <p className="mt-0.5 text-xs text-white/80 sm:mt-1 sm:text-sm">
-                  Students Guidance Data
-                </p>
-              </div>
-              <div className="flex shrink-0 items-center rounded-full border border-cyan/30 bg-cyan/10 px-2.5 py-1 font-mono text-[10px] text-cyan sm:px-3 sm:text-xs">
-                <span className="mr-1.5 inline-block h-1.5 w-1.5 shrink-0 animate-pulse-soft rounded-full bg-cyan sm:mr-2 sm:h-2 sm:w-2" />
-                BEST guidance
-              </div>
+          <div className="overflow-hidden rounded-2xl border border-[#51A70A]/20 bg-white shadow-[0_24px_70px_rgba(0,0,0,0.28),0_8px_24px_rgba(81,167,10,0.12)]">
+            <div className="border-b border-[#51A70A]/15 px-5 py-4 text-center sm:px-6">
+              <h3 className="font-display text-sm font-bold leading-tight tracking-tight text-[#51A70A] sm:text-base lg:text-lg">
+                Highlights of NEET UG Over the Last Two Years
+              </h3>
             </div>
-
-            <div className="grid grid-cols-5 gap-1 border-b border-white/10 pb-2.5 font-mono text-[8px] uppercase tracking-widest text-white/60 sm:gap-3 sm:pb-3 sm:text-[10px]">
-              <span>Year</span>
-              <span>Students</span>
-              <span>Profile</span>
-              <span>Support</span>
-              <span>Status</span>
-            </div>
-
-            <div className="space-y-1.5 pt-2.5 sm:space-y-2 sm:pt-3">
-              {rows.map((row, index) => (
-                <div
-                  key={row.join("-")}
-                  className="grid grid-cols-5 items-center gap-1 rounded-md border border-white/5 bg-white/[0.03] px-2 py-2.5 text-[9px] text-white/80 sm:gap-3 sm:px-3 sm:py-3 sm:text-xs md:text-sm [animation:heroDataFloat_10s_ease-in-out_infinite]"
-                  style={{ animationDelay: `${index * 2}s` }}
-                >
-                  {row.map((cell) => (
-                    <span key={cell} className="truncate">
-                      {cell}
-                    </span>
+            <div className="overflow-x-auto">
+              <table className="w-full min-w-[760px] border-collapse text-left text-xs text-black sm:text-sm">
+                <thead>
+                  <tr className="border-y border-[#51A70A]/35 bg-[#51A70A] text-white">
+                    <th className="px-5 py-3 font-display font-bold sm:px-6">Nationality</th>
+                    <th className="whitespace-nowrap px-4 py-3 text-right font-display font-bold sm:px-6">NEET (UG) 2024</th>
+                    <th className="whitespace-nowrap px-4 py-3 text-right font-display font-bold sm:px-6">Appeared</th>
+                    <th className="whitespace-nowrap px-4 py-3 text-right font-display font-bold sm:px-6">Qualified</th>
+                    <th className="whitespace-nowrap px-4 py-3 text-right font-display font-bold sm:px-6">NEET (UG) 2025</th>
+                    <th className="whitespace-nowrap px-4 py-3 text-right font-display font-bold sm:px-6">Appeared</th>
+                    <th className="whitespace-nowrap px-4 py-3 text-right font-display font-bold sm:px-6">Qualified</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-slate-200/80">
+                  {rows.map((row, index) => (
+                    <tr key={row.join("-")} className={index % 2 === 1 ? "bg-white/70" : "bg-white"}>
+                      {row.map((cell, cellIndex) => (
+                        <td
+                          key={`${row[0]}-${cell}`}
+                          className={
+                            cellIndex === 0
+                              ? "px-5 py-3 font-semibold text-black sm:px-6"
+                              : "whitespace-nowrap px-4 py-3 text-right font-semibold text-black sm:px-6"
+                          }
+                        >
+                          {cell}
+                        </td>
+                      ))}
+                    </tr>
                   ))}
-                </div>
-              ))}
+                </tbody>
+              </table>
             </div>
           </div>
-          <div className="relative mx-auto h-4 w-[92%] rounded-b-2xl border border-t-0 border-white/10 bg-gradient-to-b from-white/10 to-white/[0.03] shadow-card sm:h-5" />
-          <div className="relative mx-auto h-2 w-[36%] rounded-b-full bg-white/10" />
         </motion.div>
       </div>
     </section>
+  );
+}
+
+function TrustIcon({ name }: { name: "users" | "star" | "map" }) {
+  const common = "h-4 w-4";
+
+  if (name === "users") {
+    return (
+      <svg
+        className={common}
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2.3"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        aria-hidden="true"
+      >
+        <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+        <circle cx="9" cy="7" r="4" />
+        <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
+        <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+      </svg>
+    );
+  }
+
+  if (name === "star") {
+    return (
+      <svg
+        className={common}
+        viewBox="0 0 24 24"
+        fill="currentColor"
+        aria-hidden="true"
+      >
+        <path d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2Z" />
+      </svg>
+    );
+  }
+
+  return (
+    <svg
+      className={common}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2.3"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      <path d="M12 21s7-5.2 7-12a7 7 0 0 0-14 0c0 6.8 7 12 7 12Z" />
+      <circle cx="12" cy="9" r="2.5" />
+    </svg>
   );
 }
 

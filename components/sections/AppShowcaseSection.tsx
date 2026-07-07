@@ -110,24 +110,6 @@ export default function AppShowcaseSection() {
             Watch NEET counselling updates, college planning tips, cut-off
             analysis, and choice filling guidance across our YouTube channels.
           </p>
-          <div className="mx-auto mt-6 grid max-w-2xl gap-3 sm:grid-cols-2">
-            {channels.map((channel) => (
-              <a
-                key={channel.id}
-                href={channel.href}
-                target="_blank"
-                rel="noreferrer"
-                className="rounded-xl border border-white/10 bg-white/[0.04] px-4 py-4 text-left shadow-card backdrop-blur-xl"
-              >
-                <p className="font-display text-base font-semibold text-white sm:text-lg">
-                  {channel.title}
-                </p>
-                <p className="mt-1 font-mono text-xs font-semibold uppercase tracking-widest text-violet-glow">
-                  {channel.subscribers}
-                </p>
-              </a>
-            ))}
-          </div>
         </motion.div>
       </div>
     </section>

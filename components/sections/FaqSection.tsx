@@ -110,9 +110,6 @@ export function FaqSection() {
               );
             })}
 
-            <div className="mt-6 rounded-[24px] border border-white/10 bg-white/[0.03] p-4 text-sm leading-relaxed text-white/60 sm:p-5 sm:text-base lg:text-white">
-              The FAQ stays simple by design. If you need help beyond these answers, the counselling team can walk through your profile, college goals and document requirements in detail.
-            </div>
           </div>
         </ScrollReveal>
       </div>

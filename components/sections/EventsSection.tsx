@@ -50,8 +50,10 @@ export function EventsSection() {
             const accent = accentStyles[event.accent];
             const eventDate = parseEventDate(event.date);
             const isPast = eventDate < today;
+            const videoUrl = event.videoUrl?.trim();
+            const hasVideo = Boolean(videoUrl);
             const isUpcoming = index === nextUpcomingIndex;
-            const badgeText = isPast ? "Closed" : isUpcoming ? "Next" : "Upcoming";
+            const badgeText = isPast ? (hasVideo ? "Replay" : "Closed") : isUpcoming ? "Next" : "Upcoming";
 
             return (
               <ScrollReveal key={event.id} delay={0.05 + index * 0.05} className="mx-auto h-full w-full max-w-[340px] sm:max-w-none">
@@ -61,41 +63,81 @@ export function EventsSection() {
                     isUpcoming && "border-[#51A70A]/50 shadow-[0_20px_70px_rgba(81,167,10,0.18)]"
                   )}
                 >
-                  <div className="p-4 sm:p-5">
-                    <div className="flex items-center justify-between gap-3">
-                      <span className={cn("rounded-full px-2.5 py-1 font-mono text-[9px] uppercase tracking-[0.28em] sm:px-3 sm:text-[10px]", accent.badge)}>
-                        {badgeText}
-                      </span>
-                      <span className="rounded-full border border-white/10 bg-white/[0.04] px-2.5 py-1 font-mono text-[9px] uppercase tracking-[0.28em] text-white/60 sm:px-3 sm:text-[10px]">
-                        2026
-                      </span>
-                    </div>
-
-                    <div className={cn("mx-auto mt-5 w-4/5 max-w-[220px] overflow-hidden rounded-full border-2 bg-white p-1.5 sm:mt-4 sm:w-full sm:max-w-none sm:p-2", accent.ring, isUpcoming && "ring-4 ring-[#51A70A]/10")}>
-                      <div className="relative aspect-square w-full overflow-hidden rounded-full bg-white">
-                        <Image
-                          src={event.imageSrc}
-                          alt={event.title}
-                          fill
-                          sizes="(max-width: 1280px) 50vw, 20vw"
-                          className="object-cover"
-                          priority={index < 2}
-                        />
+                  {isPast ? (
+                    <div className="flex h-full min-h-[420px] flex-col overflow-hidden rounded-[28px] bg-black/40">
+                      <div className="relative min-h-[340px] flex-1 overflow-hidden">
+                        {hasVideo ? (
+                          <>
+                            <video
+                              className="h-full w-full object-cover"
+                              autoPlay
+                              muted
+                              loop
+                              playsInline
+                              preload="metadata"
+                              poster={event.imageSrc}
+                            >
+                              <source src={videoUrl} />
+                              Your browser does not support the video tag.
+                            </video>
+                            <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_top,rgba(5,7,4,0.75),transparent_40%),linear-gradient(to_bottom,rgba(5,7,4,0.15),transparent_25%)]" />
+                            <div className="absolute left-4 top-4">
+                              <span className={cn("rounded-full px-2.5 py-1 font-mono text-[9px] uppercase tracking-[0.28em] sm:px-3 sm:text-[10px]", accent.badge)}>
+                                Replay
+                              </span>
+                            </div>
+                          </>
+                        ) : (
+                          <div className="flex h-full w-full items-center justify-center bg-[#081609] px-4 text-center">
+                            <div>
+                              <p className="font-display text-sm font-bold text-white sm:text-base">
+                                Replay coming soon
+                              </p>
+                              <p className="mt-1 text-[10px] font-medium uppercase tracking-[0.22em] text-white/55">
+                                Add videoUrl in data
+                              </p>
+                            </div>
+                          </div>
+                        )}
+                      </div>
+                      <div className="border-t border-white/10 px-4 py-4 text-center">
+                        <h3 className="font-display text-xl font-semibold text-white sm:text-2xl">
+                          {event.title}
+                        </h3>
+                        <div className="mt-3 rounded-full border border-white/10 bg-white/[0.04] px-4 py-3 text-xs font-semibold uppercase tracking-[0.18em] text-white/60">
+                          Registration closed
+                        </div>
                       </div>
                     </div>
+                  ) : (
+                    <div className="p-4 sm:p-5">
+                      <div className="flex items-center justify-between gap-3">
+                        <span className={cn("rounded-full px-2.5 py-1 font-mono text-[9px] uppercase tracking-[0.28em] sm:px-3 sm:text-[10px]", accent.badge)}>
+                          {badgeText}
+                        </span>
+                        <span className="rounded-full border border-white/10 bg-white/[0.04] px-2.5 py-1 font-mono text-[9px] uppercase tracking-[0.28em] text-white/60 sm:px-3 sm:text-[10px]">
+                          2026
+                        </span>
+                      </div>
 
-                    <h3 className="mt-4 text-center font-display text-xl font-semibold text-white sm:mt-5 sm:text-2xl">{event.title}</h3>
-                    {!isPast ? (
+                      <div className={cn("mx-auto mt-5 w-4/5 max-w-[220px] overflow-hidden rounded-full border-2 bg-white p-1.5 sm:mt-4 sm:w-full sm:max-w-none sm:p-2", accent.ring, isUpcoming && "ring-4 ring-[#51A70A]/10")}>
+                        <div className="relative aspect-square w-full overflow-hidden rounded-full bg-white">
+                          <Image
+                            src={event.imageSrc}
+                            alt={event.title}
+                            fill
+                            sizes="(max-width: 1280px) 50vw, 20vw"
+                            className="object-cover"
+                            priority={index < 2}
+                          />
+                        </div>
+                      </div>
+
+                      <h3 className="mt-4 text-center font-display text-xl font-semibold text-white sm:mt-5 sm:text-2xl">{event.title}</h3>
                       <p className="mt-2 text-center text-xs leading-relaxed text-white/75 sm:mt-3 sm:text-sm lg:text-white">
                         {isUpcoming ? event.location : event.title}
                       </p>
-                    ) : null}
-                    <p className="mt-2 text-center font-display text-base font-semibold text-white/90 sm:mt-3 sm:text-lg">{event.date}</p>
-                    {isPast ? (
-                      <div className="mt-4 rounded-full border border-white/10 bg-white/[0.04] px-4 py-3 text-center text-xs font-semibold uppercase tracking-[0.18em] text-white/50">
-                        Registration closed
-                      </div>
-                    ) : (
+                      <p className="mt-2 text-center font-display text-base font-semibold text-white/90 sm:mt-3 sm:text-lg">{event.date}</p>
                       <a
                         href={registrationUrl}
                         target="_blank"
@@ -104,8 +146,8 @@ export function EventsSection() {
                       >
                         Registration open
                       </a>
-                    )}
-                  </div>
+                    </div>
+                  )}
                 </GlassCard>
               </ScrollReveal>
             );

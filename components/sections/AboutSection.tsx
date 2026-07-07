@@ -1,8 +1,9 @@
 "use client";
 
-import Image from "next/image";
 import { motion } from "framer-motion";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
+
+const youtubeVideoUrl = "https://www.youtube.com/embed/A77ojSzREUU?si=1fLE519yVGMbKmFS";
 
 export function AboutSection() {
   return (
@@ -35,59 +36,36 @@ export function AboutSection() {
 
         <ScrollReveal delay={0.12} className="w-full">
           <motion.div
-            className="relative mx-auto w-full max-w-[620px] pt-2"
+            className="relative mx-auto w-full max-w-3xl pt-2 lg:self-start"
             initial={{ opacity: 0, y: 18 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.35 }}
             transition={{ duration: 0.45 }}
           >
-            <div className="absolute -left-6 -top-6 h-24 w-24 rounded-full bg-violet/10 blur-2xl" />
-            <div className="absolute -right-8 top-16 h-32 w-32 rounded-full bg-cyan/10 blur-3xl" />
-            <div className="absolute -bottom-8 left-12 h-24 w-24 rounded-full bg-[#51A70A]/10 blur-2xl" />
-
-            <div className="relative rounded-[32px] border border-white/10 bg-surface-2/80 p-2.5 shadow-elevated backdrop-blur-xl sm:rounded-[40px] sm:p-4 text-left">
-              <div className="rounded-[24px] bg-[radial-gradient(circle_at_top_left,rgba(81,167,10,0.16),transparent_28%),radial-gradient(circle_at_70%_20%,rgba(81,167,10,0.14),transparent_26%),linear-gradient(180deg,#0b1009_0%,#121a10_100%)] p-4 sm:rounded-[32px] sm:p-6 md:p-7">
-                <div className="flex flex-wrap items-start justify-between gap-3 sm:gap-4">
-                  <div className="rounded-full border border-white/10 bg-white/[0.04] px-3 py-1.5 text-[9px] font-semibold uppercase tracking-[0.26em] text-white/70 sm:px-4 sm:py-2 sm:text-[11px]">
-                    Guidance . clarity . care
+            <div className="relative overflow-hidden rounded-[32px] border border-white/10 bg-surface-2/80 p-2.5 shadow-elevated backdrop-blur-xl sm:rounded-[40px] sm:p-4">
+              <div className="relative aspect-[16/11] overflow-hidden rounded-[24px] border border-white/10 bg-black shadow-card sm:rounded-[32px] lg:aspect-[5/4]">
+                {youtubeVideoUrl.includes("PASTE_YOUTUBE_EMBED_URL_HERE") ? (
+                  <div className="flex h-full w-full items-center justify-center bg-[radial-gradient(circle_at_top,rgba(81,167,10,0.15),transparent_45%),linear-gradient(180deg,#0b1009_0%,#101610_100%)] px-6 text-center">
+                    <div>
+                      <p className="font-mono text-[10px] uppercase tracking-[0.28em] text-[#8cef32]">
+                        YouTube video frame
+                      </p>
+                      <p className="mt-3 text-sm leading-relaxed text-white/70 sm:text-base">
+                        Paste your YouTube embed URL in
+                        <span className="mx-1 text-white">youtubeVideoUrl</span>
+                        to show the video here.
+                      </p>
+                    </div>
                   </div>
-                  <div className="rounded-full border border-white/10 bg-white/[0.04] px-3 py-1.5 text-[9px] font-semibold uppercase tracking-[0.22em] text-violet-glow sm:px-4 sm:py-2 sm:text-[11px]">
-                    NEET + JEE
-                  </div>
-                </div>
-
-                <div className="mt-5 overflow-hidden rounded-[24px] border border-white/10 bg-white/[0.03] p-3 shadow-card sm:mt-6 sm:rounded-[30px] sm:p-5">
-                  <Image
-                    src="/logo-bg.png"
-                    alt="CareerKick"
-                    width={405}
-                    height={106}
-                    className="h-auto w-full rounded-[14px] bg-base object-contain p-2 sm:rounded-[18px] sm:p-4"
-                    priority
+                ) : (
+                  <iframe
+                    title="About CareerKick video"
+                    src={getYoutubeEmbedUrl(youtubeVideoUrl)}
+                    className="absolute inset-0 h-full w-full"
+                    allow="autoplay; encrypted-media; picture-in-picture"
+                    allowFullScreen
                   />
-                </div>
-
-                <div className="mt-4 grid gap-3 sm:mt-5 sm:grid-cols-2">
-                  <div className="rounded-[20px] border border-white/10 bg-white/[0.03] p-3.5 sm:rounded-[24px] sm:p-4">
-                    <p className="font-mono text-[9px] uppercase tracking-[0.28em] text-violet-glow sm:text-[10px]">What we study</p>
-                    <p className="mt-2 text-sm leading-relaxed text-white/75 sm:text-base lg:text-white">
-                      Score, rank, budget, category, state preference and career goal.
-                    </p>
-                  </div>
-                  <div className="rounded-[20px] border border-white/10 bg-white/[0.03] p-3.5 sm:rounded-[24px] sm:p-4">
-                    <p className="font-mono text-[9px] uppercase tracking-[0.28em] text-cyan sm:text-[10px]">What we plan</p>
-                    <p className="mt-2 text-sm leading-relaxed text-white/75 sm:text-base lg:text-white">
-                      Course choices, colleges, documents and counselling route.
-                    </p>
-                  </div>
-                </div>
-
-                <div className="mt-3 rounded-[20px] border border-white/10 bg-white/[0.03] p-3.5 sm:rounded-[24px] sm:p-4">
-                  <p className="font-mono text-[9px] uppercase tracking-[0.28em] text-white/45 sm:text-[10px]">What it becomes</p>
-                  <p className="mt-2 text-lg font-semibold leading-relaxed text-white sm:text-xl md:text-2xl">
-                    A practical counselling plan that is easy for parents to understand.
-                  </p>
-                </div>
+                )}
               </div>
             </div>
           </motion.div>
@@ -97,4 +75,16 @@ export function AboutSection() {
   );
 }
 
+function getYoutubeEmbedUrl(url: string) {
+  const trimmed = url.trim();
+  const videoIdMatch = trimmed.match(
+    /(?:youtube\.com\/(?:watch\?v=|embed\/|shorts\/)|youtu\.be\/)([A-Za-z0-9_-]{11})/
+  );
+  const videoId = videoIdMatch?.[1];
 
+  if (!videoId) {
+    return trimmed;
+  }
+
+  return `https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&mute=1&controls=0&disablekb=1&fs=0&iv_load_policy=3&loop=1&playlist=${videoId}&playsinline=1&rel=0&modestbranding=1`;
+}

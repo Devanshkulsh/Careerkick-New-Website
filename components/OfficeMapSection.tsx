@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import { geoMercator } from "d3-geo";
 import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import { ComposableMap, Geographies, Geography } from "react-simple-maps";
@@ -33,10 +32,9 @@ type ProjectedPoint = {
 
 const INDIA_GEO_URL = "/india-states.geojson";
 
-const indiaProjection = geoMercator()
-  .center([82.8, 22.6])
-  .scale(1050)
-  .translate([400, 300]);
+const INDIA_CENTER: [number, number] = [82.8, 22.6];
+const INDIA_SCALE = 1050;
+const INDIA_TRANSLATE: [number, number] = [400, 300];
 
 const officeNetwork: NetworkOffice[] = [
   {
@@ -649,18 +647,28 @@ function projectCoordinates([
   longitude,
   latitude,
 ]: [number, number]): ProjectedPoint {
-  const projected = indiaProjection([longitude, latitude]);
-
-  if (!projected) {
-    return { x: 50, y: 50 };
-  }
-
-  const [x, y] = projected;
+  const [x, y] = mercatorProject([longitude, latitude]);
 
   return {
     x: (x / 800) * 100,
     y: (y / 600) * 100,
   };
+}
+
+function mercatorProject([longitude, latitude]: [number, number]): [number, number] {
+  const [centerLongitude, centerLatitude] = INDIA_CENTER;
+  const [translateX, translateY] = INDIA_TRANSLATE;
+
+  const clampLat = (value: number) => Math.max(Math.min(value, 89.5), -89.5);
+  const lambda = ((longitude - centerLongitude) * Math.PI) / 180;
+  const phi = (clampLat(latitude) * Math.PI) / 180;
+  const centerPhi = (clampLat(centerLatitude) * Math.PI) / 180;
+  const centerY = Math.log(Math.tan(Math.PI / 4 + centerPhi / 2));
+
+  const x = translateX + INDIA_SCALE * lambda;
+  const y = translateY - INDIA_SCALE * (Math.log(Math.tan(Math.PI / 4 + phi / 2)) - centerY);
+
+  return [x, y];
 }
 
 function buildRoutePath(points: ProjectedPoint[]) {
