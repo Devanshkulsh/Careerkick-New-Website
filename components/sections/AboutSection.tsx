@@ -20,7 +20,7 @@ export function AboutSection() {
             About CareerKick
           </span>
 
-          <h2 className="max-w-3xl font-display text-4xl font-bold leading-[1.05] tracking-normal text-white sm:text-5xl md:text-6xl xl:text-7xl">
+          <h2 className="max-w-3xl font-display text-3xl font-bold leading-[1.05] tracking-normal text-white sm:text-4xl md:text-5xl xl:text-6xl">
             We built the{" "}
             <span className="bg-gradient-brand bg-clip-text text-transparent">
               CareerKick

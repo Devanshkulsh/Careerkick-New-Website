@@ -151,7 +151,7 @@ export function CounsellingMistakesSection() {
                   Avoid seat loss
                 </motion.div>
 
-                <h2 className="mt-5 max-w-2xl font-display text-3xl font-bold leading-[1.06] tracking-tight text-white sm:text-4xl md:text-5xl lg:text-6xl">
+                <h2 className="mt-5 max-w-2xl font-display text-2xl font-bold leading-[1.06] tracking-tight text-white sm:text-3xl md:text-4xl lg:text-5xl">
                   <span className="text-white">One counselling mistake can</span>
                   <motion.span
                     className="block bg-gradient-brand bg-clip-text pb-1 text-transparent"

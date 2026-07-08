@@ -10,7 +10,7 @@ export function WebinarsSection() {
       <div className="mx-auto max-w-7xl">
         <ScrollReveal>
           <SectionLabel>Live Events</SectionLabel>
-          <h2 className="font-display text-4xl font-bold text-white md:text-6xl">Learn From the Experts</h2>
+          <h2 className="font-display text-3xl font-bold text-white sm:text-4xl md:text-5xl">Learn From the Experts</h2>
           <p className="mt-5 max-w-2xl text-text-muted md:text-lg">Live Q&A, strategy sessions, and admission planning sessions for NEET aspirants and parents.</p>
         </ScrollReveal>
         <div className="mt-12 flex gap-5 overflow-x-auto pb-4 lg:grid lg:grid-cols-3 lg:overflow-visible">

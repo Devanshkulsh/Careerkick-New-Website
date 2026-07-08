@@ -12,7 +12,7 @@ export function PlatformSection() {
       <div className="mx-auto max-w-7xl text-center">
         <ScrollReveal>
           <SectionLabel>The Careerkick Method</SectionLabel>
-          <h2 className="font-display text-4xl font-bold text-white md:text-6xl">Your NEET Admission Command Center</h2>
+          <h2 className="font-display text-3xl font-bold text-white sm:text-4xl md:text-5xl">Your NEET Admission Command Center</h2>
           <p className="mx-auto mt-5 max-w-2xl text-text-muted md:text-lg">Everything a NEET aspirant needs: prediction, planning, documentation, and counsellor-led support.</p>
         </ScrollReveal>
 

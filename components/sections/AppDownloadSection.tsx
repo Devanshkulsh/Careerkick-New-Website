@@ -8,7 +8,7 @@ export function AppDownloadSection() {
       <AuroraBackground />
       <div className="relative mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-[1fr_0.9fr]">
         <ScrollReveal>
-          <h2 className="font-display text-4xl font-bold text-white md:text-6xl">Careerkick Guidance. Wherever You Are.</h2>
+          <h2 className="font-display text-3xl font-bold text-white sm:text-4xl md:text-5xl">Careerkick Guidance. Wherever You Are.</h2>
           <p className="mt-5 max-w-2xl text-text-muted md:text-lg">Connect with counsellors, track deadlines, compare colleges, and keep your admission plan moving.</p>
           <div className="mt-8 flex flex-wrap gap-4">
             <MagneticButton className="bg-white text-base">Book Counselling</MagneticButton>

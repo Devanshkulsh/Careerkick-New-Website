@@ -47,7 +47,7 @@ export function OfficesSection({ items = offices, className }: OfficesSectionPro
           <span className="mb-4 inline-flex rounded-full border border-[#51A70A]/30 bg-white px-3 py-2 font-mono text-[10px] font-medium uppercase tracking-widest text-[#51A70A] shadow-sm sm:mb-5 sm:px-4 sm:text-xs">
             Our Offices
           </span>
-          <h2 className="mx-auto max-w-4xl font-display text-[2rem] font-bold leading-[1.08] tracking-normal text-slate-900 min-[390px]:text-[2.25rem] sm:text-5xl md:text-6xl xl:text-7xl">
+          <h2 className="mx-auto max-w-4xl font-display text-[1.85rem] font-bold leading-[1.08] tracking-normal text-slate-900 min-[390px]:text-[2rem] sm:text-4xl md:text-5xl xl:text-6xl">
             Meet CareerKick{" "}
             <span className="bg-gradient-brand bg-clip-text text-transparent">
               where guidance begins.

@@ -60,7 +60,7 @@ export function WhatAfterNeetSection() {
                 <div className="inline-flex items-center self-start rounded-full border border-[#51A70A]/40 bg-[#51A70A]/15 px-4 py-2 font-mono text-xs font-semibold uppercase tracking-[0.2em] text-[#8cef32]">
                   Roadmap after result
                 </div>
-                <h2 className="mt-6 font-display text-4xl font-bold leading-[1.05] tracking-tight text-white sm:text-5xl md:text-6xl lg:text-7xl">
+                <h2 className="mt-6 font-display text-3xl font-bold leading-[1.05] tracking-tight text-white sm:text-4xl md:text-5xl lg:text-6xl">
                   What After <span className="block mt-2 bg-gradient-to-r from-[#51A70A] to-[#8cef32] bg-clip-text text-transparent">NEET?</span>
                 </h2>
                 <p className="mt-6 max-w-lg text-base font-medium leading-relaxed text-white/80 sm:text-lg md:text-xl">

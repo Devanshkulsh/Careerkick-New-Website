@@ -31,7 +31,7 @@ export function AdmittedStudentsSection({
       <div className="relative mx-auto max-w-7xl">
         <ScrollReveal className="mx-auto max-w-4xl text-center">
           <SectionLabel className="mx-auto">Admissions</SectionLabel>
-          <h2 className="font-display text-4xl font-bold leading-tight text-white sm:text-5xl md:text-6xl">
+          <h2 className="font-display text-3xl font-bold leading-tight text-white sm:text-4xl md:text-5xl">
             {title.includes("Students") ? (
               <>
                 {title.replace("Students", "")}

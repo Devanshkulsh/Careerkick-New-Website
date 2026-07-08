@@ -514,7 +514,7 @@ function OfficePin3D({
           className={cn(
             "absolute left-1/2 top-1/2 rounded-full bg-violet/25 blur-xl transition-all duration-300",
             isActive
-              ? "h-20 w-20 -translate-x-1/2 -translate-y-1/2 opacity-100"
+              ? "h-18 w-18 -translate-x-1/2 -translate-y-1/2 opacity-100"
               : "h-12 w-12 -translate-x-1/2 -translate-y-1/2 opacity-70 group-hover:opacity-100"
           )}
         />
@@ -540,7 +540,7 @@ function OfficePin3D({
             src="/logo_circle2.png"
             alt=""
             fill
-            sizes="48px"
+            sizes="50px"
             className="relative z-[1] object-cover"
             aria-hidden="true"
           />

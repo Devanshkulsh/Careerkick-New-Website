@@ -9,7 +9,7 @@ export function BlogSection() {
       <div className="mx-auto max-w-7xl">
         <ScrollReveal>
           <SectionLabel>Latest Updates</SectionLabel>
-          <h2 className="font-display text-4xl font-bold text-white md:text-6xl">Stay Ahead of Every Deadline</h2>
+          <h2 className="font-display text-3xl font-bold text-white sm:text-4xl md:text-5xl">Stay Ahead of Every Deadline</h2>
         </ScrollReveal>
         <div className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
           {BLOG_POSTS.map((post, index) => (

@@ -33,7 +33,7 @@ export function AdmissionGuidanceSection() {
           <span className="mb-5 inline-flex rounded-full border border-violet/30 bg-violet/10 px-4 py-2 font-mono text-[10px] font-medium uppercase tracking-widest text-violet-glow sm:text-xs">
             Year-wise admission impact
           </span>
-          <h2 className="font-display text-4xl font-bold leading-tight tracking-normal text-white sm:text-5xl md:text-6xl">
+          <h2 className="font-display text-3xl font-bold leading-tight tracking-normal text-white sm:text-4xl md:text-5xl">
             More aspirants <span className="bg-gradient-brand bg-clip-text text-transparent">admitted every year.</span>
           </h2>
           <p className="mt-5 max-w-xl text-sm leading-relaxed text-white sm:text-base md:text-lg md:text-white">

@@ -26,7 +26,7 @@ export function HowItWorksSection() {
       <div className="mx-auto grid max-w-7xl gap-12 lg:grid-cols-[0.85fr_1.15fr]">
         <ScrollReveal>
           <SectionLabel>The Process</SectionLabel>
-          <h2 className="font-display text-4xl font-bold text-white md:text-6xl">From NEET Score to MBBS Seat in 3 Steps</h2>
+          <h2 className="font-display text-3xl font-bold text-white sm:text-4xl md:text-5xl">From NEET Score to MBBS Seat in 3 Steps</h2>
           <div className="relative mt-12 space-y-8 pl-16">
             <div className="absolute left-6 top-6 h-[calc(100%-48px)] w-1 rounded-full bg-white/10" />
             <motion.div className="absolute left-6 top-6 h-[calc(100%-48px)] w-1 origin-top rounded-full bg-gradient-brand" style={{ scaleY: (active + 1) / 3 }} />

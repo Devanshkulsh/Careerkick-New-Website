@@ -38,7 +38,7 @@ export default function GoodbyeSection() {
             Less chaos, more clarity
           </span>
 
-          <h2 className="relative mx-auto inline-block max-w-[11ch] font-display text-4xl font-bold leading-[1.05] tracking-normal text-slate-900 sm:text-5xl md:text-6xl lg:mx-0 xl:text-7xl">
+          <h2 className="relative mx-auto inline-block max-w-[11ch] font-display text-3xl font-bold leading-[1.05] tracking-normal text-slate-900 sm:text-4xl md:text-5xl lg:mx-0 xl:text-6xl">
             Say <span className="bg-gradient-brand bg-clip-text text-transparent">Goodbye</span> To
             <motion.svg
               animate={{ y: [0, -8, 0] }}

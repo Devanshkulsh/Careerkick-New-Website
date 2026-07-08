@@ -22,7 +22,7 @@ export function FaqSection() {
       <div className="relative mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16">
         <ScrollReveal className="max-w-xl">
           <SectionLabel>Frequently Asked Questions</SectionLabel>
-          <h2 className="font-display text-4xl font-bold leading-tight text-white sm:text-5xl md:text-6xl">
+          <h2 className="font-display text-3xl font-bold leading-tight text-white sm:text-4xl md:text-5xl">
             <GradientText>Questions</GradientText> families ask before counselling starts.
           </h2>
           <p className="mt-5 max-w-lg text-base leading-relaxed text-text-muted sm:text-lg">

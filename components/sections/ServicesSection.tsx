@@ -90,7 +90,7 @@ export function ServicesSection() {
         <ScrollReveal className="max-w-3xl">
           <SectionLabel>Our Services</SectionLabel>
 
-          <h2 className="font-display text-4xl font-bold leading-tight text-white md:text-6xl">
+          <h2 className="font-display text-3xl font-bold leading-tight text-white sm:text-4xl md:text-5xl">
             <GradientText>The route</GradientText> from idea to measurable
             growth.
           </h2>

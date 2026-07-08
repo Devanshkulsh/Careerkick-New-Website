@@ -16,7 +16,7 @@ export function CollegeSection() {
       <div className="mx-auto grid max-w-7xl items-center gap-10 lg:grid-cols-[0.9fr_1.1fr]">
         <ScrollReveal>
           <SectionLabel>College Guidance</SectionLabel>
-          <h2 className="font-display text-4xl font-bold text-white md:text-6xl">Compare colleges beyond the closing rank.</h2>
+          <h2 className="font-display text-3xl font-bold text-white sm:text-4xl md:text-5xl">Compare colleges beyond the closing rank.</h2>
           <p className="mt-5 text-text-muted md:text-lg">Fees, location, quota, category movement, bond rules, and admission chance sit beside cut-off data, so every option has context.</p>
         </ScrollReveal>
         <ScrollReveal>

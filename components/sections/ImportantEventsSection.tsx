@@ -38,7 +38,7 @@ export function ImportantEventsSection() {
           <SectionLabel className="mx-auto border-[#51A70A]/30 bg-white text-[#51A70A]">
             Important Events by CareerKick
           </SectionLabel>
-          <h2 className="font-display text-4xl font-bold leading-tight text-slate-900 sm:text-5xl md:text-6xl">
+          <h2 className="font-display text-3xl font-bold leading-tight text-slate-900 sm:text-4xl md:text-5xl">
             <GradientText>Event stories</GradientText> that shaped student confidence.
           </h2>
           <p className="mx-auto mt-5 max-w-4xl text-base leading-relaxed text-slate-700 sm:text-lg">

@@ -23,7 +23,7 @@ export function HeroSection() {
       <div className="relative z-10 mx-auto flex w-full max-w-7xl flex-col items-center gap-10">
         <div className="relative z-20 mx-auto max-w-5xl min-w-0 text-center">
           <motion.h1
-            className="mt-4 font-display text-4xl font-bold leading-[1.15] tracking-normal text-white sm:text-5xl md:mt-7 md:text-6xl lg:text-7xl xl:text-8xl"
+            className="mt-4 font-display text-3xl font-bold leading-[1.15] tracking-normal text-white sm:text-4xl md:mt-7 md:text-5xl lg:text-6xl xl:text-7xl"
             variants={containerVariant}
             initial="hidden"
             animate="visible"

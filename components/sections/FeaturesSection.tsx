@@ -17,7 +17,7 @@ export function FeaturesSection() {
       <div className="mx-auto max-w-7xl">
         <ScrollReveal className="max-w-3xl">
           <SectionLabel>Careerkick Services</SectionLabel>
-          <h2 className="font-display text-4xl font-bold text-white md:text-6xl">Guidance for every admission decision.</h2>
+          <h2 className="font-display text-3xl font-bold text-white sm:text-4xl md:text-5xl">Guidance for every admission decision.</h2>
           <p className="mt-5 text-text-muted md:text-lg">Careerkick combines expert counselling, verified admission data, and practical choice-filling support for NEET aspirants and parents.</p>
         </ScrollReveal>
         <div className="mt-12 grid gap-5 md:grid-cols-3">
