@@ -59,6 +59,7 @@ html {
 body {
   min-height: 100vh;
   margin: 0;
+  scroll-behavior: smooth;
   background: var(--color-base);
   color: var(--color-text-primary);
   font-family: var(--font-jakarta), sans-serif;
@@ -231,3 +232,24 @@ input:focus-visible {
   }
 }
 
+
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth body {
+  overscroll-behavior: none;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
