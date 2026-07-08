@@ -1,12 +1,13 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
+import { type CSSProperties, useEffect, useMemo, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import { CTAButtons } from "@/components/CTAButtons";
 import { BlogCard } from "@/components/blog/BlogCard";
 import { cn } from "@/lib/utils";
+import { counsellingProcessVideos } from "@/data/counsellingProcessVideos";
 import type { WPPost } from "@/types/wordpress";
 import type { CounsellingNotification } from "@/lib/sanityNotifications";
 
@@ -120,8 +121,10 @@ const counsellingTabs: CounsellingTab[] = [
   },
 ];
 
-const youtubeEmbedUrl =
-  "https://www.youtube.com/embed/Mgg3PdGm9wk?si=xpXnOExAEok_YgoP";
+const videoPlaylist = counsellingProcessVideos.map((video) => ({
+  ...video,
+  videoId: getYoutubeVideoId(video.youtubeUrl),
+}));
 
 const youtubeChannels = [
   {
@@ -137,6 +140,30 @@ const youtubeChannels = [
     href: "https://www.youtube.com/@CAREERKICKJEE",
   },
 ];
+
+function getYoutubeVideoId(url: string) {
+  const trimmed = url.trim();
+  const match = trimmed.match(
+    /(?:youtube\.com\/(?:watch\?v=|embed\/|shorts\/)|youtu\.be\/)([A-Za-z0-9_-]{11})/,
+  );
+
+  return match?.[1] ?? "";
+}
+
+function getYoutubeEmbedUrl(url: string) {
+  const videoId = getYoutubeVideoId(url);
+
+  if (!videoId) {
+    return url.trim();
+  }
+
+  return `https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&mute=1&controls=0&disablekb=1&fs=0&iv_load_policy=3&loop=1&playlist=${videoId}&playsinline=1&rel=0&modestbranding=1`;
+}
+
+function getYoutubeThumbnailUrl(url: string) {
+  const videoId = getYoutubeVideoId(url);
+  return videoId ? `https://img.youtube.com/vi/${videoId}/hqdefault.jpg` : "";
+}
 
 const featuredColleges = [
   {
@@ -336,7 +363,15 @@ export function CounsellingProcessSection({
   notifications?: CounsellingNotification[];
 }) {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [isMobileTabsOpen, setIsMobileTabsOpen] = useState(false);
+  const [activeVideoId, setActiveVideoId] = useState(
+    videoPlaylist[0]?.id ?? "",
+  );
   const activeTab = counsellingTabs[activeIndex];
+  const activeVideo =
+    videoPlaylist.find((video) => video.id === activeVideoId) ??
+    videoPlaylist[0];
+  const hasActiveVideoUrl = Boolean(activeVideo?.youtubeUrl.trim());
   const isVideo = activeTab.kind === "video";
   const isBlogs = activeTab.kind === "blogs";
   const isNotifications = activeTab.kind === "notifications";
@@ -383,14 +418,20 @@ export function CounsellingProcessSection({
                   exit={{ opacity: 0, scale: 1.03 }}
                   transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
                 >
-                  <iframe
-                    title="CareerKick video guide"
-                    src={`${youtubeEmbedUrl}&autoplay=1&mute=1&controls=0&loop=1&playlist=Mgg3PdGm9wk&modestbranding=1&rel=0`}
-                    className="h-full w-full scale-125 object-cover"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowFullScreen
-                  />
-                  <div className="absolute inset-0 bg-black/72" />
+                  {hasActiveVideoUrl ? (
+                    <>
+                      <iframe
+                        title="CareerKick video guide"
+                        src={getYoutubeEmbedUrl(activeVideo?.youtubeUrl ?? "")}
+                        className="h-full w-full scale-125 object-cover"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowFullScreen
+                      />
+                      <div className="absolute inset-0 bg-black/72" />
+                    </>
+                  ) : (
+                    <div className="absolute inset-0 bg-[#050704]" />
+                  )}
                 </motion.div>
               ) : (
                 <motion.div
@@ -409,7 +450,79 @@ export function CounsellingProcessSection({
             <div className="absolute -bottom-28 left-10 h-80 w-80 rounded-full bg-cyan/10 blur-[100px]" />
 
             <div className="relative z-10 flex flex-col lg:grid lg:min-h-[680px] lg:grid-cols-[410px_1fr] xl:grid-cols-[430px_1fr]">
-              <aside className="flex flex-col justify-center px-4 py-8 text-white sm:px-6 lg:px-8 lg:py-10">
+              <div className="border-b border-white/10 px-3 py-3 lg:hidden">
+                <button
+                  type="button"
+                  onClick={() => setIsMobileTabsOpen((current) => !current)}
+                  className="flex w-full items-center justify-between rounded-2xl border border-white/15 bg-white/8 px-4 py-3 text-left text-white shadow-[0_14px_38px_rgba(0,0,0,0.2)] backdrop-blur-xl"
+                  aria-expanded={isMobileTabsOpen}
+                  aria-label="Toggle counselling tabs"
+                >
+                  <span className="min-w-0">
+                    <span className="block font-mono text-[10px] uppercase tracking-[0.28em] text-[#8cef32]">
+                      Section tabs
+                    </span>
+                    <span className="mt-1 block truncate font-display text-base font-semibold">
+                      {activeTab.title}
+                    </span>
+                  </span>
+                  <span className="ml-4 flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-white/12 bg-black/35 text-white">
+                    {isMobileTabsOpen ? <CloseIcon /> : <MenuIcon />}
+                  </span>
+                </button>
+
+                <AnimatePresence initial={false}>
+                  {isMobileTabsOpen ? (
+                    <motion.div
+                      key="mobile-tabs"
+                      initial={{ opacity: 0, y: -8, height: 0 }}
+                      animate={{ opacity: 1, y: 0, height: "auto" }}
+                      exit={{ opacity: 0, y: -8, height: 0 }}
+                      transition={{ duration: 0.22, ease: "easeOut" }}
+                      className="mt-3 overflow-hidden rounded-2xl border border-white/12 bg-black/45 p-2 backdrop-blur-xl"
+                    >
+                      <div className="max-h-[52vh] overflow-y-auto pr-1">
+                        <div className="grid gap-2">
+                          {counsellingTabs.map((tab, index) => {
+                            const active = index === activeIndex;
+
+                            return (
+                              <button
+                                key={`mobile-${tab.title}`}
+                                type="button"
+                                onClick={() => {
+                                  setActiveIndex(index);
+                                  setIsMobileTabsOpen(false);
+                                }}
+                                className={cn(
+                                  "flex min-h-[54px] w-full items-center gap-3 rounded-2xl border-[0.75px] px-3 py-3 text-left transition-all duration-300",
+                                  active
+                                    ? "border-[#51A70A]/45 bg-white/16 shadow-[0_16px_36px_rgba(81,167,10,0.12)]"
+                                    : "border-white/10 bg-white/6 hover:border-white/20 hover:bg-white/10",
+                                )}
+                              >
+                                <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-white text-[#51A70A] shadow-card">
+                                  <FeatureIcon name={tab.icon} />
+                                </span>
+                                <span className="min-w-0 flex-1">
+                                  <span className="block truncate font-display text-sm font-semibold text-white">
+                                    {tab.title}
+                                  </span>
+                                  <span className="block truncate text-[11px] text-white/60">
+                                    {tab.kicker}
+                                  </span>
+                                </span>
+                              </button>
+                            );
+                          })}
+                        </div>
+                      </div>
+                    </motion.div>
+                  ) : null}
+                </AnimatePresence>
+              </div>
+
+              <aside className="relative z-30 hidden flex-col justify-center px-3 py-6 text-white lg:flex lg:px-8 lg:py-10">
                 <div className="mb-6 max-w-[450px] sm:mb-8 lg:mb-10">
                   <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.28em] text-[#8cef32] sm:text-xs">
                     Services
@@ -429,7 +542,7 @@ export function CounsellingProcessSection({
                         type="button"
                         onClick={() => setActiveIndex(index)}
                         className={cn(
-                          "group flex w-full items-center gap-3 rounded-full border px-4 py-3 text-left text-white transition-all duration-500 ease-out backdrop-blur-xl focus-visible:shadow-[0_0_0_2px_#51A70A,0_0_0_5px_#050704]",
+                          "group flex w-full items-center gap-3 rounded-full border-[0.75px] px-4 py-3 text-left text-white transition-all duration-500 ease-out backdrop-blur-xl focus-visible:shadow-[0_0_0_2px_#51A70A,0_0_0_5px_#050704]",
                           active
                             ? "min-h-[110px] w-full items-start rounded-2xl border-white/20 bg-white/20 shadow-[0_20px_60px_rgba(0,0,0,0.28)] sm:min-h-[132px] lg:max-w-[450px]"
                             : "min-h-[60px] w-full border-white/12 bg-white/10 pr-6 shadow-[0_10px_30px_rgba(0,0,0,0.18)] hover:border-[#51A70A]/45 hover:bg-white/15 lg:max-w-max",
@@ -463,15 +576,15 @@ export function CounsellingProcessSection({
                 </div>
               </aside>
 
-              <div className="relative min-h-[450px] overflow-hidden p-4 text-white sm:p-6 lg:min-h-[680px] lg:p-8">
+              <div className="relative z-10 min-h-[420px] overflow-hidden p-3 text-white sm:p-6 lg:min-h-[680px] lg:p-8">
                 <AnimatePresence mode="wait" initial={false}>
                   <motion.div
                     key={activeTab.title}
                     className={cn(
-                      "relative z-10 flex min-h-[400px] flex-col items-center justify-center sm:min-h-[450px] lg:min-h-[616px]",
-                      isVideo &&
-                        "absolute inset-4 min-h-0 w-auto sm:inset-6 lg:inset-8 lg:min-h-0",
-                    )}
+  "relative z-10 flex min-h-[340px] flex-col items-center justify-center sm:min-h-[450px] lg:min-h-[616px]",
+  isVideo &&
+    "min-h-0 w-full items-stretch justify-start sm:min-h-0 lg:absolute lg:inset-8 lg:w-auto lg:items-center lg:justify-center lg:min-h-0",
+)}
                     initial={{
                       opacity: 0,
                       y: 24,
@@ -515,6 +628,8 @@ export function CounsellingProcessSection({
                       <VideoGuidesVisual
                         activeTab={activeTab}
                         activeIndex={activeIndex}
+                        activeVideoId={activeVideo?.id ?? ""}
+                        onSelectVideo={setActiveVideoId}
                       />
                     ) : isCourses ? (
                       <CoursesVisual
@@ -570,11 +685,11 @@ function CoursesVisual({
         </p>
       </div>
 
-      <div className="mt-8 grid w-full gap-3 sm:mt-10 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="mt-8 grid w-full gap-3 sm:mt-10 md:grid-cols-2 lg:grid-cols-3">
         {neetCourses.map((course) => (
           <div
             key={course.code}
-            className="group relative flex min-h-[96px] items-center gap-3 overflow-hidden rounded-2xl border border-white/12 bg-white p-3 text-slate-950 shadow-[0_28px_60px_rgba(0,0,0,0.18),0_10px_0_rgba(6,76,5,0.08)] transition-all duration-300 hover:-translate-y-1.5 hover:border-[#51A70A]/45 hover:shadow-[0_34px_74px_rgba(0,0,0,0.24),0_14px_0_rgba(6,76,5,0.10)] sm:min-h-[112px] sm:gap-4 sm:p-4"
+            className="group relative flex min-h-[88px] items-center gap-3 overflow-hidden rounded-2xl border border-white/12 bg-white p-3 text-slate-950 shadow-[0_28px_60px_rgba(0,0,0,0.18),0_10px_0_rgba(6,76,5,0.08)] transition-all duration-300 hover:-translate-y-1.5 hover:border-[#51A70A]/45 hover:shadow-[0_34px_74px_rgba(0,0,0,0.24),0_14px_0_rgba(6,76,5,0.10)] sm:min-h-[112px] sm:gap-4 sm:p-4"
           >
             <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(135deg,rgba(255,255,255,0.88)_0%,rgba(255,255,255,0.65)_28%,rgba(255,255,255,0.15)_100%)] opacity-90" />
             <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-white/90" />
@@ -604,6 +719,34 @@ function CollegesVisual({
   activeTab: CounsellingTab;
   activeIndex: number;
 }) {
+  const [activeCollegeIndex, setActiveCollegeIndex] = useState(0);
+  const activeCollege =
+    featuredColleges[activeCollegeIndex] ?? featuredColleges[0];
+
+  const desktopIconArcPositions = [
+    { left: "13%", top: "62%" },
+    { left: "30%", top: "24%" },
+    { left: "50%", top: "8%" },
+    { left: "70%", top: "24%" },
+    { left: "87%", top: "62%" },
+  ];
+
+  const mobileIconArcPositions = [
+    { left: "15%", top: "76%" },
+    { left: "32%", top: "38%" },
+    { left: "50%", top: "14%" },
+    { left: "68%", top: "38%" },
+    { left: "85%", top: "76%" },
+  ];
+
+  useEffect(() => {
+    const interval = window.setInterval(() => {
+      setActiveCollegeIndex((current) => (current + 1) % featuredColleges.length);
+    }, 3200);
+
+    return () => window.clearInterval(interval);
+  }, []);
+
   return (
     <div className="flex h-full min-h-[400px] w-full flex-col justify-between py-4 lg:min-h-[520px] lg:py-0">
       <div>
@@ -624,53 +767,141 @@ function CollegesVisual({
         </p>
       </div>
 
-      <div className="mt-8 grid w-full gap-4 sm:mt-10 sm:grid-cols-2 sm:gap-5 xl:grid-cols-3">
-        <div className="pointer-events-none relative hidden h-32 w-full xl:col-span-3 xl:block">
-          {collegeIcons.map((item) => (
-            <span
-              key={item.name}
-              className="absolute flex h-14 w-14 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-600 shadow-[0_18px_40px_rgba(0,0,0,0.22)] backdrop-blur-xl"
+      <div className="relative isolate mt-8 flex min-h-[520px] w-full flex-col items-center justify-center px-3 py-3 sm:mt-10 sm:min-h-[560px] sm:px-6 sm:py-6 lg:min-h-[500px] lg:px-8">
+        <div className="pointer-events-none absolute left-1/2 top-1/2 h-[78%] w-[78%] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#51A70A]/12 blur-[90px]" />
+        <div className="pointer-events-none absolute right-12 top-12 h-32 w-32 rounded-full bg-cyan/10 blur-[70px]" />
+        <div className="pointer-events-none absolute bottom-10 left-12 h-36 w-36 rounded-full bg-[#51A70A]/10 blur-[80px]" />
+
+        <div className="relative z-40 h-[150px] w-full max-w-[340px] sm:hidden">
+          {collegeIcons.map((item, index) => {
+            const position = mobileIconArcPositions[index];
+
+            return (
+              <span
+                key={`mobile-${item.name}`}
+                className="absolute flex -translate-x-1/2 -translate-y-1/2 flex-col items-center gap-1.5 text-center"
+                style={{
+                  left: position.left,
+                  top: position.top,
+                }}
+              >
+                <span className="flex h-9 w-9 items-center justify-center rounded-full border border-white/20 bg-white text-slate-700 shadow-[0_14px_34px_rgba(0,0,0,0.28)] min-[390px]:h-10 min-[390px]:w-10">
+                  <FeatureIcon name={item.icon} />
+                </span>
+                <span className="w-[68px] whitespace-normal break-words text-center text-[8px] font-semibold leading-tight text-white/82 min-[390px]:w-[76px] min-[390px]:text-[9px]">
+                  {item.name}
+                </span>
+              </span>
+            );
+          })}
+        </div>
+
+        <div className="pointer-events-none absolute left-1/2 top-6 z-40 hidden h-[360px] w-full max-w-[860px] -translate-x-1/2 sm:block lg:top-2">
+          {collegeIcons.map((item, index) => {
+            const position = desktopIconArcPositions[index];
+
+            return (
+              <span
+                key={item.name}
+                className="absolute flex -translate-x-1/2 -translate-y-1/2 flex-col items-center gap-2 text-center"
+                style={{
+                  left: position.left,
+                  top: position.top,
+                }}
+              >
+                <span className="flex h-14 w-14 items-center justify-center rounded-full border border-white/20 bg-white text-slate-700 shadow-[0_18px_40px_rgba(0,0,0,0.3)] backdrop-blur-xl">
+                  <FeatureIcon name={item.icon} />
+                </span>
+                <span className="max-w-[120px] text-sm font-semibold leading-tight text-white/88">
+                  {item.name}
+                </span>
+              </span>
+            );
+          })}
+        </div>
+
+        <div
+          className="relative z-20 mt-2 flex w-full max-w-[540px] items-center justify-center sm:mt-[120px] lg:mt-[98px]"
+          style={{ perspective: "1400px" }}
+        >
+          <AnimatePresence mode="wait">
+            <motion.article
+              key={activeCollege.name}
+              initial={{
+                opacity: 0,
+                rotateY: 88,
+                scale: 0.92,
+                filter: "blur(10px)",
+              }}
+              animate={{
+                opacity: 1,
+                rotateY: 0,
+                scale: 1,
+                filter: "blur(0px)",
+              }}
+              exit={{
+                opacity: 0,
+                rotateY: -88,
+                scale: 0.92,
+                filter: "blur(10px)",
+              }}
+              transition={{
+                duration: 0.72,
+                ease: [0.22, 1, 0.36, 1],
+              }}
+              className="group relative w-full overflow-hidden rounded-[28px] border border-white/14 bg-white p-3 text-slate-950 shadow-[0_34px_90px_rgba(0,0,0,0.38),0_14px_0_rgba(81,167,10,0.08)] sm:rounded-[36px] sm:p-4"
               style={{
-                left: item.x,
-                top: item.y,
-                transform: "translate(-50%, -50%)",
+                transformStyle: "preserve-3d",
+                backfaceVisibility: "hidden",
               }}
             >
-              <FeatureIcon name={item.icon} />
-            </span>
-          ))}
-        </div>
-        {featuredColleges.map((college) => (
-          <motion.article
-            key={college.name}
-            whileHover={{ y: -8, scale: 1.01 }}
-            transition={{ type: "spring", stiffness: 220, damping: 18 }}
-            className="group relative overflow-hidden rounded-[28px] border border-white/12 bg-white shadow-[0_26px_70px_rgba(0,0,0,0.32),0_12px_0_rgba(17,24,39,0.06)]"
-          >
-            <div
-              className={`absolute inset-0 bg-gradient-to-br ${college.accent} opacity-50`}
-            />
-            <div className="absolute inset-x-0 top-0 h-px bg-white/70" />
-            <div className="relative p-3 sm:p-3.5">
-              <div className="relative overflow-hidden rounded-[22px] border border-white/70 bg-slate-100 shadow-[0_14px_36px_rgba(0,0,0,0.18)]">
+              <div
+                className={`pointer-events-none absolute inset-0 bg-gradient-to-br ${activeCollege.accent} opacity-20`}
+              />
+              <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-white/80" />
+
+              <div className="relative overflow-hidden rounded-[22px] border border-white/70 bg-slate-100 shadow-[0_18px_46px_rgba(0,0,0,0.18)] sm:rounded-[30px]">
                 <div className="relative aspect-[16/10] w-full">
                   <Image
-                    src={college.imageSrc}
-                    alt={college.name}
+                    src={activeCollege.imageSrc}
+                    alt={activeCollege.name}
                     fill
-                    className="object-cover transition-transform duration-500 group-hover:scale-105"
-                    sizes="(max-width: 1280px) 100vw, 33vw"
+                    className="object-cover transition-transform duration-700 group-hover:scale-105"
+                    sizes="(max-width: 768px) 92vw, (max-width: 1280px) 60vw, 520px"
+                    priority
                   />
                 </div>
               </div>
-              <div className="px-1 pb-1 pt-3">
-                <p className="text-sm font-semibold leading-snug text-slate-950 sm:text-[15px]">
-                  {college.name}
-                </p>
+
+              <div className="relative px-2 pb-2 pt-4 text-center sm:pt-5">
+                <h5 className="mx-auto max-w-[92%] font-display text-base font-bold leading-snug text-slate-950 sm:text-2xl">
+                  {activeCollege.name}
+                </h5>
               </div>
-            </div>
-          </motion.article>
-        ))}
+            </motion.article>
+          </AnimatePresence>
+        </div>
+
+        <div className="relative z-50 mt-5 flex items-center justify-center gap-2">
+          {featuredColleges.map((college, index) => {
+            const active = index === activeCollegeIndex;
+
+            return (
+              <button
+                key={college.name}
+                type="button"
+                onClick={() => setActiveCollegeIndex(index)}
+                className={cn(
+                  "h-2 rounded-full transition-all duration-300",
+                  active
+                    ? "w-8 bg-[#8cef32]"
+                    : "w-2 bg-white/25 hover:bg-white/50",
+                )}
+                aria-label={`Show ${college.name}`}
+              />
+            );
+          })}
+        </div>
       </div>
     </div>
   );
@@ -679,60 +910,141 @@ function CollegesVisual({
 function VideoGuidesVisual({
   activeTab,
   activeIndex,
+  activeVideoId,
+  onSelectVideo,
 }: {
   activeTab: CounsellingTab;
   activeIndex: number;
+  activeVideoId: string;
+  onSelectVideo: (videoId: string) => void;
 }) {
+  const playlist = useMemo(() => [...videoPlaylist, ...videoPlaylist], []);
+
   return (
-    <div className="relative flex min-h-[400px] w-full flex-col py-4 sm:min-h-[450px] lg:h-full lg:min-h-full lg:py-0">
-      <div className="max-w-3xl">
-        <div className="flex flex-wrap items-center gap-3">
-          <span className="rounded-full border border-[#51A70A]/55 bg-[#51A70A]/15 px-3 py-1.5 font-mono text-[10px] font-semibold uppercase tracking-[0.28em] text-[#8cef32] backdrop-blur-xl">
+    <div className="relative flex w-full flex-col gap-4 py-1 sm:gap-5 lg:h-full lg:min-h-full lg:gap-4 lg:py-0">
+      <div className="w-full max-w-3xl">
+        <div className="flex flex-wrap items-center gap-2.5 sm:gap-3">
+          <span className="rounded-full border border-[#51A70A]/55 bg-[#51A70A]/15 px-3 py-1.5 font-mono text-[10px] font-semibold uppercase tracking-[0.24em] text-[#8cef32] backdrop-blur-xl sm:tracking-[0.28em]">
             {activeTab.kicker}
           </span>
-          <span className="rounded-full border border-white/15 bg-black/45 px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.24em] text-white/75 backdrop-blur-xl">
+
+          <span className="rounded-full border border-white/15 bg-black/45 px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.22em] text-white/75 backdrop-blur-xl sm:tracking-[0.24em]">
             Tab {String(activeIndex + 1).padStart(2, "0")}
           </span>
         </div>
 
-        <h4 className="mt-5 font-display text-3xl font-bold leading-tight text-white sm:mt-6 sm:text-4xl lg:text-5xl xl:text-6xl">
+        <h4 className="mt-4 max-w-2xl font-display text-[1.75rem] font-bold leading-tight text-white sm:mt-6 sm:text-4xl lg:text-5xl xl:text-6xl">
           {activeTab.title}
         </h4>
       </div>
 
-      <div className="mt-auto grid gap-4 pt-8 sm:grid-cols-2 lg:absolute lg:inset-x-0 lg:bottom-0 lg:max-w-3xl lg:pt-0">
-        {youtubeChannels.map((channel) => (
-          <a
-            key={channel.id}
-            href={channel.href}
-            target="_blank"
-            rel="noreferrer"
-            aria-label={`Open ${channel.title} on YouTube`}
-            className="group relative overflow-hidden rounded-2xl border border-white/18 bg-white/[0.11] p-4 text-left shadow-[0_24px_70px_rgba(0,0,0,0.32)] backdrop-blur-2xl transition-all duration-300 hover:-translate-y-1 hover:border-[#51A70A]/55 hover:bg-white/[0.16] sm:p-5"
-          >
-            <div className="absolute inset-0 bg-gradient-to-br from-white/18 via-transparent to-[#51A70A]/14 opacity-80" />
-            <div className="absolute -right-10 -top-10 h-28 w-28 rounded-full bg-red-500/18 blur-2xl" />
-            <div className="relative flex min-h-[132px] flex-col justify-between sm:min-h-[150px]">
-              <div className="flex items-start justify-between gap-4">
-                <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-red-600 text-white shadow-[0_18px_46px_rgba(220,38,38,0.38)] sm:h-12 sm:w-12">
-                  <PlayIcon />
-                </span>
-                <span className="rounded-full border border-white/16 bg-black/25 px-3 py-1.5 font-mono text-[10px] font-semibold uppercase tracking-[0.2em] text-white/72 backdrop-blur-xl">
-                  YouTube
-                </span>
-              </div>
+      <div className="relative mt-1 flex w-full flex-1 flex-col gap-4 lg:mt-4 lg:pb-[172px]">
+        <div className="grid gap-3 sm:grid-cols-2 lg:gap-3">
+          {youtubeChannels.map((channel) => (
+            <a
+              key={channel.id}
+              href={channel.href}
+              target="_blank"
+              rel="noreferrer"
+              aria-label={`Open ${channel.title} on YouTube`}
+              className="group relative overflow-hidden rounded-2xl border border-white/18 bg-white/[0.11] p-3 text-left shadow-[0_18px_46px_rgba(0,0,0,0.28)] backdrop-blur-2xl transition-all duration-300 hover:-translate-y-1 hover:border-[#51A70A]/55 hover:bg-white/[0.16] sm:p-4"
+            >
+              <div className="absolute inset-0 bg-gradient-to-br from-white/18 via-transparent to-[#51A70A]/14 opacity-80" />
+              <div className="absolute -right-10 -top-10 h-24 w-24 rounded-full bg-red-500/18 blur-2xl" />
 
-              <div className="mt-7">
-                <p className="font-display text-lg font-semibold leading-tight text-white sm:text-xl">
-                  {channel.title}
-                </p>
-                <p className="mt-2 font-mono text-xs font-semibold uppercase tracking-widest text-[#8cef32]">
-                  {channel.subscribers}
-                </p>
+              <div className="relative flex min-h-[96px] flex-col justify-between sm:min-h-[122px]">
+                <div className="flex items-start justify-between gap-2.5">
+                  <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-red-600 text-white shadow-[0_16px_36px_rgba(220,38,38,0.32)] sm:h-11 sm:w-11">
+                    <PlayIcon />
+                  </span>
+
+                  <span className="rounded-full border border-white/16 bg-black/25 px-2.5 py-1 font-mono text-[9px] font-semibold uppercase tracking-[0.18em] text-white/72 backdrop-blur-xl sm:px-3 sm:text-[10px] sm:tracking-[0.2em]">
+                    YouTube
+                  </span>
+                </div>
+
+                <div className="mt-3 min-w-0">
+                  <p className="break-words font-display text-sm font-semibold leading-tight text-white sm:text-lg">
+                    {channel.title}
+                  </p>
+                  <p className="mt-1 font-mono text-[10px] font-semibold uppercase tracking-widest text-[#8cef32] sm:text-xs">
+                    {channel.subscribers}
+                  </p>
+                </div>
+              </div>
+            </a>
+          ))}
+        </div>
+
+        <div className="lg:absolute lg:inset-x-0 lg:bottom-0">
+          <div className="rounded-2xl border border-white/12 bg-white/[0.06] p-3 shadow-[0_18px_50px_rgba(0,0,0,0.22)] backdrop-blur-2xl sm:p-4">
+            <div className="mb-3 flex flex-wrap items-center justify-between gap-2 sm:gap-3">
+              <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.24em] text-[#8cef32] sm:text-xs sm:tracking-[0.28em]">
+                Video playlist
+              </p>
+
+            </div>
+
+            <div
+              className="mask-fade-x overflow-hidden pb-0"
+              style={{ "--marquee-duration": "44s" } as CSSProperties}
+            >
+              <div className="flex w-max gap-3 whitespace-nowrap animate-marquee hover:[animation-play-state:paused]">
+                {playlist.map((video, index) => {
+                  const isActive = video.id === activeVideoId;
+                  const isPlayable = Boolean(video.youtubeUrl.trim());
+                  const thumbnailUrl = getYoutubeThumbnailUrl(video.youtubeUrl);
+
+                  return (
+                    <button
+                      key={`${video.id}-${index}`}
+                      type="button"
+                      onClick={() => isPlayable && onSelectVideo(video.id)}
+                      disabled={!isPlayable}
+                      className={cn(
+                        "group relative flex w-[148px] shrink-0 overflow-hidden rounded-2xl border text-left transition-all duration-300 sm:w-[200px] md:w-[230px] lg:w-[240px]",
+                        isPlayable
+                          ? "border-white/12 bg-black/35 hover:-translate-y-0.5 hover:border-[#51A70A]/45 hover:bg-black/50"
+                          : "cursor-not-allowed border-white/8 bg-black/25 opacity-60",
+                        isActive &&
+                          "border-[#51A70A]/55 bg-[#51A70A]/12 shadow-[0_0_0_1px_rgba(81,167,10,0.2)]"
+                      )}
+                      aria-pressed={isActive}
+                      aria-label={
+                        isPlayable
+                          ? `Play ${video.title}`
+                          : `${video.title} coming soon`
+                      }
+                    >
+                      <div className="relative aspect-video w-full">
+                        {thumbnailUrl ? (
+                          <img
+                            src={thumbnailUrl}
+                            alt={video.title}
+                            className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                            loading="lazy"
+                          />
+                        ) : (
+                          <div className="flex h-full w-full items-center justify-center bg-[linear-gradient(135deg,rgba(81,167,10,0.24),rgba(0,0,0,0.78))]">
+                            <PlayIcon />
+                          </div>
+                        )}
+
+                        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,0.05)_0%,rgba(0,0,0,0.18)_100%)]" />
+
+                        {isActive ? (
+                          <div className="absolute left-2 top-2 rounded-full border border-white/15 bg-black/45 px-2 py-1 font-mono text-[8px] uppercase tracking-[0.18em] text-white/80 backdrop-blur sm:text-[9px] sm:tracking-[0.2em]">
+                            Playing
+                          </div>
+                        ) : null}
+                      </div>
+                    </button>
+                  );
+                })}
               </div>
             </div>
-          </a>
-        ))}
+          </div>
+        </div>
       </div>
     </div>
   );
@@ -947,8 +1259,8 @@ function CutoffVisual({
   activeIndex: number;
 }) {
   return (
-    <div className="flex h-full min-h-[400px] w-full flex-col py-4 lg:min-h-[520px] lg:py-0">
-      <div>
+    <div className="relative flex h-full min-h-[400px] w-full flex-col overflow-hidden py-4 lg:min-h-[520px] lg:py-0">
+      <div className="relative z-10">
         <div className="flex flex-wrap items-center gap-3">
           <span className="rounded-full border border-[#51A70A]/55 bg-[#51A70A]/15 px-3 py-1.5 font-mono text-[10px] font-semibold uppercase tracking-[0.28em] text-[#51A70A]">
             {activeTab.kicker}
@@ -966,8 +1278,8 @@ function CutoffVisual({
         </p>
       </div>
 
-      <div className="mt-4 space-y-5 overflow-hidden">
-        <div className="rounded-[28px] border border-white/80 bg-white p-2.5 text-black shadow-[0_26px_70px_rgba(0,0,0,0.34),0_10px_0_rgba(11,20,9,0.18)] sm:p-3">
+      <div className="relative z-10 mt-4 space-y-5 overflow-hidden">
+        <div className="rounded-[28px] border border-white/80 bg-white p-2.5 text-black shadow-[0_30px_90px_rgba(15,23,42,0.14),0_14px_34px_rgba(81,167,10,0.12),0_0_0_1px_rgba(81,167,10,0.06)] sm:p-3">
           <div className="rounded-[22px] border border-slate-100 bg-[linear-gradient(180deg,#ffffff_0%,#fbfdf8_100%)] px-3 py-3 sm:px-4 sm:py-4">
             <div className="mb-3 flex items-center justify-between gap-3">
               <div>
@@ -1035,7 +1347,7 @@ function CutoffVisual({
           </div>
         </div>
 
-        <div className="rounded-[28px] border border-white/80 bg-white p-2.5 text-black shadow-[0_26px_70px_rgba(0,0,0,0.34),0_10px_0_rgba(11,20,9,0.18)] sm:p-3">
+        <div className="rounded-[28px] border border-white/80 bg-white p-2.5 text-black shadow-[0_30px_90px_rgba(15,23,42,0.14),0_14px_34px_rgba(81,167,10,0.12),0_0_0_1px_rgba(81,167,10,0.06)] sm:p-3">
           <div className="rounded-[22px] border border-slate-100 bg-[linear-gradient(180deg,#ffffff_0%,#fbfdf8_100%)] px-3 py-3 sm:px-4 sm:py-4">
             <div className="mb-3 flex items-center justify-between gap-3">
               <div>
@@ -1151,7 +1463,7 @@ function FeatureVisual({
       </div>
 
       <div className="mt-8 grid gap-4 sm:mt-10 lg:grid-cols-[1fr_0.72fr]">
-        <div className="grid gap-3 sm:grid-cols-3 lg:grid-cols-1">
+        <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-1">
           {activeTab.points.map((point) => (
             <div
               key={point}
@@ -1162,7 +1474,7 @@ function FeatureVisual({
           ))}
         </div>
 
-        <div className="flex min-h-[140px] flex-col justify-between rounded-2xl border border-[#51A70A]/45 bg-[#51A70A]/12 p-4 shadow-[0_20px_70px_rgba(81,167,10,0.16)] backdrop-blur-xl sm:min-h-[180px] sm:p-5">
+        <div className="flex min-h-[132px] flex-col justify-between rounded-2xl border border-[#51A70A]/45 bg-[#51A70A]/12 p-4 shadow-[0_20px_70px_rgba(81,167,10,0.16)] backdrop-blur-xl sm:min-h-[180px] sm:p-5">
           <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.28em] text-[#51A70A]">
             Outcome
           </p>
@@ -1598,6 +1910,43 @@ function PlayIcon() {
       aria-hidden="true"
     >
       <path d="M8 5.5v13l10-6.5-10-6.5Z" />
+    </svg>
+  );
+}
+
+function MenuIcon() {
+  return (
+    <svg
+      className="h-5 w-5"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2.4"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      <path d="M4 6h16" />
+      <path d="M4 12h16" />
+      <path d="M4 18h16" />
+    </svg>
+  );
+}
+
+function CloseIcon() {
+  return (
+    <svg
+      className="h-5 w-5"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2.4"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      <path d="m18 6-12 12" />
+      <path d="m6 6 12 12" />
     </svg>
   );
 }

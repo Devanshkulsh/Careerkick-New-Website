@@ -146,16 +146,16 @@ export function HeroSection() {
           animate={{ opacity: 1, y: 0, scale: 1 }}
           transition={{ delay: 1.1, duration: 0.8 }}
         >
-          <div className="overflow-hidden rounded-2xl border border-[#51A70A]/20 bg-white shadow-[0_24px_70px_rgba(0,0,0,0.28),0_8px_24px_rgba(81,167,10,0.12)]">
-            <div className="border-b border-[#51A70A]/15 px-5 py-4 text-center sm:px-6">
-              <h3 className="font-display text-sm font-bold leading-tight tracking-tight text-[#51A70A] sm:text-base lg:text-lg">
+          <div className="overflow-hidden rounded-2xl border border-white/12 bg-white/10 shadow-[0_24px_70px_rgba(81,167,10,0.18),0_8px_24px_rgba(81,167,10,0.1)] backdrop-blur-2xl backdrop-saturate-150">
+            <div className="border-b border-white/8 bg-white/5 px-5 py-4 text-center sm:px-6">
+              <h3 className="font-display text-sm font-bold leading-tight tracking-tight text-white sm:text-base lg:text-lg lg:text-white">
                 Highlights of NEET UG Over the Last Two Years
               </h3>
             </div>
             <div className="overflow-x-auto">
-              <table className="w-full min-w-[760px] border-collapse text-left text-xs text-black sm:text-sm">
+              <table className="w-full min-w-[760px] border-collapse text-left text-xs text-white/90 sm:text-sm">
                 <thead>
-                  <tr className="border-y border-[#51A70A]/35 bg-[#51A70A] text-white">
+                  <tr className="border-y border-white/10 bg-white/15 text-white">
                     <th className="px-5 py-3 font-display font-bold sm:px-6">Nationality</th>
                     <th className="whitespace-nowrap px-4 py-3 text-right font-display font-bold sm:px-6">NEET (UG) 2024</th>
                     <th className="whitespace-nowrap px-4 py-3 text-right font-display font-bold sm:px-6">Appeared</th>
@@ -165,16 +165,23 @@ export function HeroSection() {
                     <th className="whitespace-nowrap px-4 py-3 text-right font-display font-bold sm:px-6">Qualified</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-slate-200/80">
+                <tbody className="divide-y divide-white/8">
                   {rows.map((row, index) => (
-                    <tr key={row.join("-")} className={index % 2 === 1 ? "bg-white/70" : "bg-white"}>
+                    <tr
+                      key={row.join("-")}
+                      className={
+                        index % 2 === 1
+                          ? "bg-white/[0.08] hover:bg-white/[0.14]"
+                          : "bg-white/[0.04] hover:bg-white/[0.1]"
+                      }
+                    >
                       {row.map((cell, cellIndex) => (
                         <td
                           key={`${row[0]}-${cell}`}
                           className={
                             cellIndex === 0
-                              ? "px-5 py-3 font-semibold text-black sm:px-6"
-                              : "whitespace-nowrap px-4 py-3 text-right font-semibold text-black sm:px-6"
+                              ? "px-5 py-3 font-semibold text-white sm:px-6"
+                              : "whitespace-nowrap px-4 py-3 text-right font-semibold text-white/90 sm:px-6"
                           }
                         >
                           {cell}

@@ -51,7 +51,7 @@ export function AdmissionGuidanceSection() {
               <div className="mb-6 flex items-start justify-between gap-4">
                 <div>
                   <p className="font-mono text-[10px] uppercase tracking-widest text-violet-glow sm:text-xs">Students admitted</p>
-                  <h3 className="mt-2 font-display text-2xl font-bold text-white sm:text-3xl">2022 to 2025 admissions growth</h3>
+                  <h3 className="mt-2 font-display text-2xl font-bold text-white sm:text-3xl">Admissions Growth Over the Last Four Years</h3>
                 </div>
                 <div className="rounded-full border border-violet/30 bg-violet/10 px-3 py-1.5 font-mono text-[10px] text-violet-glow sm:text-xs">
                   +140%

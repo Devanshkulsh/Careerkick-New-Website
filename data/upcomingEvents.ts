@@ -24,17 +24,17 @@ export const upcomingEvents: UpcomingEventCard[] = [
     imagePrompt:
       "Create a premium event visual for CareerKick's upcoming counselling expo in Lucknow. Use a modern circular city illustration with a refined office venue feel, subtle map pin, and premium counselling branding. No text, no watermark, white or transparent background, lime green highlight with emerald and cyan accents.",
   },
-  {
-    id: "varanasi",
-    title: "Varanasi",
-    date: "12 July 2026",
-    location: "Varanasi",
-    accent: "amber",
-    imageSrc: "https://res.cloudinary.com/dhlqc0ymy/image/upload/v1783076190/varanasi_x5h7vn.webp",
-    videoUrl: "",
-    imagePrompt:
-      "Create a premium event visual for CareerKick's counselling expo in Varanasi. Use a circular illustration with a cultural city backdrop and a clean professional counselling atmosphere. No text, no watermark, no clutter, lime green and amber accents on a white or transparent base.",
-  },
+  // {
+  //   id: "varanasi",
+  //   title: "Varanasi",
+  //   date: "12 July 2026",
+  //   location: "Varanasi",
+  //   accent: "amber",
+  //   imageSrc: "https://res.cloudinary.com/dhlqc0ymy/image/upload/v1783076190/varanasi_x5h7vn.webp",
+  //   videoUrl: "",
+  //   imagePrompt:
+  //     "Create a premium event visual for CareerKick's counselling expo in Varanasi. Use a circular illustration with a cultural city backdrop and a clean professional counselling atmosphere. No text, no watermark, no clutter, lime green and amber accents on a white or transparent base.",
+  // },
   {
     id: "greater-noida",
     title: "Greater Noida",
