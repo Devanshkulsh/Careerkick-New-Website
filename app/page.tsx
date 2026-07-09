@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { AppDownloadSection } from "@/components/sections/AppDownloadSection";
 import { AboutSection } from "@/components/sections/AboutSection";
 import { AdmissionGuidanceSection } from "@/components/sections/AdmissionGuidanceSection";
@@ -24,13 +25,68 @@ import { MidHomepageCtaSection } from "@/components/sections/MidHomepageCtaSecti
 import OfficeMapSection from "@/components/OfficeMapSection";
 import { getLatestPosts } from "@/lib/wordpress";
 import { getCounsellingNotifications } from "@/lib/sanityNotifications";
+import { ProcessSection } from "@/components/sections/ProcessSection";
+import { siteConfig } from "@/lib/site";
+
+export const metadata: Metadata = {
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    title: siteConfig.title,
+    description: siteConfig.description,
+    url: siteConfig.url,
+    type: "website",
+    images: [
+      {
+        url: siteConfig.ogImage,
+        width: 1200,
+        height: 630,
+        alt: siteConfig.title,
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: siteConfig.title,
+    description: siteConfig.description,
+    images: [siteConfig.ogImage],
+  },
+};
 
 export default async function Home() {
-  const latestPosts = await getLatestPosts(6);
-  const counsellingNotifications = await getCounsellingNotifications();
+  const [latestPosts, counsellingNotifications] = await Promise.all([
+    getLatestPosts(6),
+    getCounsellingNotifications(),
+  ]);
+
+  const organizationSchema = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: siteConfig.name,
+    url: siteConfig.url,
+    logo: `${siteConfig.url}${siteConfig.ogImage}`,
+    sameAs: [],
+  };
+
+  const websiteSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: siteConfig.name,
+    url: siteConfig.url,
+    description: siteConfig.description,
+  };
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
+      />
       <EBookButton />
       <HeroSection />
       <StatsSection />
@@ -44,6 +100,7 @@ export default async function Home() {
         notifications={counsellingNotifications}
       />
       <AdmissionGuidanceSection />
+      <ProcessSection />
       <TestimonialsSection />
       <StudentImageTestimonialsSection />
       <ImportantEventsSection />

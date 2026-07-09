@@ -48,13 +48,15 @@ export function Footer() {
                   key={social.label}
                   href={social.href}
                   aria-label={social.label}
-                  className="flex h-9 w-9 items-center justify-center overflow-hidden rounded-full bg-surface text-xs font-semibold text-text-muted transition-colors hover:bg-violet/20 hover:text-white"
+                  className="relative flex h-9 w-9 items-center justify-center overflow-hidden rounded-full bg-surface text-xs font-semibold text-text-muted transition-colors hover:bg-violet/20 hover:text-white"
                 >
                   {social.imageUrl ? (
-                    <img
+                    <Image
                       src={social.imageUrl}
                       alt=""
-                      className="h-full w-full object-cover"
+                      fill
+                      sizes="36px"
+                      className="object-cover"
                     />
                   ) : (
                     social.fallback

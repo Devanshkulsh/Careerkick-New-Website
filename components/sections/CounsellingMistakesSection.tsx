@@ -176,7 +176,7 @@ export function CounsellingMistakesSection() {
 
                 <div className="mt-7 flex w-full flex-col gap-3 sm:w-auto sm:flex-row">
                   <motion.a
-                    href="#contact"
+                    href={`tel:${phoneNumber}`}
                     className="inline-flex w-full items-center justify-center rounded-full bg-gradient-brand px-6 py-4 font-display text-base font-bold text-white shadow-[0_18px_44px_rgba(81,167,10,0.24)] transition-shadow hover:shadow-glow-violet focus-visible:shadow-[0_0_0_2px_#51A70A,0_0_0_6px_#050704] sm:w-auto"
                     whileHover={{ y: -2 }}
                     whileTap={{ scale: 0.98 }}

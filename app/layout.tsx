@@ -8,6 +8,7 @@ import { WhatsAppFloatingButton } from "@/components/WhatsAppFloatingButton";
 import { IntroAnimation } from "@/components/IntroAnimation";
 import { SmoothScrollProvider } from "@/components/SmoothScrollProvider";
 import { cn } from "@/lib/utils";
+import { siteConfig } from "@/lib/site";
 
 const jakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
@@ -24,22 +25,60 @@ const jetbrains = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Careerkick | Best NEET Counseling Platform in India",
-  description:
-    "Get expert NEET counselling for MBBS in India with accurate college prediction, personalized guidance, and complete admission support for NEET 2026.",
+  metadataBase: new URL(siteConfig.url),
+  title: siteConfig.title,
+  description: siteConfig.description,
+  applicationName: siteConfig.name,
+  authors: [{ name: siteConfig.name, url: siteConfig.url }],
+  creator: siteConfig.name,
+  publisher: siteConfig.name,
+  category: "Education",
+  alternates: {
+    canonical: "/",
+  },
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
+  icons: {
+    icon: [{ url: "/logo.png", type: "image/png" }],
+    shortcut: ["/logo.png"],
+    apple: [{ url: "/logo.png", type: "image/png" }],
+  },
   openGraph: {
-    title: "Careerkick | Best NEET Counseling Platform in India",
-    description:
-      "Expert MBBS admission counselling, college predictor, and end-to-end NEET support for students and parents.",
+    title: siteConfig.title,
+    description: siteConfig.description,
     type: "website",
-    url: "https://careerkick.in",
-    siteName: "Careerkick",
+    url: siteConfig.url,
+    siteName: siteConfig.name,
+    locale: "en_IN",
+    images: [
+      {
+        url: siteConfig.ogImage,
+        width: 1200,
+        height: 630,
+        alt: siteConfig.title,
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Careerkick | Best NEET Counseling Platform in India",
-    description:
-      "NEET counselling simplified with expert guidance and full admission support.",
+    title: siteConfig.title,
+    description: siteConfig.description,
+    images: [siteConfig.ogImage],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    nocache: false,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
   },
 };
 

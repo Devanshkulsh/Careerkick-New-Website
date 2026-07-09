@@ -10,6 +10,7 @@ import { cn, formatNumber } from "@/lib/utils";
 
 export function PricingSection() {
   const [annual, setAnnual] = useState(false);
+  const phoneNumber = "7393062116";
 
   return (
     <section className="bg-surface px-4 py-section-mobile md:px-8 md:py-section">
@@ -36,7 +37,12 @@ export function PricingSection() {
                     {plan.features.map((feature) => <li key={feature} className="text-sm text-text-muted"><span className="mr-2 text-cyan">OK</span>{feature}</li>)}
                     {plan.unavailable?.map((feature) => <li key={feature} className="text-sm text-text-faint line-through"><span className="mr-2">-</span>{feature}</li>)}
                   </ul>
-                  <MagneticButton className={cn("mt-8 w-full", !plan.isFeatured && "border border-white/10 bg-none bg-surface")}>{plan.name === "Starter" ? "Book Free Call" : `Start ${plan.name}`}</MagneticButton>
+                  <MagneticButton
+                    href={plan.name === "Starter" ? `tel:${phoneNumber}` : undefined}
+                    className={cn("mt-8 w-full", !plan.isFeatured && "border border-white/10 bg-none bg-surface")}
+                  >
+                    {plan.name === "Starter" ? "Book Free Call" : `Start ${plan.name}`}
+                  </MagneticButton>
                 </GlassCard>
               </ScrollReveal>
             );

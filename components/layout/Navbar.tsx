@@ -68,7 +68,7 @@ export function Navbar() {
         </div>
 
         <div className="hidden items-center gap-3 md:flex">
-          <MagneticButton className="px-5 py-2 text-sm">
+          <MagneticButton href={`tel:${phoneNumber}`} className="px-5 py-2 text-sm">
             Book Free Call
           </MagneticButton>
 
@@ -166,7 +166,7 @@ export function Navbar() {
               </div>
               
               <div className="mt-auto w-full shrink-0 space-y-3 pt-6">
-                <MagneticButton className="w-full py-4 text-base">
+                <MagneticButton href={`tel:${phoneNumber}`} className="w-full py-4 text-base">
                   Book Free Call
                 </MagneticButton>
                 <motion.a

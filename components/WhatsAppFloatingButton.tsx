@@ -7,7 +7,7 @@ import { cn } from "@/lib/utils";
 
 const whatsappIconUrl =
   "https://res.cloudinary.com/dhlqc0ymy/image/upload/v1783077224/vecteezy_whatsapp-logo-social-icon-3d-web-button_52112852_io1hcv.png";
-const whatsappNumber = "";
+const whatsappNumber = "7393062116";
 
 const menuItems = [
   {

@@ -169,7 +169,7 @@ const featuredColleges = [
   {
     name: "BHU - Faculty of Ayurveda, Varanasi",
     imageSrc:
-      "https://res.cloudinary.com/dhlqc0ymy/image/upload/v1783425008/3_c3qa5u.png",
+      "https://res.cloudinary.com/dhlqc0ymy/image/upload/v1783588884/ChatGPT_Image_Jul_8_2026_05_25_57_PM_2_atj3bk.png",
     accent: "from-[#f97316]/70 via-[#fbbf24]/35 to-[#fde68a]/10",
   },
   {
@@ -407,12 +407,20 @@ export function CounsellingProcessSection({
         </ScrollReveal>
 
         <ScrollReveal className="mt-10 sm:mt-12" delay={0.12}>
-          <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-black shadow-[0_24px_80px_rgba(15,23,42,0.18)]">
+          <div
+            className="relative overflow-hidden rounded-2xl border border-white/10 bg-black bg-cover bg-center bg-no-repeat shadow-[0_24px_80px_rgba(15,23,42,0.18)]"
+            style={{
+              backgroundImage: isCutoff
+                ? "url('https://res.cloudinary.com/dhlqc0ymy/image/upload/v1783586008/ChatGPT_Image_Jul_9_2026_01_57_01_PM_dbwwtc.png')"
+                : undefined,
+            }}
+          >
+            <div className="pointer-events-none absolute inset-0 z-[1] bg-[#020402]/95" />
             <AnimatePresence mode="wait" initial={false}>
               {isVideo ? (
                 <motion.div
                   key="video-card-background"
-                  className="absolute inset-0"
+                  className="absolute inset-0 z-[2]"
                   initial={{ opacity: 0, scale: 1.03 }}
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0, scale: 1.03 }}
@@ -430,13 +438,13 @@ export function CounsellingProcessSection({
                       <div className="absolute inset-0 bg-black/72" />
                     </>
                   ) : (
-                    <div className="absolute inset-0 bg-[#050704]" />
+                    <div className="absolute inset-0 z-[2] bg-[#050704]/45" />
                   )}
                 </motion.div>
               ) : (
                 <motion.div
                   key="black-card-background"
-                  className="absolute inset-0 bg-[#050704]"
+                  className="absolute inset-0 z-[2] bg-[#050704]/45"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
@@ -445,16 +453,16 @@ export function CounsellingProcessSection({
               )}
             </AnimatePresence>
 
-            <div className="grid-overlay absolute inset-0 opacity-10" />
-            <div className="absolute -right-24 -top-24 h-72 w-72 rounded-full bg-[#51A70A]/18 blur-[90px]" />
-            <div className="absolute -bottom-28 left-10 h-80 w-80 rounded-full bg-cyan/10 blur-[100px]" />
+            <div className="grid-overlay absolute inset-0 z-[3] opacity-10" />
+            <div className="absolute -right-24 -top-24 z-[3] h-72 w-72 rounded-full bg-[#51A70A]/18 blur-[90px]" />
+            <div className="absolute -bottom-28 left-10 z-[3] h-80 w-80 rounded-full bg-cyan/10 blur-[100px]" />
 
             <div className="relative z-10 flex flex-col lg:grid lg:min-h-[680px] lg:grid-cols-[410px_1fr] xl:grid-cols-[430px_1fr]">
               <div className="border-b border-white/10 px-3 py-3 lg:hidden">
                 <button
                   type="button"
                   onClick={() => setIsMobileTabsOpen((current) => !current)}
-                  className="flex w-full items-center justify-between rounded-2xl border border-white/15 bg-white/8 px-4 py-3 text-left text-white shadow-[0_14px_38px_rgba(0,0,0,0.2)] backdrop-blur-xl"
+                  className="flex w-full items-center justify-between rounded-2xl border border-slate-500/30 bg-white/8 px-4 py-3 text-left text-white shadow-[0_14px_38px_rgba(0,0,0,0.2)] backdrop-blur-xl"
                   aria-expanded={isMobileTabsOpen}
                   aria-label="Toggle counselling tabs"
                 >
@@ -497,8 +505,8 @@ export function CounsellingProcessSection({
                                 className={cn(
                                   "flex min-h-[54px] w-full items-center gap-3 rounded-2xl border-[0.75px] px-3 py-3 text-left transition-all duration-300",
                                   active
-                                    ? "border-[#51A70A]/45 bg-white/16 shadow-[0_16px_36px_rgba(81,167,10,0.12)]"
-                                    : "border-white/10 bg-white/6 hover:border-white/20 hover:bg-white/10",
+                                    ? "border-slate-400/40 bg-white/16 shadow-[0_16px_36px_rgba(81,167,10,0.12)]"
+                                    : "border-slate-600/30 bg-white/6 hover:border-slate-500/45 hover:bg-white/10",
                                 )}
                               >
                                 <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-white text-[#51A70A] shadow-card">
@@ -544,8 +552,8 @@ export function CounsellingProcessSection({
                         className={cn(
                           "group flex w-full items-center gap-3 rounded-full border-[0.75px] px-4 py-3 text-left text-white transition-all duration-500 ease-out backdrop-blur-xl focus-visible:shadow-[0_0_0_2px_#51A70A,0_0_0_5px_#050704]",
                           active
-                            ? "min-h-[110px] w-full items-start rounded-2xl border-white/20 bg-white/20 shadow-[0_20px_60px_rgba(0,0,0,0.28)] sm:min-h-[132px] lg:max-w-[450px]"
-                            : "min-h-[60px] w-full border-white/12 bg-white/10 pr-6 shadow-[0_10px_30px_rgba(0,0,0,0.18)] hover:border-[#51A70A]/45 hover:bg-white/15 lg:max-w-max",
+                            ? "min-h-[110px] w-full items-start rounded-2xl border-slate-400/40 bg-white/20 shadow-[0_20px_60px_rgba(0,0,0,0.28)] sm:min-h-[132px] lg:max-w-[450px]"
+                            : "min-h-[60px] w-full border-slate-600/30 bg-white/10 pr-6 shadow-[0_10px_30px_rgba(0,0,0,0.18)] hover:border-slate-500/45 hover:bg-white/15 lg:max-w-max",
                         )}
                         aria-pressed={active}
                         layout
@@ -720,28 +728,32 @@ function CollegesVisual({
   activeIndex: number;
 }) {
   const [activeCollegeIndex, setActiveCollegeIndex] = useState(0);
+
   const activeCollege =
     featuredColleges[activeCollegeIndex] ?? featuredColleges[0];
 
+  // Icons moved upward so they do not overlap the center image card
   const desktopIconArcPositions = [
-    { left: "13%", top: "62%" },
-    { left: "30%", top: "24%" },
-    { left: "50%", top: "8%" },
-    { left: "70%", top: "24%" },
-    { left: "87%", top: "62%" },
+    { left: "5%", top: "52%" },
+    { left: "24%", top: "28%" },
+    { left: "50%", top: "10%" },
+    { left: "76%", top: "28%" },
+    { left: "95%", top: "52%" },
   ];
 
   const mobileIconArcPositions = [
-    { left: "15%", top: "76%" },
-    { left: "32%", top: "38%" },
-    { left: "50%", top: "14%" },
-    { left: "68%", top: "38%" },
-    { left: "85%", top: "76%" },
+    { left: "10%", top: "78%" },
+    { left: "29%", top: "48%" },
+    { left: "50%", top: "18%" },
+    { left: "71%", top: "48%" },
+    { left: "90%", top: "78%" },
   ];
 
   useEffect(() => {
     const interval = window.setInterval(() => {
-      setActiveCollegeIndex((current) => (current + 1) % featuredColleges.length);
+      setActiveCollegeIndex(
+        (current) => (current + 1) % featuredColleges.length,
+      );
     }, 3200);
 
     return () => window.clearInterval(interval);
@@ -754,6 +766,7 @@ function CollegesVisual({
           <span className="rounded-full border border-[#51A70A]/55 bg-[#51A70A]/15 px-3 py-1.5 font-mono text-[10px] font-semibold uppercase tracking-[0.28em] text-[#51A70A]">
             {activeTab.kicker}
           </span>
+
           <span className="rounded-full border border-white/15 bg-black/50 px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.24em] text-white/75">
             Tab {String(activeIndex + 1).padStart(2, "0")}
           </span>
@@ -762,17 +775,19 @@ function CollegesVisual({
         <h4 className="mt-5 max-w-3xl font-display text-3xl font-bold leading-tight text-white sm:mt-6 sm:text-4xl lg:text-5xl xl:text-6xl">
           {activeTab.title}
         </h4>
+
         <p className="mt-4 max-w-3xl text-sm font-medium leading-relaxed text-white/82 sm:mt-5 sm:text-base lg:text-lg">
           {activeTab.description}
         </p>
       </div>
 
-      <div className="relative isolate mt-8 flex min-h-[520px] w-full flex-col items-center justify-center px-3 py-3 sm:mt-10 sm:min-h-[560px] sm:px-6 sm:py-6 lg:min-h-[500px] lg:px-8">
-        <div className="pointer-events-none absolute left-1/2 top-1/2 h-[78%] w-[78%] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#51A70A]/12 blur-[90px]" />
+      <div className="relative isolate mt-8 flex min-h-[540px] w-full flex-col items-center justify-start overflow-hidden px-3 py-3 sm:mt-10 sm:min-h-[570px] sm:px-6 sm:py-6 lg:min-h-[500px] lg:px-8">
+        <div className="pointer-events-none absolute left-1/2 top-[54%] h-[70%] w-[78%] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#51A70A]/12 blur-[90px]" />
         <div className="pointer-events-none absolute right-12 top-12 h-32 w-32 rounded-full bg-cyan/10 blur-[70px]" />
         <div className="pointer-events-none absolute bottom-10 left-12 h-36 w-36 rounded-full bg-[#51A70A]/10 blur-[80px]" />
 
-        <div className="relative z-40 h-[150px] w-full max-w-[340px] sm:hidden">
+        {/* Mobile top icons */}
+        <div className="relative z-40 h-[180px] w-full max-w-[360px] pt-4 sm:hidden">
           {collegeIcons.map((item, index) => {
             const position = mobileIconArcPositions[index];
 
@@ -788,6 +803,7 @@ function CollegesVisual({
                 <span className="flex h-9 w-9 items-center justify-center rounded-full border border-white/20 bg-white text-slate-700 shadow-[0_14px_34px_rgba(0,0,0,0.28)] min-[390px]:h-10 min-[390px]:w-10">
                   <FeatureIcon name={item.icon} />
                 </span>
+
                 <span className="w-[68px] whitespace-normal break-words text-center text-[8px] font-semibold leading-tight text-white/82 min-[390px]:w-[76px] min-[390px]:text-[9px]">
                   {item.name}
                 </span>
@@ -796,7 +812,8 @@ function CollegesVisual({
           })}
         </div>
 
-        <div className="pointer-events-none absolute left-1/2 top-6 z-40 hidden h-[360px] w-full max-w-[860px] -translate-x-1/2 sm:block lg:top-2">
+        {/* Desktop top icons */}
+        <div className="pointer-events-none absolute left-1/2 top-5 z-40 hidden h-[320px] w-full max-w-[940px] -translate-x-1/2 sm:block lg:top-10">
           {collegeIcons.map((item, index) => {
             const position = desktopIconArcPositions[index];
 
@@ -809,9 +826,10 @@ function CollegesVisual({
                   top: position.top,
                 }}
               >
-                <span className="flex h-14 w-14 items-center justify-center rounded-full border border-white/20 bg-white text-slate-700 shadow-[0_18px_40px_rgba(0,0,0,0.3)] backdrop-blur-xl">
+                <span className="flex h-13 w-13 items-center justify-center rounded-full border border-white/20 bg-white text-slate-700 shadow-[0_18px_40px_rgba(0,0,0,0.3)] backdrop-blur-xl sm:h-14 sm:w-14">
                   <FeatureIcon name={item.icon} />
                 </span>
+
                 <span className="max-w-[120px] text-sm font-semibold leading-tight text-white/88">
                   {item.name}
                 </span>
@@ -820,36 +838,41 @@ function CollegesVisual({
           })}
         </div>
 
+        {/* Main + upcoming card stage */}
         <div
-          className="relative z-20 mt-2 flex w-full max-w-[540px] items-center justify-center sm:mt-[120px] lg:mt-[98px]"
+          className="relative z-30 mt-4 flex w-full max-w-[590px] items-center justify-center sm:mt-[150px] lg:max-w-[900px] lg:mt-[135px]"
           style={{ perspective: "1400px" }}
         >
+          {/* Main center image card */}
           <AnimatePresence mode="wait">
             <motion.article
-              key={activeCollege.name}
+              key={`active-${activeCollege.name}`}
               initial={{
                 opacity: 0,
-                rotateY: 88,
+                rotateY: 78,
                 scale: 0.92,
+                x: 42,
                 filter: "blur(10px)",
               }}
               animate={{
                 opacity: 1,
                 rotateY: 0,
                 scale: 1,
+                x: 0,
                 filter: "blur(0px)",
               }}
               exit={{
                 opacity: 0,
-                rotateY: -88,
+                rotateY: -78,
                 scale: 0.92,
+                x: -42,
                 filter: "blur(10px)",
               }}
               transition={{
                 duration: 0.72,
                 ease: [0.22, 1, 0.36, 1],
               }}
-              className="group relative w-full overflow-hidden rounded-[28px] border border-white/14 bg-white p-3 text-slate-950 shadow-[0_34px_90px_rgba(0,0,0,0.38),0_14px_0_rgba(81,167,10,0.08)] sm:rounded-[36px] sm:p-4"
+              className="group relative z-20 flex h-full w-full flex-col overflow-hidden rounded-[28px] border border-white/14 bg-white p-3 text-slate-950 shadow-[0_34px_90px_rgba(0,0,0,0.38),0_14px_0_rgba(81,167,10,0.08)] sm:rounded-[36px] sm:p-4 lg:max-w-[650px] lg:translate-x-24 lg:h-[560px] xl:max-w-[700px] xl:translate-x-28 xl:h-[600px]"
               style={{
                 transformStyle: "preserve-3d",
                 backfaceVisibility: "hidden",
@@ -860,20 +883,20 @@ function CollegesVisual({
               />
               <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-white/80" />
 
-              <div className="relative overflow-hidden rounded-[22px] border border-white/70 bg-slate-100 shadow-[0_18px_46px_rgba(0,0,0,0.18)] sm:rounded-[30px]">
+              <div className="relative flex-1 overflow-hidden rounded-[22px] border border-white/70 bg-slate-100 shadow-[0_18px_46px_rgba(0,0,0,0.18)] sm:rounded-[30px]">
                 <div className="relative aspect-[16/10] w-full">
                   <Image
                     src={activeCollege.imageSrc}
                     alt={activeCollege.name}
                     fill
                     className="object-cover transition-transform duration-700 group-hover:scale-105"
-                    sizes="(max-width: 768px) 92vw, (max-width: 1280px) 60vw, 520px"
+                    sizes="(max-width: 768px) 92vw, (max-width: 1280px) 60vw, 560px"
                     priority
                   />
                 </div>
               </div>
 
-              <div className="relative px-2 pb-2 pt-4 text-center sm:pt-5">
+              <div className="relative flex min-h-[72px] items-center justify-center px-2 pb-2 pt-4 text-center sm:min-h-[88px] sm:pt-5 lg:min-h-[104px]">
                 <h5 className="mx-auto max-w-[92%] font-display text-base font-bold leading-snug text-slate-950 sm:text-2xl">
                   {activeCollege.name}
                 </h5>
@@ -882,7 +905,7 @@ function CollegesVisual({
           </AnimatePresence>
         </div>
 
-        <div className="relative z-50 mt-5 flex items-center justify-center gap-2">
+        <div className="relative z-50 mt-7 flex items-center justify-center gap-2">
           {featuredColleges.map((college, index) => {
             const active = index === activeCollegeIndex;
 
@@ -1018,11 +1041,12 @@ function VideoGuidesVisual({
                     >
                       <div className="relative aspect-video w-full">
                         {thumbnailUrl ? (
-                          <img
+                          <Image
                             src={thumbnailUrl}
                             alt={video.title}
-                            className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                            loading="lazy"
+                            fill
+                            sizes="(max-width: 768px) 100vw, 320px"
+                            className="object-cover transition-transform duration-500 group-hover:scale-105"
                           />
                         ) : (
                           <div className="flex h-full w-full items-center justify-center bg-[linear-gradient(135deg,rgba(81,167,10,0.24),rgba(0,0,0,0.78))]">

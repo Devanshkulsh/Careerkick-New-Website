@@ -9,6 +9,7 @@ const trustPoints = [
   "Choice filling support",
   "Deadline and document checks",
 ];
+const phoneNumber = "7393062116";
 
 export function MidHomepageCtaSection() {
   return (
@@ -49,7 +50,7 @@ export function MidHomepageCtaSection() {
 
             <div className="flex flex-col gap-3 sm:flex-row lg:w-[260px] lg:flex-col">
               <motion.a
-                href="#contact"
+                href={`tel:${phoneNumber}`}
                 className="inline-flex w-full items-center justify-center rounded-full bg-gradient-brand px-6 py-4 font-display text-base font-bold text-white shadow-card transition-shadow hover:shadow-glow-violet focus-visible:shadow-[0_0_0_2px_#51A70A,0_0_0_6px_#f7faf4]"
                 whileHover={{ y: -2 }}
                 whileTap={{ scale: 0.98 }}

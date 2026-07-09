@@ -6,6 +6,7 @@ import { MagneticButton } from "@/components/ui/MagneticButton";
 import { charVariant, containerVariant, fadeInVariant } from "@/lib/animations";
 
 const heading = ["Careerkick", "Shape Your Medical Future"];
+const phoneNumber = "7393062116";
 const rows = [
   ["Indian", "2402774", "2330090", "1313740", "2273528", "2206968", "1234991"],
   ["Foreign", "1196", "1122", "696", "939", "870", "529"],
@@ -96,7 +97,10 @@ export function HeroSection() {
             variants={fadeInVariant}
             transition={{ delay: 1.6 }}
           >
-            <MagneticButton className="w-full px-8 py-4 font-display text-base sm:w-auto sm:text-lg">
+            <MagneticButton
+              href={`tel:${phoneNumber}`}
+              className="w-full px-8 py-4 font-display text-base sm:w-auto sm:text-lg"
+            >
               Book Free Call
             </MagneticButton>
             <a
@@ -146,7 +150,7 @@ export function HeroSection() {
           animate={{ opacity: 1, y: 0, scale: 1 }}
           transition={{ delay: 1.1, duration: 0.8 }}
         >
-          <div className="overflow-hidden rounded-2xl border border-white/12 bg-white/10 shadow-[0_24px_70px_rgba(81,167,10,0.18),0_8px_24px_rgba(81,167,10,0.1)] backdrop-blur-2xl backdrop-saturate-150">
+          <div className="overflow-hidden rounded-2xl border border-slate-500/20 bg-white/10 shadow-[0_24px_70px_rgba(81,167,10,0.18),0_8px_24px_rgba(81,167,10,0.1)] backdrop-blur-2xl backdrop-saturate-150">
             <div className="border-b border-white/8 bg-white/5 px-5 py-4 text-center sm:px-6">
               <h3 className="font-display text-sm font-bold leading-tight tracking-tight text-white sm:text-base lg:text-lg lg:text-white">
                 Highlights of NEET UG Over the Last Two Years
@@ -155,7 +159,7 @@ export function HeroSection() {
             <div className="overflow-x-auto">
               <table className="w-full min-w-[760px] border-collapse text-left text-xs text-white/90 sm:text-sm">
                 <thead>
-                  <tr className="border-y border-white/10 bg-white/15 text-white">
+                  <tr className="border-y border-slate-500/20 bg-gradient-to-r from-[#51A70A] to-[#3d8807] text-white">
                     <th className="px-5 py-3 font-display font-bold sm:px-6">Nationality</th>
                     <th className="whitespace-nowrap px-4 py-3 text-right font-display font-bold sm:px-6">NEET (UG) 2024</th>
                     <th className="whitespace-nowrap px-4 py-3 text-right font-display font-bold sm:px-6">Appeared</th>
@@ -165,14 +169,14 @@ export function HeroSection() {
                     <th className="whitespace-nowrap px-4 py-3 text-right font-display font-bold sm:px-6">Qualified</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-white/8">
+                <tbody className="divide-y divide-slate-500/15">
                   {rows.map((row, index) => (
                     <tr
                       key={row.join("-")}
                       className={
                         index % 2 === 1
-                          ? "bg-white/[0.08] hover:bg-white/[0.14]"
-                          : "bg-white/[0.04] hover:bg-white/[0.1]"
+                          ? "bg-white/[0.08] hover:bg-white/[0.12]"
+                          : "bg-white/[0.04] hover:bg-white/[0.08]"
                       }
                     >
                       {row.map((cell, cellIndex) => (
