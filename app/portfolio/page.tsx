@@ -10,8 +10,8 @@ import SmoothManagementSection from "@/components/portfolio/SmoothManagementSect
 import ExpertTeamPortalSection from "@/components/portfolio/ExpertTeamPortalSection";
 import SuccessStories from "@/components/portfolio/SuccessStories";
 import { DataShow } from "@/components/portfolio/DataShow";
-import BenefitsSection from "@/components/portfolio/BenefitsSection";
-import ValueAddedServices from "@/components/portfolio/ValueAddedServices";
+// import BenefitsSection from "@/components/portfolio/BenefitsSection";
+// import ValueAddedServices from "@/components/portfolio/ValueAddedServices";
 import ThoughtLeadership from "@/components/portfolio/ThoughtLeadership";
 import TestimonialSection from "@/components/portfolio/TestimonialSection";
 import SocialPresence from "@/components/portfolio/SocialPresence";
@@ -41,8 +41,8 @@ export default function PortfolioPage() {
       <ExpertTeamPortalSection />
       <SuccessStories />
       <DataShow />
-      <BenefitsSection />
-      <ValueAddedServices />
+      {/* <BenefitsSection /> */}
+      {/* <ValueAddedServices /> */}
       <ThoughtLeadership />
       <TestimonialSection />
       <SocialPresence />

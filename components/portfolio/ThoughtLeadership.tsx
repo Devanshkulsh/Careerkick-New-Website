@@ -58,7 +58,7 @@ const VideoCard = ({ youtubeUrl, title }: VideoCardProps) => {
 
   return (
     <div className="w-full">
-      <div className="relative aspect-video w-full overflow-hidden rounded-xl border border-white/10 bg-background shadow-md transition-shadow hover:shadow-lg sm:rounded-2xl glass">
+      <div className="relative aspect-video w-full overflow-hidden rounded-xl border border-white/10 bg-white/[0.05] shadow-[0_18px_40px_rgba(0,0,0,0.22)] transition-shadow hover:shadow-[0_22px_52px_rgba(0,0,0,0.28)] sm:rounded-2xl glass">
         {embedUrl ? (
           <iframe
             src={embedUrl}
@@ -70,7 +70,7 @@ const VideoCard = ({ youtubeUrl, title }: VideoCardProps) => {
             allowFullScreen
           />
         ) : (
-          <div className="absolute inset-0 flex h-full w-full items-center justify-center text-sm text-muted-foreground">
+          <div className="absolute inset-0 flex h-full w-full items-center justify-center text-sm text-white/60">
             Add valid YouTube link
           </div>
         )}
@@ -81,21 +81,21 @@ const VideoCard = ({ youtubeUrl, title }: VideoCardProps) => {
 
 export default function ThoughtLeadership() {
   return (
-    <section className="section-shell relative w-full overflow-hidden px-4 text-foreground sm:px-6 lg:px-8">
+    <section className="section-shell relative w-full overflow-hidden px-4 text-white sm:px-6 lg:px-8">
       <div className="absolute -left-24 top-16 h-72 w-72 rounded-full bg-primary/10 blur-[110px]" />
       <div className="absolute -right-24 bottom-10 h-80 w-80 rounded-full bg-primary/8 blur-[120px]" />
       <div className="grid-overlay absolute inset-0 opacity-[0.18]" />
 
-      <div className="relative mx-auto max-w-7xl rounded-2xl border border-white/10 bg-background/70 px-5 py-10 shadow-[0_20px_60px_rgba(16,24,40,0.08)] glass sm:rounded-3xl sm:px-12 sm:py-16 lg:py-20">
+      <div className="relative mx-auto max-w-7xl rounded-[2rem] border border-white/10 bg-white/[0.05] px-5 py-10 shadow-[0_30px_80px_rgba(0,0,0,0.18),inset_0_1px_0_rgba(255,255,255,0.08)] glass sm:rounded-[2.5rem] sm:px-12 sm:py-16 lg:py-20">
         <div className="mx-auto mb-10 max-w-3xl text-center sm:mb-14">
           <span className="section-kicker">
             Thought Leadership
           </span>
-          <h2 className="mt-4 font-display text-3xl font-bold leading-tight tracking-normal text-foreground sm:text-4xl lg:text-5xl">
+          <h2 className="mt-4 font-display text-3xl font-bold leading-[1.08] tracking-normal text-white sm:text-4xl lg:text-5xl">
             HOW WE MAKE COLLEGE A{" "}
-            <span className="bg-gradient-brand bg-clip-text text-transparent">BRAND</span>
+            <span className="text-[#8cef32] text-glow">BRAND</span>
           </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-sm font-medium leading-relaxed text-muted-foreground sm:mt-6 sm:text-base">
+          <p className="mx-auto mt-4 max-w-2xl text-sm font-light leading-relaxed text-white/70 sm:mt-6 sm:text-base lg:text-white">
             Expert video insights on admissions growth, counseling systems, and
             brand-building strategies for Ayurveda institutions across India.
           </p>
