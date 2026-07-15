@@ -1,6 +1,8 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { NAV_LINKS } from "@/lib/constants";
@@ -8,10 +10,15 @@ import { MagneticButton } from "@/components/ui/MagneticButton";
 import { cn } from "@/lib/utils";
 
 export function Navbar() {
+  const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const [showPhone, setShowPhone] = useState(false);
   const phoneNumber = "7393062116";
+  const MotionLink = motion(Link);
+
+  const isActiveLink = (href: string) =>
+    pathname === href || (href !== "/" && pathname.startsWith(`${href}/`));
 
   useEffect(() => {
     const update = () => setScrolled(window.scrollY > 60);
@@ -31,11 +38,7 @@ export function Navbar() {
           />
         )}
 
-        <a
-          href="#"
-          className="flex items-center"
-          aria-label="Careerkick home"
-        >
+        <Link href="/" className="flex items-center" aria-label="Careerkick home">
           <Image
             src="/logo-bg.png"
             alt="Careerkick"
@@ -44,26 +47,27 @@ export function Navbar() {
             priority
             className="h-10 w-auto object-contain md:h-12"
           />
-        </a>
+        </Link>
 
         <div className="hidden items-center gap-8 md:flex">
           {NAV_LINKS.map((link, index) => (
-            <a
+            <Link
               key={link.href}
               href={link.href}
               className={cn(
                 "group relative py-2 text-sm font-medium text-text-muted transition-colors hover:text-white",
-                index === 0 && "text-white",
+                isActiveLink(link.href) && "text-white",
               )}
+              aria-current={isActiveLink(link.href) ? "page" : undefined}
             >
               {link.label}
               <span
                 className={cn(
                   "absolute bottom-0 left-0 h-0.5 bg-gradient-brand transition-all duration-300",
-                  index === 0 ? "w-full" : "w-0 group-hover:w-full",
+                  isActiveLink(link.href) ? "w-full" : "w-0 group-hover:w-full",
                 )}
               />
-            </a>
+            </Link>
           ))}
         </div>
 
@@ -151,7 +155,7 @@ export function Navbar() {
             <div className="flex h-full flex-col overflow-y-auto px-6 pb-8 pt-20 sm:px-8">
               <div className="flex flex-1 flex-col justify-center space-y-5 py-6 sm:space-y-6">
                 {NAV_LINKS.map((link, index) => (
-                  <motion.a
+                  <MotionLink
                     key={link.href}
                     href={link.href}
                     className="block font-display text-3xl font-semibold text-white sm:text-4xl"
@@ -161,7 +165,7 @@ export function Navbar() {
                     onClick={() => setOpen(false)}
                   >
                     {link.label}
-                  </motion.a>
+                  </MotionLink>
                 ))}
               </div>
               

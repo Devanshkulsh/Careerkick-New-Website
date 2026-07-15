@@ -17,6 +17,15 @@ const config: Config = {
         surface: "#0B1009",
         "surface-2": "#121A10",
         border: "#26351F",
+        background: "hsl(var(--background) / <alpha-value>)",
+        foreground: "hsl(var(--foreground) / <alpha-value>)",
+        primary: {
+          DEFAULT: "hsl(var(--primary) / <alpha-value>)",
+          foreground: "hsl(var(--primary-foreground) / <alpha-value>)"
+        },
+        muted: {
+          foreground: "hsl(var(--muted-foreground) / <alpha-value>)"
+        },
         violet: "#51A70A",
         "violet-glow": "#6DCC12",
         cyan: "#51A70A",
@@ -75,6 +84,13 @@ const config: Config = {
       spacing: {
         section: "120px",
         "section-mobile": "80px"
+      },
+      opacity: {
+        8: "0.08",
+        12: "0.12",
+        14: "0.14",
+        18: "0.18",
+        92: "0.92"
       }
     }
   },

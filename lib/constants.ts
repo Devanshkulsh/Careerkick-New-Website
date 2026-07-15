@@ -1,4 +1,5 @@
 export type NavLink = { label: string; href: string };
+export type FooterLink = { label: string; href: string };
 export type Stat = { value: number; suffix: string; label: string };
 export type Feature = {
   id: string;
@@ -42,13 +43,38 @@ export type BlogPost = {
 };
 
 export const NAV_LINKS: NavLink[] = [
-  { label: "Home", href: "#neet-ug" },
-  { label: "About", href: "#features" },
-  { label: "Portfolio", href: "#neet-pg" },
-  { label: "Services", href: "#platform" },
-  { label: "Blogs", href: "#blog" },
-  { label: "Contact", href: "#blog" },
-  { label: "Policies", href: "#blog" },
+  { label: "Home", href: "/" },
+  { label: "About", href: "/about" },
+  { label: "Portfolio", href: "/portfolio" },
+  { label: "Services", href: "/services" },
+  { label: "Blogs", href: "/blog" },
+  { label: "Contact", href: "/contact" },
+  { label: "Policies", href: "/policies" },
+];
+
+export const PLATFORM_LINKS: FooterLink[] = [
+  { label: "NEET 2026", href: "/services" },
+  { label: "MBBS Counselling", href: "/services" },
+  { label: "College Predictor", href: "/portfolio" },
+  { label: "College Search", href: "/portfolio" },
+  { label: "Choice Filling", href: "/services" },
+  { label: "Admission Support", href: "/contact" },
+];
+
+export const COMPANY_LINKS: FooterLink[] = [
+  { label: "About", href: "/about" },
+  { label: "Services", href: "/services" },
+  { label: "Blog", href: "/blog" },
+  { label: "Events", href: "/contact" },
+  { label: "Webinars", href: "/services" },
+  { label: "Contact", href: "/contact" },
+];
+
+export const LEGAL_LINKS: FooterLink[] = [
+  { label: "Privacy Policy", href: "/policies/privacy" },
+  { label: "Terms", href: "/policies/terms" },
+  { label: "Disclaimer", href: "/policies/disclaimer" },
+  { label: "Made with care in Chennai, India", href: "/about" },
 ];
 
 export const STATS: Stat[] = [

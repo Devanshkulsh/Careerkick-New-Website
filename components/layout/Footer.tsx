@@ -1,9 +1,8 @@
+import Link from "next/link";
 import Image from "next/image";
-import { NAV_LINKS } from "@/lib/constants";
+import { COMPANY_LINKS, LEGAL_LINKS, PLATFORM_LINKS } from "@/lib/constants";
 import { MagneticButton } from "@/components/ui/MagneticButton";
 
-const platformLinks = ["NEET 2026", "MBBS Counselling", "College Predictor", "College Search", "Choice Filling", "Admission Support"];
-const companyLinks = ["About", "Services", "Blog", "Events", "Webinars", "Contact"];
 const socials = [
   {
     label: "YouTube",
@@ -32,7 +31,7 @@ export function Footer() {
       <div className="mx-auto max-w-7xl">
         <div className="grid gap-10 md:grid-cols-4">
           <div>
-            <a href="#" className="inline-flex items-center" aria-label="Careerkick home">
+            <Link href="/" className="inline-flex items-center" aria-label="Careerkick home">
               <Image
                 src="/logo-bg.png"
                 alt="Careerkick"
@@ -40,7 +39,7 @@ export function Footer() {
                 height={250}
                 className="h-14 w-auto object-contain"
               />
-            </a>
+            </Link>
             <p className="mt-4 max-w-xs text-sm text-text-muted">India&apos;s trusted NEET counselling platform for MBBS admission guidance, college prediction, and complete support.</p>
             <div className="mt-6 flex gap-3">
               {socials.map((social) => (
@@ -66,8 +65,8 @@ export function Footer() {
             </div>
           </div>
 
-          <FooterColumn title="Platform" links={platformLinks} />
-          <FooterColumn title="Company" links={companyLinks} />
+          <FooterColumn title="Platform" links={PLATFORM_LINKS} />
+          <FooterColumn title="Company" links={COMPANY_LINKS} />
 
           <div>
             <h3 className="font-display text-xl font-semibold text-white">Get Counselling Updates</h3>
@@ -82,10 +81,10 @@ export function Footer() {
         <div className="mt-14 flex flex-col gap-4 border-t border-white/5 pt-8 text-xs text-text-faint md:flex-row md:items-center md:justify-between">
           <p>Copyright 2026 Careerkick. All rights reserved.</p>
           <div className="flex flex-wrap gap-4">
-            {["Privacy Policy", "Terms", "Disclaimer", "Made with care in Chennai, India"].map((item) => (
-              <a key={item} href={NAV_LINKS[0].href} className="transition-colors hover:text-white">
-                {item}
-              </a>
+            {LEGAL_LINKS.map((item) => (
+              <Link key={item.label} href={item.href} className="transition-colors hover:text-white">
+                {item.label}
+              </Link>
             ))}
           </div>
         </div>
@@ -94,16 +93,16 @@ export function Footer() {
   );
 }
 
-function FooterColumn({ title, links }: { title: string; links: string[] }) {
+function FooterColumn({ title, links }: { title: string; links: { label: string; href: string }[] }) {
   return (
     <div>
       <h3 className="font-display text-xl font-semibold text-white">{title}</h3>
       <ul className="mt-5 space-y-3">
         {links.map((link) => (
-          <li key={link}>
-            <a href="#" className="text-sm text-text-muted transition-colors hover:text-white">
-              {link}
-            </a>
+          <li key={link.label}>
+            <Link href={link.href} className="text-sm text-text-muted transition-colors hover:text-white">
+              {link.label}
+            </Link>
           </li>
         ))}
       </ul>
