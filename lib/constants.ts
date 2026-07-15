@@ -49,6 +49,7 @@ export const NAV_LINKS: NavLink[] = [
   { label: "Services", href: "/services" },
   { label: "Blogs", href: "/blog" },
   { label: "Contact", href: "/contact" },
+  { label: "Careers", href: "/careers" },
   { label: "Policies", href: "/policies" },
 ];
 
@@ -64,6 +65,7 @@ export const PLATFORM_LINKS: FooterLink[] = [
 export const COMPANY_LINKS: FooterLink[] = [
   { label: "About", href: "/about" },
   { label: "Services", href: "/services" },
+  { label: "Careers", href: "/careers" },
   { label: "Blog", href: "/blog" },
   { label: "Events", href: "/contact" },
   { label: "Webinars", href: "/services" },

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { JetBrains_Mono, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/layout/Navbar";
@@ -96,6 +97,16 @@ export default function RootLayout({
           <WhatsAppFloatingButton />
           <Footer />
         </SmoothScrollProvider>
+        <Script
+          type="module"
+          src="https://ntechzy.in/api/v1/student-form/form.js"
+          path='["/", "/dynamicForm/index.html","/apply-now"]'
+          divid="formsID7375"
+          courses='["Select Course","BAMS","BHMS","BUMS","MBBS","BDS"]'
+          styles="basic"
+          logo={`${siteConfig.url}/logo.png`}
+          contact="+91-7524085485"
+        ></Script>
       </body>
     </html>
   );

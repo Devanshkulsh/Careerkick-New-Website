@@ -103,10 +103,11 @@ function FacebookIcon({ className }: { className?: string }) {
 
 export default function CTASection() {
   return (
-    <section className="relative w-full overflow-hidden bg-background py-section-mobile md:py-section">
-      <div className="pointer-events-none absolute inset-0 gradient-mesh opacity-40" />
-      <div className="pointer-events-none absolute left-[14%] top-16 h-56 w-56 rounded-full bg-primary/10 blur-3xl" />
-      <div className="pointer-events-none absolute right-[10%] bottom-10 h-64 w-64 rounded-full bg-primary/8 blur-3xl" />
+    <section className="section-shell relative w-full overflow-hidden">
+      <div className="pointer-events-none absolute inset-0 opacity-60" style={{ background: "radial-gradient(circle at 18% 18%, rgba(81,167,10,0.14) 0%, transparent 30%), radial-gradient(circle at 82% 22%, rgba(109,204,18,0.10) 0%, transparent 28%), radial-gradient(circle at 50% 100%, rgba(81,167,10,0.08) 0%, transparent 34%)" }} />
+      <div className="grid-overlay absolute inset-0 opacity-60" />
+      <div className="pointer-events-none absolute left-[14%] top-16 h-56 w-56 rounded-full bg-[#51A70A]/10 blur-3xl" />
+      <div className="pointer-events-none absolute right-[10%] bottom-10 h-64 w-64 rounded-full bg-[#6DCC12]/8 blur-3xl" />
 
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid items-center gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16">
@@ -122,11 +123,11 @@ export default function CTASection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.5 }}
               transition={{ duration: 0.75, delay: 0.08, ease: cardEase }}
-                className="font-display text-[2rem] font-bold leading-[1.08] tracking-normal text-foreground sm:text-[3rem] lg:text-[4.25rem]"
+                className="font-display text-[2rem] font-bold leading-[1.08] tracking-normal text-white sm:text-[3rem] lg:text-[4.25rem]"
             >
               Join 100+ colleges <br />
               growing with{" "}
-              <span className="text-primary text-glow">Careerkick</span>
+              <span className="text-[#8cef32] text-glow">Careerkick</span>
             </motion.h2>
 
             <motion.p
@@ -134,7 +135,7 @@ export default function CTASection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.5 }}
               transition={{ duration: 0.7, delay: 0.16, ease: cardEase }}
-              className="mt-5 max-w-lg text-base text-muted-foreground sm:mt-6 sm:text-xl"
+              className="mt-5 max-w-lg text-base text-white/72 sm:mt-6 sm:text-xl lg:text-white"
             >
               Start your journey towards success today.
             </motion.p>
@@ -154,7 +155,7 @@ export default function CTASection() {
                 whileHover={{ y: -3, scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 transition={{ duration: 0.22, ease: "easeOut" }}
-                className="w-full rounded-xl bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground shadow-sm transition hover:neon-glow sm:w-auto"
+                className="w-full rounded-full bg-gradient-brand px-6 py-3 font-display text-sm font-semibold text-white shadow-[0_18px_44px_rgba(81,167,10,0.24)] transition hover:shadow-[0_22px_52px_rgba(81,167,10,0.34)] sm:w-auto"
               >
                 Get started
               </motion.button>
@@ -172,7 +173,7 @@ export default function CTASection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.5 }}
                 transition={{ duration: 0.65, delay: 0.38, ease: cardEase }}
-                className="mx-auto max-w-md text-sm leading-relaxed text-muted-foreground lg:mx-0"
+                className="mx-auto max-w-md text-sm leading-relaxed text-white/65 lg:mx-0"
               >
                 You can also message us on Instagram, LinkedIn, or Facebook for
                 getting started.
@@ -197,7 +198,7 @@ export default function CTASection() {
                       }}
                       whileHover={{ y: -5, scale: 1.04 }}
                       whileTap={{ scale: 0.97 }}
-                      className="group inline-flex shrink-0 items-center justify-center rounded-2xl border border-white/10 bg-white/5 p-3 text-left text-sm font-medium text-foreground shadow-[0_12px_24px_rgba(15,23,42,0.08)] transition hover:-translate-y-0.5 hover:bg-white/10"
+                      className="group inline-flex shrink-0 items-center justify-center rounded-2xl border border-white/10 bg-white/[0.04] p-3 text-left text-sm font-medium text-white shadow-[0_12px_24px_rgba(0,0,0,0.24)] transition hover:-translate-y-0.5 hover:border-[#51A70A]/35 hover:bg-[#51A70A]/10"
                     >
                       <motion.span
                         animate={{
@@ -213,7 +214,7 @@ export default function CTASection() {
                         className={`relative flex h-10 w-10 shrink-0 items-center justify-center rounded-[1rem] text-white sm:h-11 sm:w-11 sm:rounded-[1.1rem] ${bgClass} ${shadowClass}`}
                       >
                         <span className="absolute inset-[1px] rounded-[calc(1rem-1px)] bg-gradient-to-b from-white/30 to-transparent opacity-90 sm:rounded-[calc(1.1rem-1px)]" />
-                        <span className="absolute inset-x-1.5 bottom-1 h-2 rounded-full bg-primary/15 blur-[6px]" />
+                        <span className="absolute inset-x-1.5 bottom-1 h-2 rounded-full bg-[#8cef32]/15 blur-[6px]" />
                         <Icon className="relative h-5 w-5 transition group-hover:scale-110" />
                       </motion.span>
                       <span className="sr-only">{name}</span>
@@ -232,7 +233,7 @@ export default function CTASection() {
               transition={{ duration: 0.9, delay: 0.14, ease: cardEase }}
               className="relative w-full max-w-[760px] px-1 pb-10 pt-2 sm:px-2 sm:pb-16"
             >
-              <div className="pointer-events-none absolute left-1/2 top-[18%] h-40 w-[82%] -translate-x-1/2 rounded-full bg-primary/15 blur-3xl sm:top-[22%] sm:h-56 sm:w-[76%]" />
+              <div className="pointer-events-none absolute left-1/2 top-[18%] h-40 w-[82%] -translate-x-1/2 rounded-full bg-[#51A70A]/15 blur-3xl sm:top-[22%] sm:h-56 sm:w-[76%]" />
 
               <motion.div
                 animate={{ y: [0, -10, 0], rotate: [0, -0.4, 0.4, 0] }}
@@ -246,28 +247,28 @@ export default function CTASection() {
                 <motion.div
                   whileHover={{ y: -6, rotate: -0.5 }}
                   transition={{ duration: 0.3, ease: "easeOut" }}
-                  className="relative rounded-[1.35rem] bg-surface p-[6px] shadow-[0_28px_60px_rgba(15,23,42,0.16)] sm:rounded-[2rem] sm:p-[10px] sm:shadow-[0_40px_90px_rgba(15,23,42,0.16)]"
+                  className="relative rounded-[1.35rem] border border-white/10 bg-[linear-gradient(135deg,rgba(255,255,255,0.075),rgba(255,255,255,0.025)),linear-gradient(135deg,rgba(11,16,9,0.88),rgba(18,26,16,0.78))] p-[6px] shadow-[0_28px_60px_rgba(0,0,0,0.45)] sm:rounded-[2rem] sm:p-[10px] sm:shadow-[0_40px_90px_rgba(0,0,0,0.48)]"
                 >
-                  <div className="absolute left-1/2 top-[10px] z-10 h-[8px] w-24 -translate-x-1/2 rounded-full bg-surface-2 sm:top-[14px] sm:h-[10px] sm:w-28" />
-                  <div className="absolute left-1/2 top-[12px] z-10 h-[4px] w-[44px] -translate-x-1/2 rounded-full bg-border sm:top-[17px] sm:h-[5px] sm:w-[52px]" />
+                  <div className="absolute left-1/2 top-[10px] z-10 h-[8px] w-24 -translate-x-1/2 rounded-full bg-white/10 sm:top-[14px] sm:h-[10px] sm:w-28" />
+                  <div className="absolute left-1/2 top-[12px] z-10 h-[4px] w-[44px] -translate-x-1/2 rounded-full bg-white/20 sm:top-[17px] sm:h-[5px] sm:w-[52px]" />
 
-                    <div className="overflow-hidden rounded-[1rem] border border-white/10 bg-background sm:rounded-[1.6rem]">
+                    <div className="overflow-hidden rounded-[1rem] border border-white/10 bg-base sm:rounded-[1.6rem]">
                     <div className="aspect-[16/10] w-full">
                       <img
-                        src="/desktop.png"
+                        src="https://res.cloudinary.com/dhlqc0ymy/image/upload/v1784143519/desktop_yxiuof.png"
                         alt="Dashboard preview"
                         className="h-full w-full object-cover object-top"
                         onError={(event) => {
                           event.currentTarget.src = "/logo-bg.png";
-                          event.currentTarget.className = "h-full w-full bg-background object-contain object-center p-8";
+                          event.currentTarget.className = "h-full w-full bg-base object-contain object-center p-8";
                         }}
                       />
                     </div>
                   </div>
                 </motion.div>
 
-                <div className="relative mx-auto h-[14px] w-[94%] rounded-b-[2rem] bg-gradient-to-b from-surface-2 via-surface to-border shadow-[0_18px_34px_rgba(148,163,184,0.18)] sm:h-[16px]" />
-                <div className="mx-auto h-[8px] w-[24%] rounded-b-full bg-border/80 sm:h-[10px]" />
+                <div className="relative mx-auto h-[14px] w-[94%] rounded-b-[2rem] bg-gradient-to-b from-white/10 via-white/5 to-white/0 shadow-[0_18px_34px_rgba(0,0,0,0.28)] sm:h-[16px]" />
+                <div className="mx-auto h-[8px] w-[24%] rounded-b-full bg-white/18 sm:h-[10px]" />
               </motion.div>
 
               <motion.div
@@ -282,32 +283,32 @@ export default function CTASection() {
                 <motion.div
                   whileHover={{ y: -5, rotate: 1 }}
                   transition={{ duration: 0.3, ease: "easeOut" }}
-                  className="relative rounded-[2.1rem] bg-surface p-[6px] shadow-[0_24px_50px_rgba(15,23,42,0.22)] sm:rounded-[3rem] sm:p-[8px] sm:shadow-[0_35px_70px_rgba(15,23,42,0.22)]"
+                  className="relative rounded-[2.1rem] border border-white/10 bg-[linear-gradient(135deg,rgba(255,255,255,0.075),rgba(255,255,255,0.025)),linear-gradient(135deg,rgba(11,16,9,0.88),rgba(18,26,16,0.78))] p-[6px] shadow-[0_24px_50px_rgba(0,0,0,0.35)] sm:rounded-[3rem] sm:p-[8px] sm:shadow-[0_35px_70px_rgba(0,0,0,0.42)]"
                 >
-                  <div className="absolute -left-[3px] top-[84px] h-8 w-[3px] rounded-full bg-border sm:top-[122px] sm:h-12" />
-                  <div className="absolute -left-[3px] top-[120px] h-10 w-[3px] rounded-full bg-border sm:top-[176px] sm:h-14" />
-                  <div className="absolute -right-[3px] top-[102px] h-12 w-[3px] rounded-full bg-border sm:top-[158px] sm:h-16" />
+                  <div className="absolute -left-[3px] top-[84px] h-8 w-[3px] rounded-full bg-white/18 sm:top-[122px] sm:h-12" />
+                  <div className="absolute -left-[3px] top-[120px] h-10 w-[3px] rounded-full bg-white/18 sm:top-[176px] sm:h-14" />
+                  <div className="absolute -right-[3px] top-[102px] h-12 w-[3px] rounded-full bg-white/18 sm:top-[158px] sm:h-16" />
 
-                  <div className="absolute left-1/2 top-[6px] z-10 flex h-6 w-[48%] -translate-x-1/2 items-center justify-center rounded-b-[1.1rem] bg-surface sm:top-[8px] sm:h-8 sm:w-[46%] sm:rounded-b-[1.25rem]">
-                    <div className="h-[4px] w-9 rounded-full bg-border sm:w-12" />
-                    <div className="ml-2 h-[8px] w-[8px] rounded-full bg-surface-2 ring-2 ring-border" />
+                  <div className="absolute left-1/2 top-[6px] z-10 flex h-6 w-[48%] -translate-x-1/2 items-center justify-center rounded-b-[1.1rem] bg-base sm:top-[8px] sm:h-8 sm:w-[46%] sm:rounded-b-[1.25rem]">
+                    <div className="h-[4px] w-9 rounded-full bg-white/18 sm:w-12" />
+                    <div className="ml-2 h-[8px] w-[8px] rounded-full bg-white/25 ring-2 ring-white/18" />
                   </div>
 
-                    <div className="overflow-hidden rounded-[1.8rem] border border-white/10 bg-background sm:rounded-[2.35rem]">
+                    <div className="overflow-hidden rounded-[1.8rem] border border-white/10 bg-base sm:rounded-[2.35rem]">
                     <div className="aspect-[9/19.5] w-full">
                       <img
-                        src="/mobile.png"
+                        src="https://res.cloudinary.com/dhlqc0ymy/image/upload/v1784143519/mobile_r3m56g.png"
                         alt="Mobile dashboard preview"
                         className="h-full w-full object-cover object-left-top"
                         onError={(event) => {
                           event.currentTarget.src = "/logo-bg.png";
-                          event.currentTarget.className = "h-full w-full bg-background object-contain object-center p-4";
+                          event.currentTarget.className = "h-full w-full bg-base object-contain object-center p-4";
                         }}
                       />
                     </div>
                   </div>
 
-                  <div className="absolute bottom-[9px] left-1/2 h-[4px] w-[34%] -translate-x-1/2 rounded-full bg-primary/20 sm:bottom-3" />
+                  <div className="absolute bottom-[9px] left-1/2 h-[4px] w-[34%] -translate-x-1/2 rounded-full bg-[#8cef32]/20 sm:bottom-3" />
                 </motion.div>
               </motion.div>
             </motion.div>
