@@ -27,15 +27,15 @@ export default function ServicesContactSection() {
 
             <div className="grid gap-3 rounded-b-[20px] bg-slate-50 p-3 sm:gap-4">
               <ContactCard
-                iconSrc="/icons/contact.gif"
+                iconSrc="https://res.cloudinary.com/dhlqc0ymy/image/upload/v1784193193/contact_crluah.gif"
                 iconAlt="Phone"
                 title="Phone"
-                link="tel:+917396062116"
-                linkText="+91 7396062116"
+                link="tel:+917393062116"
+                linkText="+917393062116"
               />
 
               <ContactCard
-                iconSrc="/icons/email.gif"
+                iconSrc="https://res.cloudinary.com/dhlqc0ymy/image/upload/v1784193515/email_jxjmyu.gif"
                 iconAlt="Email"
                 title="Email"
                 link="mailto:info@careerkick.in"
@@ -43,7 +43,7 @@ export default function ServicesContactSection() {
               />
 
               <ContactCard
-                iconSrc="/icons/location.gif"
+                iconSrc="https://res.cloudinary.com/dhlqc0ymy/image/upload/v1784193195/location_mo6ap6.gif"
                 iconAlt="Location"
                 title="Location"
                 link="https://maps.app.goo.gl/LoJTZNfKucYpX2kLA"
@@ -52,7 +52,7 @@ export default function ServicesContactSection() {
               />
 
               <ContactCard
-                iconSrc="/icons/website.gif"
+                iconSrc="https://res.cloudinary.com/dhlqc0ymy/image/upload/v1784193173/website_beji23.gif"
                 iconAlt="Website"
                 title="Website"
                 link="https://careerkick.in"
