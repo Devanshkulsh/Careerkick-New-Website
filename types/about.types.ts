@@ -1,5 +1,5 @@
 /**
- * Type definitions for CareerKick About page data and component contracts.
+ * Type definitions for Careerkick About page data and component contracts.
  */
 import type { LucideIcon } from 'lucide-react'
 

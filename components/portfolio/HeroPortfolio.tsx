@@ -22,7 +22,7 @@ const HeroPortfolio = () => {
               fill seats faster
             </span>{" "}
             <br className="block sm:hidden" />
-            with CareerKick
+            with Careerkick
           </h1>
 
           <p className="section-copy relative z-30 mt-5 max-w-2xl text-sm font-semibold text-white/90 sm:mt-7 sm:text-base md:text-lg lg:text-xl lg:text-white" style={{ textShadow: "0 2px 12px rgba(0, 0, 0, 0.9)", mixBlendMode: "normal" }}>

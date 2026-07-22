@@ -6,7 +6,7 @@ import { memo, useMemo, useState } from "react";
 const YOUTUBE_CHANNELS = [
   {
     id: "jee-channel",
-    name: "CareerKick JEE",
+    name: "Careerkick JEE",
     description:
       "Counseling explainers, round-wise strategy, and rank analysis for JEE aspirants.",
     subscribers: "42,500+",
@@ -14,7 +14,7 @@ const YOUTUBE_CHANNELS = [
   },
   {
     id: "neet-channel",
-    name: "CareerKick NEET",
+    name: "Careerkick NEET",
     description:
       "Medical admission guidance with detailed coverage of NEET counseling updates and options.",
     subscribers: "2,05,000+",
@@ -22,7 +22,7 @@ const YOUTUBE_CHANNELS = [
   },
   {
     id: "mba-channel",
-    name: "CareerKick MBA",
+    name: "Careerkick MBA",
     description:
       "MBA college insights, selection strategy, and profile-building guidance for management aspirants.",
     subscribers: "1720+",

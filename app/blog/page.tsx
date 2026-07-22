@@ -9,14 +9,14 @@ import { SectionLabel } from "@/components/ui/SectionLabel";
 import { getCategories, getLatestPosts, getPosts } from "@/lib/wordpress";
 
 export const metadata: Metadata = {
-  title: "Blog | CareerKick",
-  description: "Explore CareerKick guides on NEET counselling, JEE counselling, cut-offs, choice filling, admissions, and college planning.",
+  title: "Blog | Careerkick",
+  description: "Explore Careerkick guides on NEET counselling, JEE counselling, cut-offs, choice filling, admissions, and college planning.",
   alternates: {
     canonical: "https://careerkick.in/blog",
   },
   openGraph: {
-    title: "Blog | CareerKick",
-    description: "Premium admission guidance, counselling updates, and practical exam insights from CareerKick.",
+    title: "Blog | Careerkick",
+    description: "Premium admission guidance, counselling updates, and practical exam insights from Careerkick.",
     url: "https://careerkick.in/blog",
     type: "website",
   },
@@ -66,14 +66,14 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
         <div className="grid-overlay absolute inset-0 opacity-50" />
 
         <div className="relative mx-auto max-w-7xl">
-          <SectionLabel>CareerKick Journal</SectionLabel>
+          <SectionLabel>Careerkick Journal</SectionLabel>
           <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_420px] lg:items-end">
             <div>
               <h1 className="font-display text-4xl font-bold leading-tight text-white md:text-6xl lg:text-7xl">
                 Admission strategy, cut-offs, and counselling clarity.
               </h1>
               <p className="mt-6 max-w-3xl text-base leading-relaxed text-text-muted md:text-lg">
-                Read practical CareerKick articles for NEET and JEE aspirants, from deadline tracking to choice filling and college planning.
+                Read practical Careerkick articles for NEET and JEE aspirants, from deadline tracking to choice filling and college planning.
               </p>
               <div className="mt-7 flex flex-wrap gap-3">
                 {["NEET Counselling", "JEE Updates", "Choice Filling"].map((item) => (
@@ -121,7 +121,7 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
                   {resultLabel}
                 </p>
                 <h2 className="mt-2 font-display text-3xl font-semibold text-white">
-                  Explore CareerKick insights
+                  Explore Careerkick insights
                 </h2>
               </div>
               <span className="rounded-full border border-white/10 bg-white/[0.04] px-4 py-2 font-mono text-[10px] uppercase tracking-widest text-text-faint">

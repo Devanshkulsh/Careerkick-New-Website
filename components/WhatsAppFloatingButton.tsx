@@ -12,15 +12,15 @@ const whatsappNumber = "7393062116";
 const menuItems = [
   {
     label: "Book Free Call",
-    message: "Hi CareerKick, I want to book a free counselling call.",
+    message: "Hi Careerkick, I want to book a free counselling call.",
   },
   {
     label: "Admission Help",
-    message: "Hi CareerKick, I need help with counselling and admission.",
+    message: "Hi Careerkick, I need help with counselling and admission.",
   },
   {
     label: "Event Query",
-    message: "Hi CareerKick, I want details about upcoming events.",
+    message: "Hi Careerkick, I want details about upcoming events.",
   },
 ] as const;
 

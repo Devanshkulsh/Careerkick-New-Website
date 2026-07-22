@@ -22,7 +22,7 @@ export function ContactOfficesSection() {
           </span>
           <h2 className="mt-4 font-display text-3xl font-bold leading-[1.06] tracking-normal text-white sm:text-4xl md:text-5xl lg:text-6xl">
             Find the nearest{" "}
-            <span className="text-[#8cef32] text-glow">CareerKick</span>{" "}
+            <span className="text-[#8cef32] text-glow">Careerkick</span>{" "}
             branch
           </h2>
           <p className="mx-auto mt-5 max-w-3xl text-sm leading-relaxed text-white/72 sm:text-base md:text-lg">

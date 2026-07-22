@@ -10,7 +10,7 @@ export const upcomingEvents: UpcomingEventCard[] = [
     imageSrc: "https://res.cloudinary.com/dhlqc0ymy/image/upload/v1783076187/kanpur_owhvat.webp",
     videoUrl: "https://res.cloudinary.com/dhlqc0ymy/video/upload/v1783418115/kanpur_van9di.mp4",
     imagePrompt:
-      "Create a premium event visual for CareerKick's counselling expo in Kanpur. Use a clean circular illustration with a city-inspired backdrop, a subtle counselling desk, and a polished modern academic feel. No text, no watermark, no busy background, with lime green and violet accents on a white or transparent base.",
+      "Create a premium event visual for Careerkick's counselling expo in Kanpur. Use a clean circular illustration with a city-inspired backdrop, a subtle counselling desk, and a polished modern academic feel. No text, no watermark, no busy background, with lime green and violet accents on a white or transparent base.",
   },
   {
     id: "lucknow",
@@ -22,7 +22,7 @@ export const upcomingEvents: UpcomingEventCard[] = [
     imageSrc: "https://res.cloudinary.com/dhlqc0ymy/image/upload/v1783076188/lucknow_biuj2i.webp",
     videoUrl: "https://res.cloudinary.com/dhlqc0ymy/video/upload/v1783418113/lucknow_km48k2.mp4",
     imagePrompt:
-      "Create a premium event visual for CareerKick's upcoming counselling expo in Lucknow. Use a modern circular city illustration with a refined office venue feel, subtle map pin, and premium counselling branding. No text, no watermark, white or transparent background, lime green highlight with emerald and cyan accents.",
+      "Create a premium event visual for Careerkick's upcoming counselling expo in Lucknow. Use a modern circular city illustration with a refined office venue feel, subtle map pin, and premium counselling branding. No text, no watermark, white or transparent background, lime green highlight with emerald and cyan accents.",
   },
   // {
   //   id: "varanasi",
@@ -33,7 +33,7 @@ export const upcomingEvents: UpcomingEventCard[] = [
   //   imageSrc: "https://res.cloudinary.com/dhlqc0ymy/image/upload/v1783076190/varanasi_x5h7vn.webp",
   //   videoUrl: "",
   //   imagePrompt:
-  //     "Create a premium event visual for CareerKick's counselling expo in Varanasi. Use a circular illustration with a cultural city backdrop and a clean professional counselling atmosphere. No text, no watermark, no clutter, lime green and amber accents on a white or transparent base.",
+  //     "Create a premium event visual for Careerkick's counselling expo in Varanasi. Use a circular illustration with a cultural city backdrop and a clean professional counselling atmosphere. No text, no watermark, no clutter, lime green and amber accents on a white or transparent base.",
   // },
   {
     id: "greater-noida",
@@ -44,7 +44,7 @@ export const upcomingEvents: UpcomingEventCard[] = [
     imageSrc: "https://res.cloudinary.com/dhlqc0ymy/image/upload/v1783076186/greater-noida_usr4x9.webp",
     videoUrl: "",
     imagePrompt:
-      "Create a premium event visual for CareerKick's counselling expo in Greater Noida. Use a circular illustration with a modern campus and office-inspired backdrop, subtle map pin, and polished admissions theme. No text, no watermark, white or transparent background, lime green and blue accents.",
+      "Create a premium event visual for Careerkick's counselling expo in Greater Noida. Use a circular illustration with a modern campus and office-inspired backdrop, subtle map pin, and polished admissions theme. No text, no watermark, white or transparent background, lime green and blue accents.",
   },
   {
     id: "gorakhpur",
@@ -55,7 +55,7 @@ export const upcomingEvents: UpcomingEventCard[] = [
     imageSrc: "https://res.cloudinary.com/dhlqc0ymy/image/upload/v1783076166/gorakhpur_vlwinp.webp",
     videoUrl: "",
     imagePrompt:
-      "Create a premium event visual for CareerKick's counselling expo in Gorakhpur. Use a circular illustration with a warm seminar room atmosphere, professional counselling setting, and refined modern style. No text, no watermark, clean white or transparent background, lime green and cyan accents.",
+      "Create a premium event visual for Careerkick's counselling expo in Gorakhpur. Use a circular illustration with a warm seminar room atmosphere, professional counselling setting, and refined modern style. No text, no watermark, clean white or transparent background, lime green and cyan accents.",
   },
 ];
 

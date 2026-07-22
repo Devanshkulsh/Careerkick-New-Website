@@ -26,7 +26,7 @@ export function FaqSection() {
             <GradientText>Questions</GradientText> families ask before counselling starts.
           </h2>
           <p className="mt-5 max-w-lg text-base leading-relaxed text-text-muted sm:text-lg">
-            CareerKick keeps the process calm for students and parents. These answers cover counselling flow, course options, documents, portal support and what happens after allotment.
+            Careerkick keeps the process calm for students and parents. These answers cover counselling flow, course options, documents, portal support and what happens after allotment.
           </p>
 
           <GlassCard className="mt-10 overflow-hidden border-white/10 bg-surface-2/80 p-5 shadow-elevated backdrop-blur-xl sm:p-6">

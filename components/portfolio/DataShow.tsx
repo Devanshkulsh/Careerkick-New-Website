@@ -37,7 +37,7 @@ export function DataShow() {
             YouTube Metrics • REAL-TIME DATA
           </div>
           <h2 className="font-display text-3xl font-bold leading-[1.08] tracking-normal text-slate-900 sm:text-4xl md:text-5xl lg:text-6xl">
-            CAREERKICK NEET{" "}
+            Careerkick NEET{" "}
             <span className="text-[#51A70A] text-glow">YOUTUBE</span> CHANNEL
           </h2>
           <p className="mx-auto max-w-3xl px-4 text-sm font-medium leading-relaxed text-slate-700 sm:text-xl">
@@ -237,7 +237,7 @@ const Badge = ({ className }: { className?: string }) => {
     >
       <img
         src="/logo.png"
-        alt="CareerKick Logo"
+        alt="Careerkick Logo"
         className="w-full h-full object-contain"
       />
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-tr from-[#51A70A]/20 via-transparent to-white/20" />

@@ -17,19 +17,19 @@ export function AboutSection() {
       <div className="relative mx-auto grid max-w-7xl items-start gap-12 lg:grid-cols-[1.04fr_0.96fr] lg:items-stretch lg:gap-16 xl:gap-20">
         <ScrollReveal className="max-w-3xl lg:h-full">
           <span className="mb-5 inline-flex rounded-full border border-violet/30 bg-violet/10 px-4 py-2 font-mono text-[10px] font-semibold uppercase tracking-[0.28em] text-violet-glow shadow-sm sm:text-xs">
-            About CareerKick
+            About Careerkick
           </span>
 
           <h2 className="max-w-3xl font-display text-3xl font-bold leading-[1.05] tracking-normal text-white sm:text-4xl md:text-5xl xl:text-6xl">
             We built the{" "}
             <span className="bg-gradient-brand bg-clip-text text-transparent">
-              CareerKick
+              Careerkick
             </span>{" "}
             platform for every NEET and JEE aspirant.
           </h2>
 
           <p className="mt-6 max-w-2xl text-lg leading-relaxed text-white/75 sm:text-xl">
-            CareerKick is a counselling and admission guidance platform for NEET
+            Careerkick is a counselling and admission guidance platform for NEET
             and JEE aspirants. The aim is to help students understand their
             options, choose the right course, select suitable colleges and
             complete the counselling process without confusion.
@@ -37,7 +37,7 @@ export function AboutSection() {
 
           <p className="mt-5 max-w-2xl text-lg leading-relaxed text-white/70 sm:text-xl">
             Every student has a different score, rank, budget, category, state
-            preference and career goal. CareerKick studies these details properly
+            preference and career goal. Careerkick studies these details properly
             and prepares a counselling plan that is practical for the student
             and easy for parents to understand.
           </p>
@@ -84,7 +84,7 @@ export function AboutSection() {
                 ) : (
                   <>
                     <iframe
-                      title="About CareerKick reel"
+                      title="About Careerkick reel"
                       src={getYoutubeEmbedUrl(youtubeVideoUrl)}
                       className="pointer-events-none absolute inset-0 h-full w-full scale-[1.08]"
                       allow="autoplay; encrypted-media; picture-in-picture"

@@ -152,11 +152,11 @@ export default function OfficeMapSection() {
           </div>
 
           <h2 className="mt-4 font-display text-4xl font-bold text-white md:text-6xl">
-            Meet CareerKick <GradientText>where guidance begins.</GradientText>
+            Meet Careerkick <GradientText>where guidance begins.</GradientText>
           </h2>
 
           <p className="mx-auto mt-5 max-w-3xl text-base leading-7 text-text-muted md:text-lg">
-            Visit our CareerKick offices across India and connect with our
+            Visit our Careerkick offices across India and connect with our
             counselling team for personalised admission guidance, college
             planning, and complete support.
           </p>

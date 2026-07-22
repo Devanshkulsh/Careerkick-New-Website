@@ -37,7 +37,7 @@ export function AdmissionGuidanceSection() {
             More aspirants <span className="bg-gradient-brand bg-clip-text text-transparent">admitted every year.</span>
           </h2>
           <p className="mt-5 max-w-xl text-sm leading-relaxed text-white sm:text-base md:text-lg md:text-white">
-            CareerKick has helped thousands of NEET and JEE aspirants secure college allotments and move confidently into admission over the years.
+            Careerkick has helped thousands of NEET and JEE aspirants secure college allotments and move confidently into admission over the years.
           </p>
           <p className="mt-4 max-w-xl rounded-lg border border-white/10 bg-white/[0.03] px-4 py-3 text-xs font-medium leading-relaxed text-white/65 sm:text-sm">
             These numbers represent students admitted through counselling support, allotment planning, and admission assistance.

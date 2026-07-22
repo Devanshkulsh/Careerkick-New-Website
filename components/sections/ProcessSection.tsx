@@ -13,7 +13,7 @@ const processSteps: ProcessStep[] = [
     step: 1,
     title: "Student Profile Discussion",
     description:
-      "The process starts with understanding the student profile. CareerKick checks the score, rank, category, state preference, course interest, budget and college expectations.",
+      "The process starts with understanding the student profile. Careerkick checks the score, rank, category, state preference, course interest, budget and college expectations.",
   },
   {
     step: 2,
@@ -25,7 +25,7 @@ const processSteps: ProcessStep[] = [
     step: 3,
     title: "Budget and State Counselling Planning",
     description:
-      "CareerKick helps parents understand the expected fee range, state counselling options, government and private college possibilities and practical admission routes.",
+      "Careerkick helps parents understand the expected fee range, state counselling options, government and private college possibilities and practical admission routes.",
   },
   {
     step: 4,
@@ -43,7 +43,7 @@ const processSteps: ProcessStep[] = [
     step: 6,
     title: "Portal Registration and Choice Filling Support",
     description:
-      "CareerKick guides the student during portal registration and choice filling. The aim is to avoid common mistakes and make choices according to the student profile and admission chances.",
+      "Careerkick guides the student during portal registration and choice filling. The aim is to avoid common mistakes and make choices according to the student profile and admission chances.",
   },
   {
     step: 7,
@@ -55,7 +55,7 @@ const processSteps: ProcessStep[] = [
     step: 8,
     title: "Reporting and Final Admission Support",
     description:
-      "Once allotment is received, CareerKick helps the student understand reporting steps, fee payment, documents, upgrade options and final admission formalities.",
+      "Once allotment is received, Careerkick helps the student understand reporting steps, fee payment, documents, upgrade options and final admission formalities.",
   },
 ];
 

@@ -17,11 +17,11 @@ const CARD_EASE = [0.22, 1, 0.36, 1] as const;
 const MILESTONES: Milestone[] = [
   {
     year: "2017",
-    title: "CareerKick Founded",
+    title: "Careerkick Founded",
     description:
       "Started as India's first online JEE counseling platform with transparent guidance at its core.",
     image: "https://res.cloudinary.com/dhlqc0ymy/image/upload/v1784094060/founded_fayfhr.png",
-    imageAlt: "CareerKick founding journey milestone",
+    imageAlt: "Careerkick founding journey milestone",
     highlight: true,
   },
   {
@@ -30,7 +30,7 @@ const MILESTONES: Milestone[] = [
     description:
       "Launched dedicated channels for JEE, NEET, and MBA aspirants to scale free counseling awareness.",
     image: "https://res.cloudinary.com/dhlqc0ymy/image/upload/v1784094054/counseling_tjrwlp.png",
-    imageAlt: "CareerKick YouTube education launch",
+    imageAlt: "Careerkick YouTube education launch",
   },
   {
     year: "2021",
@@ -55,7 +55,7 @@ const MILESTONES: Milestone[] = [
     description:
       "Expanded physical presence to Noida, Kanpur, and Gorakhpur for stronger on-ground support.",
     image: "https://res.cloudinary.com/dhlqc0ymy/image/upload/v1784094060/founded_fayfhr.png",
-    imageAlt: "CareerKick office expansion across India",
+    imageAlt: "Careerkick office expansion across India",
   },
   {
     year: "2025",
@@ -225,7 +225,7 @@ function JourneyTimelineComponent() {
             whileInView={{ opacity: 1, y: 0 }}
             className="font-display text-4xl font-bold tracking-normal text-slate-900 sm:text-5xl lg:text-6xl"
           >
-            The CareerKick Journey
+            The Careerkick Journey
           </motion.h2>
           <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-slate-700">
             From a bold idea to nationwide impact, each milestone reflects our

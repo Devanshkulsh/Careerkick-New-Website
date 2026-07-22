@@ -11,7 +11,7 @@ export default function BlogError({ reset }: { error: Error; reset: () => void }
           We could not load the blog feed.
         </h1>
         <p className="mt-4 text-text-muted">
-          Please try again. If WordPress is slow for a moment, CareerKick will recover gracefully.
+          Please try again. If WordPress is slow for a moment, Careerkick will recover gracefully.
         </p>
         <button
           type="button"

@@ -229,7 +229,7 @@ const ContactSection = () => {
                       &quot;If your college isn&apos;t growing, it&apos;s falling behind. Let&apos;s build a stronger admissions engine together.&quot;
                     </p>
                     <p className="mt-3 font-mono text-sm font-semibold uppercase tracking-[0.2em] text-[#8cef32]">
-                      CareerKick Services
+                      Careerkick Services
                     </p>
                   </motion.div>
                 </div>
@@ -250,7 +250,7 @@ const ContactSection = () => {
             >
               <Map
                 center={OFFICE_CENTER}
-                title="CareerKick Office"
+                title="Careerkick Office"
                 address={officeLocations[0].address}
                 locationUrl={OFFICE_LOCATION_URL}
                 className="h-56 sm:h-64"

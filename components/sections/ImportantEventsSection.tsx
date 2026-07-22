@@ -36,13 +36,13 @@ export function ImportantEventsSection() {
       <div className="relative mx-auto max-w-7xl">
         <ScrollReveal className="mx-auto max-w-4xl text-center">
           <SectionLabel className="mx-auto border-[#51A70A]/30 bg-white text-[#51A70A]">
-            Important Events by CareerKick
+            Important Events by Careerkick
           </SectionLabel>
           <h2 className="font-display text-3xl font-bold leading-tight text-slate-900 sm:text-4xl md:text-5xl">
             <GradientText>Event stories</GradientText> that shaped student confidence.
           </h2>
           <p className="mx-auto mt-5 max-w-4xl text-base leading-relaxed text-slate-700 sm:text-lg">
-            Explore the moments CareerKick organized for students, parents and aspirants across summits, webinars and city events.
+            Explore the moments Careerkick organized for students, parents and aspirants across summits, webinars and city events.
           </p>
         </ScrollReveal>
 

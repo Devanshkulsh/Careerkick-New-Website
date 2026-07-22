@@ -21,7 +21,7 @@ export async function BlogsSection({ posts: providedPosts }: { posts?: WPPost[] 
       <div className="relative mx-auto max-w-7xl">
         <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
           <ScrollReveal className="max-w-3xl">
-            <SectionLabel>CareerKick Blog</SectionLabel>
+            <SectionLabel>Careerkick Blog</SectionLabel>
             <h2 className="font-display text-4xl font-bold leading-tight text-white md:text-6xl">
               From our desk: JEE & NEET admission clarity.
             </h2>
@@ -54,7 +54,7 @@ export async function BlogsSection({ posts: providedPosts }: { posts?: WPPost[] 
               Need help decoding counselling updates?
             </p>
             <p className="mt-1 text-sm text-text-muted">
-              Explore the full blog library or speak with the CareerKick team.
+              Explore the full blog library or speak with the Careerkick team.
             </p>
           </div>
           <Link

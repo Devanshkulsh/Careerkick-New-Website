@@ -7,7 +7,7 @@ type EmptyStateProps = {
 
 export function EmptyState({
   title = "No blog posts found",
-  description = "Try another search term or explore all CareerKick articles.",
+  description = "Try another search term or explore all Careerkick articles.",
 }: EmptyStateProps) {
   return (
     <div className="rounded-lg border border-white/10 bg-gradient-card p-8 text-center shadow-card">

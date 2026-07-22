@@ -33,7 +33,7 @@ export function MidHomepageCtaSection() {
                 <span className="bg-gradient-brand bg-clip-text text-transparent">clear admission plan.</span>
               </h2>
               <p className="mt-4 max-w-2xl text-sm font-medium leading-relaxed text-slate-700 sm:text-base lg:text-slate-800">
-                Speak with CareerKick before counselling choices become rushed. We help you understand course options, portals, quotas, documents, and college priorities.
+                Speak with Careerkick before counselling choices become rushed. We help you understand course options, portals, quotas, documents, and college priorities.
               </p>
 
               <div className="mt-5 flex flex-wrap gap-2">

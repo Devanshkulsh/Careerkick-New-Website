@@ -7,7 +7,7 @@ import { AuroraBackground } from "@/components/ui/AuroraBackground";
 const channels = [
   {
     id: "careerkick-neet",
-    title: "CAREERKICK NEET",
+    title: "Careerkick NEET",
     subtitle: "Counselling updates, cut-offs, and admission explainers",
     subscribers: "206K subscribers",
     href: "https://www.youtube.com/@careerkickneet",
@@ -16,7 +16,7 @@ const channels = [
   },
   {
     id: "careerkick-jee",
-    title: "CAREERKICK JEE",
+    title: "Careerkick JEE",
     subtitle: "Counselling updates, cut-offs, and admission explainers",
     subscribers: "42.8K subscribers",
     href: "https://www.youtube.com/@CAREERKICKJEE",
@@ -103,7 +103,7 @@ export default function AppShowcaseSection() {
           <h2 className="font-display text-2xl font-bold leading-tight tracking-normal text-white sm:text-4xl md:text-5xl">
             Learn counselling through{" "}
             <span className="bg-gradient-brand bg-clip-text text-transparent">
-              CareerKick videos.
+              Careerkick videos.
             </span>
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-sm leading-relaxed text-text-muted sm:mt-6 sm:text-base md:text-lg md:text-white">

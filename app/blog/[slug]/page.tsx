@@ -37,14 +37,14 @@ export async function generateMetadata({ params }: SingleBlogPageProps): Promise
 
   if (!post) {
     return {
-      title: "Blog Not Found | CareerKick",
+      title: "Blog Not Found | Careerkick",
     };
   }
 
   const image = post.featuredImage?.url;
 
   return {
-    title: `${post.title} | CareerKick`,
+    title: `${post.title} | Careerkick`,
     description: post.excerpt,
     alternates: {
       canonical: `https://careerkick.in/blog/${post.slug}`,
@@ -84,7 +84,7 @@ export default async function SingleBlogPage({ params }: SingleBlogPageProps) {
   const currentIndex = allPosts.findIndex((item) => item.id === post.id);
   const previousPost = currentIndex > 0 ? allPosts[currentIndex - 1] : null;
   const nextPost = currentIndex >= 0 && currentIndex < allPosts.length - 1 ? allPosts[currentIndex + 1] : null;
-  const category = post.categories[0]?.name ?? "CareerKick";
+  const category = post.categories[0]?.name ?? "Careerkick";
   const articleUrl = `https://careerkick.in/blog/${post.slug}`;
 
   const articleSchema = {
@@ -97,11 +97,11 @@ export default async function SingleBlogPage({ params }: SingleBlogPageProps) {
     dateModified: post.modified,
     author: {
       "@type": "Person",
-      name: post.author?.name ?? "CareerKick",
+      name: post.author?.name ?? "Careerkick",
     },
     publisher: {
       "@type": "Organization",
-      name: "CareerKick",
+      name: "Careerkick",
       logo: {
         "@type": "ImageObject",
         url: "https://careerkick.in/logo.png",
@@ -166,7 +166,7 @@ export default async function SingleBlogPage({ params }: SingleBlogPageProps) {
               <div className="mt-7 grid gap-3 rounded-lg border border-white/10 bg-white/[0.035] p-4 shadow-card backdrop-blur-xl sm:grid-cols-3">
                 <div>
                   <p className="font-mono text-[10px] uppercase tracking-widest text-text-faint">Author</p>
-                  <p className="mt-1 text-sm font-semibold text-white">{post.author?.name ?? "CareerKick"}</p>
+                  <p className="mt-1 text-sm font-semibold text-white">{post.author?.name ?? "Careerkick"}</p>
                 </div>
                 <div>
                   <p className="font-mono text-[10px] uppercase tracking-widest text-text-faint">Published</p>

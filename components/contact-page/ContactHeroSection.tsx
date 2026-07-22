@@ -33,7 +33,7 @@ export function ContactHeroSection() {
           </span>
           <h1 className="mt-4 font-display text-4xl font-bold leading-[1.02] tracking-normal text-white sm:text-5xl md:text-6xl lg:text-7xl">
             Contact{" "}
-            <span className="text-[#8cef32] text-glow">CareerKick</span>{" "}
+            <span className="text-[#8cef32] text-glow">Careerkick</span>{" "}
             Today!!
           </h1>
           <p className="mx-auto mt-5 max-w-3xl text-sm leading-relaxed text-white/72 sm:text-base md:text-lg">

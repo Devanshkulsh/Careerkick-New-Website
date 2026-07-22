@@ -80,7 +80,7 @@ export default function SuccessStories(): JSX.Element {
           </h2>
           <p className="mx-auto max-w-2xl text-sm font-medium leading-relaxed text-white/70 sm:text-base lg:text-white">
             See how different BAMS colleges improved visibility, strengthened
-            counselling, and achieved better admission results with CareerKick.
+            counselling, and achieved better admission results with Careerkick.
           </p>
         </motion.div>
 

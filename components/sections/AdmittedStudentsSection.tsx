@@ -18,7 +18,7 @@ type AdmittedStudentsSectionProps = {
 
 export function AdmittedStudentsSection({
   title = "Our Admitted Students",
-  subtitle = "A glimpse of students who moved closer to their dream campuses with CareerKick guidance.",
+  subtitle = "A glimpse of students who moved closer to their dream campuses with Careerkick guidance.",
   students = admittedStudents,
   className,
 }: AdmittedStudentsSectionProps) {

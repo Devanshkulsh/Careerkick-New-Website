@@ -129,13 +129,13 @@ const videoPlaylist = counsellingProcessVideos.map((video) => ({
 const youtubeChannels = [
   {
     id: "careerkick-neet",
-    title: "CAREERKICK NEET",
+    title: "Careerkick NEET",
     subscribers: "206K subscribers",
     href: "https://www.youtube.com/@careerkickneet",
   },
   {
     id: "careerkick-jee",
-    title: "CAREERKICK JEE",
+    title: "Careerkick JEE",
     subscribers: "42.8K subscribers",
     href: "https://www.youtube.com/@CAREERKICKJEE",
   },
@@ -429,7 +429,7 @@ export function CounsellingProcessSection({
                   {hasActiveVideoUrl ? (
                     <>
                       <iframe
-                        title="CareerKick video guide"
+                        title="Careerkick video guide"
                         src={getYoutubeEmbedUrl(activeVideo?.youtubeUrl ?? "")}
                         className="h-full w-full scale-125 object-cover"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"

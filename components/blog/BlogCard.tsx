@@ -13,7 +13,7 @@ type BlogCardProps = {
 };
 
 export function BlogCard({ post, featured = false, compact = false, priority = false, className }: BlogCardProps) {
-  const category = post.categories[0]?.name ?? "CareerKick";
+  const category = post.categories[0]?.name ?? "Careerkick";
 
   return (
     <article

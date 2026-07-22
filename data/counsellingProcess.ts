@@ -5,7 +5,7 @@ export const counsellingProcess: CounsellingProcessStep[] = [
     step: 1,
     title: "Student Profile Discussion",
     description:
-      "CareerKick evaluates the student's NEET score, AIR, category, domicile state, preferred course, budget, and college expectations to build a personalized counselling strategy.",
+      "Careerkick evaluates the student's NEET score, AIR, category, domicile state, preferred course, budget, and college expectations to build a personalized counselling strategy.",
     icon: "user-search",
     status: "Profile Analysis",
     accent: "blue",
@@ -60,7 +60,7 @@ export const counsellingProcess: CounsellingProcessStep[] = [
     step: 6,
     title: "Portal Registration & Choice Filling",
     description:
-      "CareerKick provides expert assistance during registration and choice filling to maximize admission opportunities.",
+      "Careerkick provides expert assistance during registration and choice filling to maximize admission opportunities.",
     icon: "mouse-pointer-click",
     status: "Application",
     accent: "yellow",
@@ -82,7 +82,7 @@ export const counsellingProcess: CounsellingProcessStep[] = [
     step: 8,
     title: "Reporting & Final Admission",
     description:
-      "After seat allotment, CareerKick assists with reporting, fee payment, admission documents, upgrade options, and final admission completion.",
+      "After seat allotment, Careerkick assists with reporting, fee payment, admission documents, upgrade options, and final admission completion.",
     icon: "badge-check",
     status: "Admission Complete",
     accent: "emerald",

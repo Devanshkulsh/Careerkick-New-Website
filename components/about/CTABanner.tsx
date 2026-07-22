@@ -13,7 +13,7 @@ import { memo, useCallback, useRef } from "react";
 const CTA_BANNER_CONTENT = {
   title: "Ready To Plan Your Dream Admission Journey?",
   description:
-    "Connect with CareerKick's expert counselors and build a personalized strategy for your next admission cycle.",
+    "Connect with Careerkick's expert counselors and build a personalized strategy for your next admission cycle.",
   primaryAction: {
     label: "Book Counseling Session",
     href: "https://careerkick.in",

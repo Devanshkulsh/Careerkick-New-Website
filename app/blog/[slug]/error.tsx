@@ -13,7 +13,7 @@ export default function SingleBlogError({ reset }: { error: Error; reset: () => 
           This article could not be loaded.
         </h1>
         <p className="mt-4 text-text-muted">
-          Try again or return to the CareerKick blog index.
+          Try again or return to the Careerkick blog index.
         </p>
         <div className="mt-6 flex flex-col justify-center gap-3 sm:flex-row">
           <button

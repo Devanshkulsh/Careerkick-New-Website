@@ -206,7 +206,7 @@ export default async function CareersPage() {
         <ScrollReveal>
           <section className="mt-10 rounded-[1.75rem] border border-white/10 bg-white/[0.04] p-5 backdrop-blur-xl sm:p-6 md:mt-12 md:p-8">
             <p className="font-mono text-xs font-semibold uppercase tracking-[0.24em] text-[#8cef32]">
-              Why CareerKick
+              Why Careerkick
             </p>
             <div className="mt-4 grid gap-3 sm:gap-4 md:grid-cols-3">
               {[

@@ -48,7 +48,7 @@ export function OfficesSection({ items = offices, className }: OfficesSectionPro
             Our Offices
           </span>
           <h2 className="mx-auto max-w-4xl font-display text-[1.85rem] font-bold leading-[1.08] tracking-normal text-slate-900 min-[390px]:text-[2rem] sm:text-4xl md:text-5xl xl:text-6xl">
-            Meet CareerKick{" "}
+            Meet Careerkick{" "}
             <span className="bg-gradient-brand bg-clip-text text-transparent">
               where guidance begins.
             </span>
@@ -219,7 +219,7 @@ function OfficeModal({ office, onClose }: { office: OfficeBranch; onClose: () =>
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.16 }}
               >
-                CareerKick Branch
+                Careerkick Branch
               </motion.p>
               <motion.h3
                 id={`office-modal-title-${office.id}`}

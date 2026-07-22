@@ -16,7 +16,7 @@ if (!projectId) {
 
 export default defineConfig({
   name: "careerkick",
-  title: "CareerKick",
+  title: "Careerkick",
   projectId,
   dataset,
   plugins: [structureTool()],
